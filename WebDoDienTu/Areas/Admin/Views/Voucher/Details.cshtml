@@ -1,0 +1,71 @@
+﻿@model WebDoDienTu.Models.Voucher
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Thông tin voucher</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-area="admin" asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item active">Voucher</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>Voucher</h4>
+
+                <div>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            Tên mã
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Nội dung
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Mã
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Code)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Ngày hết hạn
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ExpiryDate)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Giá trị
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Value)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Số lượng
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.SoLuong)
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model?.Id">Cập nhật</a> |
+                    <a asp-action="Index">Trở về</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+

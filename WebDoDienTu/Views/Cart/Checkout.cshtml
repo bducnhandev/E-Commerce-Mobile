@@ -1,0 +1,73 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Thanh toán</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item active text-white">Check Out</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+@if (TempData["ModelState"] != null)
+{
+    <div style="margin-top:25px" class="alert alert-warning" role="alert">
+        @TempData["ModelState"]
+    </div>
+}
+
+<!-- Checkout Page Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h1 class="mb-4">Thông tin đặt hàng</h1>
+        <form asp-action="Checkout" method="post">
+            <div class="row g-5">
+                <div class="col-md-12 col-lg-6 col-xl-7">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="form-item w-100">
+                                <label asp-for="FirstName" class="form-label my-3">First Name<sup>*</sup></label>
+                                <input asp-for="FirstName" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <div class="form-item w-100">
+                                <label asp-for="LastName" class="form-label my-3">Last Name<sup>*</sup></label>
+                                <input asp-for="LastName" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label asp-for="Phone" class="form-label my-3">Phone Number<sup>*</sup></label>
+                        <input asp-for="Phone" type="text" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label asp-for="Email" class="form-label my-3">Email Address<sup>*</sup></label>
+                        <input asp-for="Email" type="email" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label asp-for="Address" class="form-label my-3">Address <sup>*</sup></label>
+                        <input asp-for="Address" type="text" class="form-control">
+                    </div>
+                    <br />
+                    <div class="form-item">
+                        <label asp-for="Notes" class="form-label my-3">Note</label>
+                        <textarea asp-for="Notes" class="form-control" spellcheck="false" cols="30" rows="11" placeholder="Oreder Notes (Optional)"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xl-5">
+                    <div class="row g-4 text-center align-items-center justify-content-center pt-4">
+                        <input type="submit" name="payment" class="btn border-secondary text-uppercase text-primary w-100 mt-2" value="Đặt hàng (COD)">
+                        <input type="submit" name="payment" class="btn border-secondary text-uppercase text-primary w-100 mt-2" value="Thanh toán VNPay">
+                        <button asp-area="" asp-controller="Product" asp-action="Index" type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Tiếp tục mua sắm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Checkout Page End -->

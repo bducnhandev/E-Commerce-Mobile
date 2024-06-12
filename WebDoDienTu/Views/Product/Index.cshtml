@@ -1,0 +1,210 @@
+﻿@using X.PagedList.Mvc
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["NoProductsMessage"] != null)
+{
+    <script>
+        alert('@TempData["NoProductsMessage"]');
+    </script>
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Shop</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item active text-white">Shop</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+<!-- Fruits Shop Start-->
+<div class="container-fluid fruite py-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-12">
+                <div class="row g-4">
+                    <div class="col-xl-3">
+                        <form asp-controller="Product" asp-action="Index" method="get">
+                            <div class="input-group">
+                                <input type="search" name="keywords" class="form-control p-3" placeholder="Keywords" aria-describedby="search-icon-1">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6"></div>
+                    <div class="col-xl-3">
+                        <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
+                            <label for="fruits">Default Sorting:</label>
+                            <select id="fruits" name="fruitlist" class="border-0 form-select-sm bg-light me-3" form="fruitform">
+                                <option value="volvo">Nothing</option>
+                                <option value="saab">Nổi bật</option>
+                                <option value="opel">Giá</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <div class="row g-4">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <br />
+                                    <h4>Danh mục</h4>
+                                    <ul class="list-unstyled fruite-categorie">
+                                        <li>
+                                            <div class="d-flex justify-content-between fruite-name">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-category="Điện thoại">
+                                                    <i class="fas fa-apple-alt me-2"></i>Điện thoại
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-between fruite-name">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-category="Laptop">
+                                                    <i class="fas fa-apple-alt me-2"></i>Laptop
+                                                </a>
+                                            </div><div class="d-flex justify-content-between fruite-name">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-category="Âm thanh">
+                                                    <i class="fas fa-apple-alt me-2"></i>Âm thanh
+                                                </a>
+                                            </div><div class="d-flex justify-content-between fruite-name">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-category="Phụ kiện">
+                                                    <i class="fas fa-apple-alt me-2"></i>Phụ kiện
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <form asp-controller="Product" asp-action="Index" method="get">
+                                        <div class="form-group">
+                                            <label for="priceRange">Khoảng giá:</label>
+                                            <select class="form-control" id="priceRange" name="priceRange">
+                                                <option value="0-500000">Dưới 500.000 VND</option>
+                                                <option value="5000000-1000000">500.000 - Dưới 1.000.000 VND</option>
+                                                <option value="1000000-5000000">1.000.000 - Dưới 5.000.000 VND</option>
+                                                <option value="5000000-10000000">5.000.000 - Dưới 10.000.000 VND</option>
+                                                <option value="10000000-20000000">10.000.000 - Dưới 20.000.000 VND</option>
+                                            </select>
+                                        </div>
+                                        <br />
+                                        <button type="submit" class="btn btn-primary">Lọc</button>
+                                    </form>
+
+                                    <script>
+                                        // Lấy giá trị đã chọn từ URL (nếu có) và cập nhật lại menu thả xuống
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            const urlParams = new URLSearchParams(window.location.search);
+                                            const priceRange = urlParams.get('priceRange');
+                                            if (priceRange) {
+                                                document.getElementById('priceRange').value = priceRange;
+                                            }
+                                        });
+                                    </script>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="position-relative">
+                                    <img src="img/banners/banner-12.jpg" class="img-fluid w-100 rounded" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row g-4 justify-content-center">
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px">
+                                        <div class="vesitable-img">
+                                            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                            <h4 class="text-center">
+                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@item.ProductId">
+                                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                                </a>
+                                            </h4>
+                                            <p class="text-center">@Html.DisplayFor(modelItem => item.Description)</p>
+                                            <div class="mt-auto text-center">
+                                                <p class="text-dark fs-5 fw-bold mb-0">@item.Price.ToString("N0") VND</p>
+                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@item.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="pagination-container">
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, category = ViewBag.Category, keywords = ViewBag.Keywords, priceRange = ViewBag.PriceRange }), new PagedListRenderOptions
+                                {
+                                    UlElementClasses = new[] { "pagination" },
+                                    LiElementClasses = new[] { "page-item" },
+                                    PageClasses = new[] { "page-link" },
+                                    ActiveLiElementClass = "active",
+                                    PreviousElementClass = "prev",
+                                    NextElementClass = "next",
+                                    LinkToPreviousPageFormat = "<<",
+                                    LinkToNextPageFormat = ">>",
+                                    DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                                    DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                                    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                                    DisplayLinkToLastPage = PagedListDisplayMode.Never
+                                })
+                            </div>
+
+                            <style>
+                                .pagination-container {
+                                    display: flex;
+                                    justify-content: center;
+                                }
+
+                                .pagination {
+                                    display: flex;
+                                    list-style: none;
+                                    padding-left: 0;
+                                }
+
+                                    .pagination li {
+                                        margin-right: 5px;
+                                    }
+
+                                        .pagination li.active a {
+                                            background-color: #007bff;
+                                            color: #fff;
+                                            border-color: #007bff;
+                                        }
+
+                                        .pagination li a {
+                                            color: #007bff;
+                                            border: 1px solid #007bff;
+                                            padding: 5px 10px;
+                                            text-decoration: none;
+                                            border-radius: 5px;
+                                        }
+
+                                            .pagination li a:hover {
+                                                background-color: #f0f0f0;
+                                            }
+                            </style>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fruits Shop End-->
+

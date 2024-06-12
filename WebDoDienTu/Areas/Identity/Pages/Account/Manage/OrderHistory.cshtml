@@ -1,0 +1,36 @@
+﻿@page
+@model WebDoDienTu.Areas.Identity.Pages.Account.Manage.OrderHistoryModel
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int stt = 1;
+        }
+        @foreach (var order in Model.Orders)
+        {           
+            <tr>
+                <td>@stt</td>
+                <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@order.TotalPrice.ToString("N0") VND</td>
+                @{
+                    string status = @order.Status == null ? "Chưa thanh toán" : "Đã thanh toán";
+                    <td>@status</td>
+                }
+            </tr>
+            stt++;
+        }
+    </tbody>
+</table>

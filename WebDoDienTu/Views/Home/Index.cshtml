@@ -1,0 +1,648 @@
+﻿@model WebDoDienTu.Models.MyModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+    int quality = 1;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>MiniShop</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="~/css/style.css" rel="stylesheet">
+        <style>
+            .vesitable-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
+
+            .vesitable-img {
+                width: 100%;
+                height: 300px;
+                overflow: hidden;
+            }
+
+                .vesitable-img img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+            .p-4 {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+                .p-4 h4, .p-4 p {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .p-4 .mt-auto {
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar start -->
+        <div class="container-fluid fixed-top">
+            <div class="container topbar bg-primary d-none d-lg-block">
+                <div class="d-flex justify-content-between">
+                    <div class="top-info ps-2">
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Phân khu đào tạo E1, Khu Công Nghệ cao TP.HCM, Phường Hiệp Phú, TP. Thủ Đức, TP.HCM</a></small>
+                    </div>
+                    <div class="top-link pe-2">
+                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">ducnhanbui25032003@gmail.com</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-0">
+                <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><h1 class="text-primary display-6">MiniTech</h1></a>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Trang chủ</a>
+                            <a asp-area="" asp-controller="Blog" asp-action="Index" class="nav-item nav-link">Tin tức</a>
+                            <a asp-area="" asp-controller="Product" asp-action="Index" class="nav-item nav-link">Mua sắm</a>
+                            <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Liên hệ</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Trang quản trị</a>
+                            }
+                        </div>
+                        <div class="d-flex m-3 me-0">
+                            <partial name="_LoginPartial" />
+                            <a asp-area="" asp-controller="Cart" asp-action="Index" class="position-relative me-4 my-auto">
+                            <i class="fa fa-shopping-bag fa-2x"></i></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar End -->
+
+        <!-- Hero Start -->
+        <div class="container-fluid py-5 mb-5 hero-header">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-md-12 col-lg-7">
+                        <h4 class="mb-3 text-secondary">Sản phẩm hiện đại</h4>
+                        <h1 class="mb-5 display-3 text-primary">Moden & Convenient Products</h1>
+                        <form asp-controller="Product" asp-action="Index" method="get">
+                            <div class="position-relative mx-auto">
+                                <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="search" name="keywords" placeholder="Search">
+                                <button type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style="top: 0; right: 25%;">Tìm kiếm</button>
+                            </div>
+                         </form>
+                    </div>
+                    @* <div class="col-md-12 col-lg-5">
+                        <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item rounded">
+                                    <img src="image/banners/banner0.gif" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                                </div>
+                                <div class="carousel-item active rounded">
+                                    <img src="image/banners/banner1.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                                </div>
+                                <div class="carousel-item rounded">
+                                    <img src="image/banners/banner2.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                                </div>
+                                <div class="carousel-item rounded">
+                                    <img src="image/banners/banner3.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->       
+
+        <!-- Products Shop Start-->
+        <div class="container-fluid fruite py-5">
+            <div class="container py-5">
+                <div class="tab-class text-center">
+                    <div class="row g-4">
+                        <div class="col-lg-4 text-start">
+                            <h1>Sản phẩm</h1>
+                        </div>
+                        <div class="col-lg-8 text-end">
+                            <ul class="nav nav-pills d-inline-flex text-center mb-5">          
+                                <li class="nav-item">
+                                    <a class="d-flex py-2 m-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-2">
+                                        <span class="text-dark" style="width: 130px;">Điện thoại</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
+                                        <span class="text-dark" style="width: 130px;">Laptop</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
+                                        <span class="text-dark" style="width: 130px;">Âm thanh</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
+                                        <span class="text-dark" style="width: 130px;">Phụ kiện</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="tab-2" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4">
+
+                                        @{
+                                            int countphone = 0;
+                                        }
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            if (countphone < 8)
+                                            {
+@*                                                 <div class="border border-primary rounded position-relative vesitable-item">
+                                                    <div class="vesitable-img">
+                                                        <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                                    </div>
+                                                    <div class="p-4 rounded-bottom">
+                                                    <h4><a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">@Html.DisplayFor(modelItem => product.ProductName)</a></h4>
+                                                        <p>@Html.DisplayFor(modelItem => product.Description)</p>
+                                                        <div class="d-flex justify-content-between flex-lg-wrap">
+                                                        <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng</a>
+                                                        </div>
+                                                    </div>
+                                                </div> *@
+
+
+                                                <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px; margin: 10px">
+                                                    <div class="vesitable-img">
+                                                        <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                                    </div>
+                                                    <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                                        <h4 class="text-center">
+                                                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                                @Html.DisplayFor(modelItem => product.ProductName)
+                                                            </a>
+                                                        </h4>
+                                                        <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                                        <div class="mt-auto text-center">
+                                                            <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                countphone++;
+                                            }
+                                            else
+                                            {
+                                                break; // Dừng vòng lặp sau khi đã hiển thị 10 sản phẩm
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-3" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4">
+                                        @{
+                                            int countlaptop = 0;
+                                        }
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            if (product.CategoryId == 2)
+                                            {
+                                                if (countlaptop < 8)
+                                                {
+                                                    <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px; margin: 10px">
+                                                        <div class="vesitable-img">
+                                                            <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                                        </div>
+                                                        <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                                            <h4 class="text-center">
+                                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                                    @Html.DisplayFor(modelItem => product.ProductName)
+                                                                </a>
+                                                            </h4>
+                                                            <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                                            <div class="mt-auto text-center">
+                                                                <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    countlaptop++;
+                                                }
+
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-4" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4">
+
+                                        @{
+                                            int countsound = 0;
+                                        }
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            if (product.CategoryId == 3)
+                                            {
+                                                if (countsound < 8)
+                                                {
+                                                    <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px; margin: 10px">
+                                                        <div class="vesitable-img">
+                                                            <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                                        </div>
+                                                        <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                                            <h4 class="text-center">
+                                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                                    @Html.DisplayFor(modelItem => product.ProductName)
+                                                                </a>
+                                                            </h4>
+                                                            <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                                            <div class="mt-auto text-center">
+                                                                <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    countsound++;
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-5" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                        <div class="row g-4">
+                                        @{
+                                            int countaccessory = 0;
+                                        }
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            if (product.CategoryId == 4)
+                                            {
+                                                if (countaccessory < 8)
+                                                {
+                                                    <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px; margin: 10px">
+                                                        <div class="vesitable-img">
+                                                            <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                                        </div>
+                                                        <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                                            <h4 class="text-center">
+                                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                                    @Html.DisplayFor(modelItem => product.ProductName)
+                                                                </a>
+                                                            </h4>
+                                                            <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                                            <div class="mt-auto text-center">
+                                                                <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    countaccessory++;
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>      
+            </div>
+        </div>
+        <!-- Products Shop End-->
+
+        <!-- Banner Section Start-->
+        <div class="container-fluid banner bg-secondary my-5">
+            <div class="container py-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="py-4">
+                            <h1 class="display-3 text-white">Acer Nitro 5</h1>
+                            <p class="fw-normal display-3 text-dark mb-4">Laptop Gamming</p>
+                            <p class="mb-4 text-dark">Với cấu hình tuyệt vời, không những giải quyết được các tác vụ văn phòng, thiết kế đồ hoạ mà còn giúp bạn chơi game mướt hơn nhờ CPU Intel thế hệ 11 cùng card đồ họa rời NVIDIA GeForce RTX, chắc hẳn Acer Nitro 5 Gaming AN515 57 50FT i5 (NH.QD8SV.003) sẽ là sản phẩm mà bạn đang tìm kiếm đấy.</p>
+                            <a asp-area="" asp-controller="Product" asp-action="Index" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Mua ngay</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="position-relative" style="color: blue;">
+                            <img src="image/banners/banner-11.jpg" class="img-fluid w-100 rounded" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Banner Section End -->
+
+        <!-- Sản phẩm nổi bậc-->
+        <div class="container-fluid vesitable py-5">
+            <div class="container py-5">
+                <h1 class="mb-0">Sản phẩm nổi bậc</h1>
+                <div class="owl-carousel vegetable-carousel justify-content-center">
+
+                    @{
+                        int count = 0;
+                    }
+                    @foreach (var product in Model.Products)
+                    {
+                        if (product.IsHoted == true)
+                        {
+                            if (count < 8)
+                            {
+
+@*                                 <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px">
+                                    <div class="vesitable-img">
+                                    <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                    </div>
+                                    <div class="p-4 rounded-bottom">
+                                    <h4><a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">@Html.DisplayFor(modelItem => product.ProductName)</a></h4>
+                                        <p>@Html.DisplayFor(modelItem => product.Description)</p>
+                                        <div class="d-flex justify-content-between flex-lg-wrap">
+                                            <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng</a>
+                                        </div>
+                                    </div>
+                                </div> *@
+
+                                <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px">
+                                    <div class="vesitable-img">
+                                        <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                    </div>
+                                    <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                        <h4 class="text-center">
+                                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                @Html.DisplayFor(modelItem => product.ProductName)
+                                            </a>
+                                        </h4>
+                                        <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                        <div class="mt-auto text-center">
+                                            <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                count++;
+                            }
+                            else
+                            {
+                                break; 
+                            }
+                        }
+                    }
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- End Sản phẩm nổi bậc -->
+
+        <!-- Featurs Section Start -->
+        <div class="container-fluid featurs py-5">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="featurs-item text-center rounded bg-light p-4">
+                            <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                                <i class="fas fa-car-side fa-3x text-white"></i>
+                            </div>
+                            <div class="featurs-content text-center">
+                                <h5>Miễn phí giao hàng</h5>
+                                <p class="mb-0">Miễn phí cho đơn hàng trên 500.000VND</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="featurs-item text-center rounded bg-light p-4">
+                            <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                                <i class="fas fa-user-shield fa-3x text-white"></i>
+                            </div>
+                            <div class="featurs-content text-center">
+                                <h5>Thanh toán an toàn</h5>
+                                <p class="mb-0">100% an toàn khi thanh toán</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="featurs-item text-center rounded bg-light p-4">
+                            <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                                <i class="fas fa-exchange-alt fa-3x text-white"></i>
+                            </div>
+                            <div class="featurs-content text-center">
+                                <h5>30 Ngày đổi trả</h5>
+                                <p class="mb-0">Hoàn tiền trong 30 ngày</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="featurs-item text-center rounded bg-light p-4">
+                            <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                                <i class="fa fa-phone-alt fa-3x text-white"></i>
+                            </div>
+                            <div class="featurs-content text-center">
+                                <h5>Hỗ trợ 24/7</h5>
+                                <p class="mb-0">Hỗ trợ nhanh chóng mọi lúc, mọi nơi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featurs Section End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+            <div class="container py-5">
+                <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                    <div class="row g-4">
+                        <div class="col-lg-3">
+                            <a href="#">
+                                <h1 class="text-primary mb-0">MiniTeach</h1>
+                                <p class="text-secondary mb-0">Modern products</p>
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="position-relative mx-auto">
+                                <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
+                                <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="d-flex justify-content-end pt-3">
+                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                                <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="d-flex flex-column text-start footer-item">
+                            <h4 class="text-light mb-3">Chính sách</h4>
+                            <a class="btn-link" href="">Chính sách bảo hành</a>
+                            <a class="btn-link" href="">Chính sách thanh toán</a>
+                            <a class="btn-link" href="">Chính sách giao hàng</a>
+                            <a class="btn-link" href="">Chính sách bảo mật</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="d-flex flex-column text-start footer-item">
+                            <h4 class="text-light mb-3">Thông tin</h4>
+                            <a class="btn-link" href="">Hệ thống cửa hàng</a>
+                            <a class="btn-link" href="">Trung tâm bảo hành</a>
+                            <a class="btn-link" href="">Tra cứu địa chỉ bảo hành</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="d-flex flex-column text-start footer-item">
+                            <h4 class="text-light mb-3">TỔNG ĐÀI HỖ TRỢ</h4>
+                            <a class="btn-link" href="">CSKH: 9999.9999 (nhánh 1)</a>
+                            <a class="btn-link" href="">Bảo hành: 9999.9999 (nhánh 2)</a>
+                            <a class="btn-link" href="">HTKT: 9999.9999 (nhánh 3)</a>
+                            <a class="btn-link" href="">Email: cskh@aaaaaa.com</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="text-light mb-3">Liên hệ</h4>
+                            <p>Địa chỉ: Phân khu đào tạo E1, Khu Công Nghệ cao TP.HCM, Phường Hiệp Phú, TP. Thủ Đức, TP.HCM</p>
+                            <p>Email: ducnhanbui25032003@gmail.com</p>
+                            <p>Phone: +84 36 5839 282</p>
+                            <p>Payment Accepted</p>
+                            <img src="./image/payment.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright bg-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Bùi Đức Nhân</a> - Hutech.</span>
+                    </div>
+                    <div class="col-md-6 my-auto text-center text-md-end text-white">                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/easing/easing.min.js"></script>
+        <script src="~/lib/waypoints/waypoints.min.js"></script>
+        <script src="~/lib/lightbox/js/lightbox.min.js"></script>
+        <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="~/js/main.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,150 @@
+﻿@model ShoppingCart
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Thông tin giỏ hàng</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item active text-white">Cart Detail</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+@if (TempData["EmptyCartMessage"] != null)
+{
+    <div style="margin-top:25px" class="alert alert-warning" role="alert">
+        @TempData["EmptyCartMessage"]
+    </div>
+}
+
+<!-- Cart Page Start -->
+<div class="container-fluid py-5">
+    <a asp-controller="Product" asp-action="Index">
+        <button class="btn border-secondary rounded-pill text-primary text-uppercase" type="button">Tiếp tục mua sắm</button>
+    </a>
+    <div class="container py-5">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Tổng</th>
+                        <th scope="col">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <div class="d-flex align-items-center">
+                                        <img src="@item.Image" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                    </div>
+                                </th>
+                                <td>
+                                    <p class="mb-0 mt-4">@item.NameProduct</p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">@item.Price.ToString("N0") VND</p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">@item.Quantity</p>
+                                </td>
+                                <td>
+                                @{var thanhtien = @item.Price * @item.Quantity;}
+                                    <p class="mb-0 mt-4">@thanhtien.ToString("N0") VND</p>
+                                </td>
+                                <td>
+                                    <a asp-area="" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-productId="@item.ProductId">
+                                        <button class="btn btn-md rounded-circle bg-light border mt-4">
+                                            <i class="fa fa-times text-danger"></i>
+                                        </button>
+                                    </a>                                   
+                                </td>
+                            </tr>
+                        }
+                    }
+                                      
+                </tbody>
+            </table>
+        </div>
+        @* <div class="mt-5">
+            <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
+            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+        </div>
+        <div class="row g-4 justify-content-end">
+            <div class="col-8"></div>
+            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                <div class="bg-light rounded">
+                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Tổng cộng</h5>
+                        <p class="mb-0 pe-4">@Model.Items.Sum(x => x.Price * x.Quantity).ToString("N0") VND</p>
+                    </div>
+                    <a asp-action="Checkout">
+                        <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Tiến hành thanh toán</button>
+                    </a>                  
+                </div>
+            </div>
+        </div> *@
+
+        <div class="mt-5">
+            <input id="couponCode" type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
+            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button" onclick="applyCoupon()">Apply Coupon</button>
+        </div>
+        <div class="row g-4 justify-content-end">
+            <div class="col-8"></div>
+            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                <div class="bg-light rounded">
+                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Tổng cộng</h5>
+                        <p id="totalPrice" class="mb-0 pe-4">@Model.Items.Sum(x => x.Price * x.Quantity).ToString("N0") VND</p>
+                    </div>
+                    <a id="checkoutLink" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button" href="/Cart/Checkout">Tiến hành thanh toán</a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            async function applyCoupon() {
+                const couponCode = document.getElementById('couponCode').value;
+                const totalPriceElement = document.getElementById('totalPrice');
+                const originalTotalPrice = @Model.Items.Sum(x => x.Price * x.Quantity);
+
+                if (!couponCode) {
+                    alert('Vui lòng nhập mã giảm giá.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`/api/voucher/${couponCode}`);
+                    if (!response.ok) {
+                        throw new Error('Mã giảm giá không hợp lệ hoặc đã hết hạn.');
+                    }
+
+                    const voucher = await response.json();
+                    const discount = (originalTotalPrice * voucher.value) / 100;
+                    const finalPrice = originalTotalPrice - discount;
+                    totalPriceElement.innerText = new Intl.NumberFormat('vi-VN').format(finalPrice) + ' VND';
+
+                    // Cập nhật href của liên kết "Tiến hành thanh toán" để bao gồm voucherCode
+                    const checkoutLink = document.getElementById('checkoutLink');
+                    checkoutLink.href = `/Cart/Checkout?voucherCode=${couponCode}`;
+
+                } catch (error) {
+                    alert(error.message);
+                }
+            }
+        </script>
+
+    </div>
+</div>
+<!-- Cart Page End -->

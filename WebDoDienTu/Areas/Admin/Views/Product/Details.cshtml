@@ -1,0 +1,76 @@
+﻿@model WebDoDienTu.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Thông tin sản phẩm</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-area="admin" asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item active">Detail Product</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>Chi tiết sản phẩm</h4>
+                <div>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ProductName)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Model.Price.ToString("N0") VND
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ImageUrl)
+                        </dt>
+                        <dd class="col-sm-10">                           
+                            <img src="@Html.DisplayFor(model => model.ImageUrl)" style="width:100px" /> <img />
+                        </dd>
+                        <dt class="col-sm-2">
+                            Loại sản phẩm
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Category.CategoryName)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Hình ảnh bổ sung
+                        </dt>
+                        <dd class="col-sm-10">
+                            @if (Model.Images != null && Model.Images.Count > 0)
+                            {
+                                foreach (var image in Model.Images)
+                                {
+                                    <img src="@image.Url" style="width:100px; margin-right:10px;" />
+                                }
+                            }
+                            else
+                            {
+                                <span>Không có hình ảnh bổ sung</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model?.ProductId">Cập nhật</a> |
+                    <a asp-action="Index">Trở về</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
