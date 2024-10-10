@@ -244,9 +244,15 @@
                                                         <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
                                                         <div class="mt-auto text-center">
                                                             <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
-                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
-                                                            </a>
+                                                            <div class="row">
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                                </a>
+                                                                <form asp-action="AddToWishlist" asp-controller="Wishlist" method="post">
+                                                                    <input type="hidden" name="productId" value="@product.ProductId" />
+                                                                    <button class="btn border border-secondary rounded-pill px-3 text-primary mt-2" type="submit"><i class="fa fa-heart me-2 text-primary"></i>Add to Wishlist</button>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

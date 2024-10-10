@@ -294,3 +294,6 @@ E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\bin\Debug\net8.0\EPPlus.Interfaces.dll
 E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\bin\Debug\net8.0\EPPlus.System.Drawing.dll
 E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\bin\Debug\net8.0\Mailjet.Client.dll
+E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\obj\Debug\net8.0\WebDoDienTu.sourcelink.json
+E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\DO AN CO SO\WebDoDienTu\WebDoDienTu\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll

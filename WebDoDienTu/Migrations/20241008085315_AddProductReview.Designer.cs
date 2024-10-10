@@ -12,8 +12,8 @@ using WebDoDienTu.Models;
 namespace WebDoDienTu.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240519124036_Add Voucher")]
-    partial class AddVoucher
+    [Migration("20241008085315_AddProductReview")]
+    partial class AddProductReview
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,6 +256,18 @@ namespace WebDoDienTu.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Điện thoại"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Tai nghe"
+                        });
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Order", b =>
@@ -299,6 +311,7 @@ namespace WebDoDienTu.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("VoucherId")
@@ -376,6 +389,38 @@ namespace WebDoDienTu.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CategoryId = 1,
+                            Description = "IPhone 13 Pro Max, 128GB, Màu Xám",
+                            ImageUrl = "/image/products/phone/iPhone 13 Pro Max.png",
+                            IsHoted = false,
+                            Price = 13999999,
+                            ProductName = "IPhone 13 Pro Max"
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CategoryId = 2,
+                            Description = "Tai nghe Apple AirPods Pro, Chống ồn, Bluetooth",
+                            ImageUrl = "/image/products/sound/Apple AirPods Pro.jpg",
+                            IsHoted = false,
+                            Price = 6990000,
+                            ProductName = "Apple AirPods Pro"
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CategoryId = 1,
+                            Description = "Samsung Galaxy S21 Ultra, 256GB, Màu Đen",
+                            ImageUrl = "/image/products/phone/Samsung Galaxy S21 Ultra.jpg",
+                            IsHoted = false,
+                            Price = 28990000,
+                            ProductName = "Samsung Galaxy S21 Ultra"
+                        });
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.ProductImage", b =>
@@ -398,6 +443,49 @@ namespace WebDoDienTu.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.ProductReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ReviewDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("YourEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("YourName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductReviews");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Voucher", b =>
@@ -431,6 +519,103 @@ namespace WebDoDienTu.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vouchers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "SUMMER2024",
+                            Description = "Giảm giá mùa hè",
+                            ExpiryDate = new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Summer Sale",
+                            SoLuong = 100,
+                            Value = 20
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "NEWYEAR2025",
+                            Description = "Giảm giá đầu năm",
+                            ExpiryDate = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "New Year Discount",
+                            SoLuong = 150,
+                            Value = 15
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "BLACKFRIDAY2024",
+                            Description = "Giảm giá Black Friday",
+                            ExpiryDate = new DateTime(2024, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Black Friday",
+                            SoLuong = 99,
+                            Value = 30
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "CHRISTMAS2024",
+                            Description = "Ưu đãi Giáng sinh",
+                            ExpiryDate = new DateTime(2024, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Christmas Offer",
+                            SoLuong = 99,
+                            Value = 25
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "MIDAUTUMN2024",
+                            Description = "Giảm giá Tết Trung Thu",
+                            ExpiryDate = new DateTime(2024, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Mid-Autumn Festival",
+                            SoLuong = 80,
+                            Value = 10
+                        });
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.WishList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WishList");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.WishListItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WishListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("WishListId");
+
+                    b.ToTable("WishListItem");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -488,7 +673,9 @@ namespace WebDoDienTu.Migrations
                 {
                     b.HasOne("WebDoDienTu.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WebDoDienTu.Models.Voucher", "Voucher")
                         .WithMany("Orders")
@@ -540,6 +727,55 @@ namespace WebDoDienTu.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("WebDoDienTu.Models.ProductReview", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Product", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.WishList", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.WishListItem", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebDoDienTu.Models.WishList", "WishList")
+                        .WithMany("WishListItems")
+                        .HasForeignKey("WishListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("WishList");
+                });
+
             modelBuilder.Entity("WebDoDienTu.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -553,11 +789,18 @@ namespace WebDoDienTu.Migrations
             modelBuilder.Entity("WebDoDienTu.Models.Product", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Voucher", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.WishList", b =>
+                {
+                    b.Navigation("WishListItems");
                 });
 #pragma warning restore 612, 618
         }

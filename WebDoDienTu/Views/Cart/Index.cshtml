@@ -55,6 +55,7 @@
                                 </td>
                                 <td>
                                     <p class="mb-0 mt-4">@item.Price.ToString("N0") VND</p>
+                                    <p class="mb-0 mt-4">@item.Price.ToString("N0") VND</p>
                                 </td>
                                 <td>
                                     <p class="mb-0 mt-4">@item.Quantity</p>
@@ -77,24 +78,6 @@
                 </tbody>
             </table>
         </div>
-        @* <div class="mt-5">
-            <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
-        </div>
-        <div class="row g-4 justify-content-end">
-            <div class="col-8"></div>
-            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-                <div class="bg-light rounded">
-                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                        <h5 class="mb-0 ps-4 me-4">Tổng cộng</h5>
-                        <p class="mb-0 pe-4">@Model.Items.Sum(x => x.Price * x.Quantity).ToString("N0") VND</p>
-                    </div>
-                    <a asp-action="Checkout">
-                        <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Tiến hành thanh toán</button>
-                    </a>                  
-                </div>
-            </div>
-        </div> *@
 
         <div class="mt-5">
             <input id="couponCode" type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
@@ -104,8 +87,16 @@
             <div class="col-8"></div>
             <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
                 <div class="bg-light rounded">
-                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
                         <h5 class="mb-0 ps-4 me-4">Tổng cộng</h5>
+                        <p id="originalPrice" class="mb-0 pe-4">@Model.Items.Sum(x => x.Price * x.Quantity).ToString("N0") VND</p>
+                    </div>                     
+                    <div class="d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Khuyến mãi</h5>
+                        <p id="discountPrice" class="mb-0 pe-4">0 VND</p>
+                    </div>                    
+                    <div class="py-4 my-4 border-top border-bottom d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Thành tiền</h5>
                         <p id="totalPrice" class="mb-0 pe-4">@Model.Items.Sum(x => x.Price * x.Quantity).ToString("N0") VND</p>
                     </div>
                     <a id="checkoutLink" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button" href="/Cart/Checkout">Tiến hành thanh toán</a>
@@ -116,6 +107,7 @@
         <script>
             async function applyCoupon() {
                 const couponCode = document.getElementById('couponCode').value;
+                const discountPriceElement = document.getElementById('discountPrice');
                 const totalPriceElement = document.getElementById('totalPrice');
                 const originalTotalPrice = @Model.Items.Sum(x => x.Price * x.Quantity);
 
@@ -125,15 +117,18 @@
                 }
 
                 try {
-                    const response = await fetch(`/api/voucher/${couponCode}`);
+                    const response = await fetch(`/api/promotion/${couponCode}`);
                     if (!response.ok) {
                         throw new Error('Mã giảm giá không hợp lệ hoặc đã hết hạn.');
                     }
 
-                    const voucher = await response.json();
-                    const discount = (originalTotalPrice * voucher.value) / 100;
-                    const finalPrice = originalTotalPrice - discount;
-                    totalPriceElement.innerText = new Intl.NumberFormat('vi-VN').format(finalPrice) + ' VND';
+                    const promotion = await response.json();
+                    const discountPrice = promotion.isPercentage ? originalTotalPrice * promotion.discountPercentage / 100 : promotion.discountAmount;
+                    console.log(discountPrice)
+                    const finalPrice = originalTotalPrice - discountPrice;
+
+                    discountPriceElement.innerText = discountPrice.toLocaleString("vi-VN", { maximumFractionDigits: 0 }) + ' VND'
+                    totalPriceElement.innerText = finalPrice.toLocaleString("vi-VN", { maximumFractionDigits: 0 }) + ' VND';
 
                     // Cập nhật href của liên kết "Tiến hành thanh toán" để bao gồm voucherCode
                     const checkoutLink = document.getElementById('checkoutLink');

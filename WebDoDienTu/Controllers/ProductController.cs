@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Models;
 using WebDoDienTu.Models.Repository;
@@ -8,11 +10,13 @@ namespace WebDoDienTu.Controllers
 {
     public class ProductController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProductController(ApplicationDbContext context)
+        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -78,7 +82,7 @@ namespace WebDoDienTu.Controllers
 
         public IActionResult Details(int id)
         {
-            var product = _context.Products.FirstOrDefault(x => x.ProductId == id);
+            var product = _context.Products.Include(p => p.Reviews).FirstOrDefault(x => x.ProductId == id);
             if (product == null)
             {
                 return NotFound();

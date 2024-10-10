@@ -9053,6 +9053,14 @@
       "PackagePath": "staticwebassets\\image\\IPhone 15_1.jpeg"
     },
     {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\image\\IPhone 15_2.jpeg",
+      "PackagePath": "staticwebassets\\image\\IPhone 15_2.jpeg"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\image\\IPhone 15_3.jpeg",
+      "PackagePath": "staticwebassets\\image\\IPhone 15_3.jpeg"
+    },
+    {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\image\\banner-digi4home.com-5.jpg",
       "PackagePath": "staticwebassets\\image\\banner-digi4home.com-5.jpg"
     },
@@ -9443,6 +9451,10 @@
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\image\\tintuc\\tintuc5.png",
       "PackagePath": "staticwebassets\\image\\tintuc\\tintuc5.png"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\Rating.js",
+      "PackagePath": "staticwebassets\\js\\Rating.js"
     },
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\main.js",

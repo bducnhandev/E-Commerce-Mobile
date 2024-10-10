@@ -12,15 +12,15 @@ using WebDoDienTu.Models;
 namespace WebDoDienTu.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240507114846_Create Database")]
-    partial class CreateDatabase
+    [Migration("20240909144347_Create database")]
+    partial class Createdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -301,9 +301,14 @@ namespace WebDoDienTu.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int?>("VoucherId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("VoucherId");
 
                     b.ToTable("Orders");
                 });
@@ -395,6 +400,39 @@ namespace WebDoDienTu.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("WebDoDienTu.Models.Voucher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vouchers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -452,7 +490,13 @@ namespace WebDoDienTu.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.HasOne("WebDoDienTu.Models.Voucher", "Voucher")
+                        .WithMany("Orders")
+                        .HasForeignKey("VoucherId");
+
                     b.Navigation("ApplicationUser");
+
+                    b.Navigation("Voucher");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.OrderDetail", b =>
@@ -509,6 +553,11 @@ namespace WebDoDienTu.Migrations
             modelBuilder.Entity("WebDoDienTu.Models.Product", b =>
                 {
                     b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.Voucher", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,7 +3,6 @@ using WebDoDienTu.Models.Repository;
 using WebDoDienTu.Models;
 using Microsoft.AspNetCore.Identity;
 using WebDoDienTu.Service;
-using System.Configuration;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using OfficeOpenXml;
 
@@ -17,9 +16,9 @@ internal class Program
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-         .AddDefaultTokenProviders()
-         .AddDefaultUI()
-         .AddEntityFrameworkStores<ApplicationDbContext>();
+        .AddDefaultTokenProviders()
+        .AddDefaultUI()
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
         builder.Services.ConfigureApplicationCookie(option =>
         {
@@ -48,14 +47,19 @@ internal class Program
             options.Cookie.IsEssential = true;
         });
 
-        builder.Services.AddAuthentication()
-       .AddGoogle(options =>
-       {
-           IConfigurationSection googleAuthNSection =
-           config.GetSection("Authentication:Google");
-           options.ClientId = googleAuthNSection["ClientId"];
-           options.ClientSecret = googleAuthNSection["ClientSecret"];
-       });
+        builder.Services.AddAuthentication().AddGoogle(options =>
+        {
+            IConfigurationSection googleAuthNSection = config.GetSection("Authentication:Google");
+            options.ClientId = googleAuthNSection["ClientId"];
+            options.ClientSecret = googleAuthNSection["ClientSecret"];
+        });
+
+        builder.Services.AddAuthentication().AddFacebook(facebookOptions =>
+        {
+            facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
+            facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+            facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
+        });
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
@@ -80,6 +84,8 @@ internal class Program
 
         app.UseAuthorization();
 
+        CreateDefaultAdminUser(app).GetAwaiter().GetResult();
+
         app.MapRazorPages();
 
         app.MapControllerRoute(
@@ -93,6 +99,44 @@ internal class Program
 
 
         app.Run();
+    }
+
+    private static async Task CreateDefaultAdminUser(WebApplication app)
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            // Tạo vai trò Admin nếu chưa tồn tại
+            var role = new IdentityRole(SD.Role_Admin);
+            var roleExists = await roleManager.RoleExistsAsync(role.Name);
+            if (!roleExists)
+            {
+                await roleManager.CreateAsync(role);
+            }
+
+            // Tạo tài khoản Admin nếu chưa tồn tại
+            var user = await userManager.FindByEmailAsync("admin@example.com");
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = "admin@example.com", Email = "admin@example.com" };
+                var result = await userManager.CreateAsync(user, "Password123!");
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, role.Name);
+                    Console.WriteLine("Admin user created successfully.");
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to create user: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Admin user already exists.");
+            }
+        }
     }
 }
 

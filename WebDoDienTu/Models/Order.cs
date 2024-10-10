@@ -7,7 +7,7 @@ namespace WebDoDienTu.Models
     public class Order
     {
         public int Id { get; set; }
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
         [DisplayName("Ngày đặt")]
         public DateTime OrderDate { get; set; }
         [DisplayName("Tổng tiền")]
@@ -32,13 +32,26 @@ namespace WebDoDienTu.Models
         [ValidateNever]
 
         public ApplicationUser ApplicationUser { get; set; }
-        public List<OrderDetail>? OrderDetails { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
 
-        // Thêm thuộc tính VoucherId
-        public int? VoucherId { get; set; }
-        public Voucher? Voucher { get; set; }
+        public int? OrderPromotionId { get; set; }
+        public Promotion OrderPromotion { get; set; }
 
-        // Constructor mặc định công khai
-        public Order() { }
+
+        public decimal GetFinalAmount()
+        {
+            decimal productDiscountTotal = OrderDetails.Sum(item => item.GetDiscountedPrice() * item.Quantity);
+            decimal subtotalAfterProductDiscount = TotalPrice - productDiscountTotal;
+
+            if (OrderPromotion != null)
+            {
+                decimal orderDiscount = OrderPromotion.IsPercentage ?
+                                        subtotalAfterProductDiscount * OrderPromotion.DiscountPercentage / 100 :
+                                        OrderPromotion.DiscountAmount;
+                return subtotalAfterProductDiscount - orderDiscount;
+            }
+
+            return subtotalAfterProductDiscount;
+        }
     }
 }

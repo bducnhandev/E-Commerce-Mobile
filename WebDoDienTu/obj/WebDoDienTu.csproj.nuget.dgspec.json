@@ -48,7 +48,7 @@
           "dependencies": {
             "EPPlus": {
               "target": "Package",
-              "version": "[7.1.2, )"
+              "version": "[7.4.0, )"
             },
             "Mailjet.Api": {
               "target": "Package",
@@ -56,53 +56,53 @@
             },
             "Microsoft.AspNetCore.Authentication.Facebook": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.AspNetCore.Authentication.MicrosoftAccount": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.6, )"
             },
             "X.PagedList": {
               "target": "Package",
-              "version": "[9.1.2, )"
+              "version": "[10.2.1, )"
             },
             "X.PagedList.Mvc.Core": {
               "target": "Package",
-              "version": "[9.1.2, )"
+              "version": "[10.2.1, )"
             }
           },
           "imports": [
@@ -124,7 +124,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -494,3 +494,12 @@
 }
 /*** Footer End ***/
 
+/*Rating*/
+.star-label i {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-label i.text-warning {
+    color: gold;
+}

@@ -16,6 +16,9 @@ namespace WebDoDienTu.Models
         [DisplayName("Giá")]
         public int Price { get; set; }
 
+        //[DisplayName("Giá khuyến mãi")]
+        //public decimal DiscountedPrice { get; set; }
+
         [DisplayName("Mô tả")]
         public string Description { get; set; }
 
@@ -34,5 +37,8 @@ namespace WebDoDienTu.Models
 
         [DisplayName("Loại sản phẩm")]
         public Category? Category { get; set; }
+
+        public ICollection<ProductReview> Reviews { get; set; }
+        public List<ProductPromotion> ProductPromotions { get; set; }
     }
 }

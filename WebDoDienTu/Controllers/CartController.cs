@@ -26,6 +26,12 @@ namespace WebDoDienTu.Controllers
             _vnPayService = vnPayService;
         }
 
+        public IActionResult Index()
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart") ?? new ShoppingCart();
+            return View(cart);
+        }
+
         public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
             // Giả sử bạn có phương thức lấy thông tin sản phẩm từ productId
@@ -42,12 +48,6 @@ namespace WebDoDienTu.Controllers
             cart.AddItem(cartItem);
             HttpContext.Session.SetObjectAsJson("Cart", cart);
             return RedirectToAction("Index");
-        }
-
-        public IActionResult Index()
-        {
-            var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart") ?? new ShoppingCart();
-            return View(cart);
         }
         
         private async Task<Product> GetProductFromDatabase(int productId)
@@ -68,16 +68,15 @@ namespace WebDoDienTu.Controllers
             return RedirectToAction("Index");
         }
 
-        private static Voucher voucher;
+        private static Promotion promotion;
         private static Order orderTemp = new Order();
 
         public IActionResult Checkout(string voucherCode)
         {
-            // Xử lý logic của bạn ở đây, ví dụ:
             if (!string.IsNullOrEmpty(voucherCode))
             {
                 string code = voucherCode.ToUpper();
-                voucher = _context.Vouchers.FirstOrDefault(v => v.Code.ToUpper() == code);
+                promotion = _context.Promotions.FirstOrDefault(v => v.Code.ToUpper() == code);
             }
 
             return View(new Order());
@@ -100,10 +99,12 @@ namespace WebDoDienTu.Controllers
                 if (payment == "Thanh toán VNPay")
                 {
                     orderTemp = order;
-                    if(voucher != null)
+                    if(promotion != null)
                     {
                         var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-                        var discount = (originPrice * voucher.Value) / 100;
+                        var discount = promotion.IsPercentage ?
+                                        originPrice * promotion.DiscountPercentage / 100 :
+                                        promotion.DiscountAmount;
                         var vnPayModel = new VnPaymentRequestModel
                         {
                             Amount = (double)originPrice - (double)discount,
@@ -130,15 +131,16 @@ namespace WebDoDienTu.Controllers
                 else
                 {
                     var user = await _userManager.GetUserAsync(User);
-                    if (voucher != null)
+                    if (promotion != null)
                     {                       
                         order.UserId = user.Id;
                         order.OrderDate = DateTime.UtcNow;
                         var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-                        var discount = (originPrice * voucher.Value) / 100;
+                        var discount = promotion.IsPercentage ?
+                                        originPrice * promotion.DiscountPercentage / 100 :
+                                        promotion.DiscountAmount;
                         order.TotalPrice = originPrice - discount;
                         order.Status = "Chưa thanh toán";
-                        order.VoucherId = voucher.Id;
                         order.OrderDetails = cart.Items.Select(i => new OrderDetail
                         {
                             ProductId = i.ProductId,
@@ -162,10 +164,6 @@ namespace WebDoDienTu.Controllers
                 }
                     
                 _context.Orders.Add(order);
-                if (voucher != null) {
-                    voucher.SoLuong -= 1;
-                    _context.Vouchers.Update(voucher);
-                }              
                 await _context.SaveChangesAsync();
                 HttpContext.Session.Remove("Cart");
                 TempData["Message"] = $"Thanh toán thành công";
@@ -193,14 +191,13 @@ namespace WebDoDienTu.Controllers
                 ordervnPay.UserId = user.Id;
                 ordervnPay.OrderDate = DateTime.UtcNow;
                 var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-                var discount = (originPrice * voucher.Value) / 100;
+                var discount = promotion.IsPercentage ? originPrice * promotion.DiscountPercentage / 100 : promotion.DiscountAmount;
                 ordervnPay.TotalPrice = originPrice - discount;
                 ordervnPay.FirstName = orderTemp.FirstName;
                 ordervnPay.LastName = orderTemp.LastName;
                 ordervnPay.Phone = orderTemp.Phone;
                 ordervnPay.Email = orderTemp.Email;
                 ordervnPay.Address = orderTemp.Address;
-                ordervnPay.VoucherId = voucher.Id;
                 ordervnPay.Status = "Đã thanh toán";
                 ordervnPay.OrderDetails = cart.Items.Select(i => new OrderDetail
                 {
@@ -208,12 +205,6 @@ namespace WebDoDienTu.Controllers
                     Quantity = i.Quantity,
                     Price = i.Price
                 }).ToList();
-
-                if (voucher != null)
-                {
-                    voucher.SoLuong -= 1;
-                    _context.Vouchers.Update(voucher);
-                }
 
                 _context.Orders.Add(ordervnPay);
                 await _context.SaveChangesAsync();
@@ -230,5 +221,40 @@ namespace WebDoDienTu.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ApplyPromotion(string code, int orderId)
+        {
+            var promotion = _context.Promotions.FirstOrDefault(p => p.Code == code && p.IsActive
+                                     && p.StartDate <= DateTime.Now && p.EndDate >= DateTime.Now);
+
+            if (promotion == null)
+            {
+                ViewData["Error"] = "Invalid or expired promotion code.";
+                return View("Index", orderId);
+            }
+
+            var order = await _context.Orders.Include(o => o.OrderDetails).ThenInclude(i => i.Product).FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (promotion.Type == PromotionType.Product)
+            {
+                foreach (var item in order.OrderDetails)
+                {
+                    if (item.Product.ProductPromotions.Any(pp => pp.PromotionId == promotion.Id))
+                    {
+                        item.ApplyProductDiscount(promotion);
+                    }
+                }
+            }
+            else if (promotion.Type == PromotionType.Order && order.TotalPrice >= promotion.MinimumOrderAmount)
+            {
+                order.OrderPromotion = promotion;
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", new { id = orderId });
+        }
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using WebDoDienTu.Areas.Identity.Pages.Account;
-
-namespace WebDoDienTu.Models
+﻿namespace WebDoDienTu.Models
 {
     public class MyModel
     {

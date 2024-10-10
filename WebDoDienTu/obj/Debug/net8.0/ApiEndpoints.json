@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "WebDoDienTu.Controllers.PromotionController",
+    "Method": "GetAllPromotions",
+    "RelativePath": "api/Promotion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDoDienTu.Controllers.PromotionController",
+    "Method": "GetPromotion",
+    "RelativePath": "api/Promotion/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
