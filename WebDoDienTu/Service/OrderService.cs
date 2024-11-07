@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebDoDienTu.Data;
 using WebDoDienTu.Models;
 
 namespace WebDoDienTu.Service

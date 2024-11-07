@@ -1,0 +1,103 @@
+﻿@model WebDoDienTu.Models.ViewModels.PostDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.Post.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <!-- Post Details -->
+    <div class="row">
+        <div class="col-md-8">
+            <h2>@Model.Post.Title</h2>
+            <p>@Model.Post.Content</p>
+            <p><small><strong>Ngày đăng:</strong> @Model.Post.CreatedAt.ToString("dd/MM/yyyy")</small></p>
+            <img src="@Model.Post.ImageUrl" alt="@Model.Post.Title" class="img-fluid" />
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- Comments Section -->
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <h3>Bình luận</h3>
+
+            <!-- Display Comments -->
+            <div id="comments-container">
+                @if (Model.Comments.Any())
+                {
+                    var initialComments = Model.Comments.Take(5); // Lấy 5 bình luận đầu tiên
+                    foreach (var comment in initialComments)
+                    {
+                        <div class="mb-3 p-3 border rounded">
+                            <p><strong>@comment.Author.LastName</strong> <small>@comment.CreatedAt.ToString("dd/MM/yyyy HH:mm")</small></p>
+                            <p>@comment.Content</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Chưa có bình luận nào.</p>
+                }
+            </div>
+
+            <!-- Load More Button -->
+            @if (Model.Comments.Count() > 5)
+            {
+                <button id="load-more" class="btn btn-secondary mt-3">Tải thêm bình luận</button>
+            }
+        </div>
+    </div>
+
+    <!-- Add Comment Form -->
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <h4>Thêm bình luận mới</h4>
+            <form asp-action="Comment" asp-controller="Comments" method="post">
+                <input type="hidden" name="PostId" value="@Model.Post.PostId" />
+
+                <div class="form-group">
+                    <label for="Content">Nội dung bình luận</label>
+                    <textarea id="Content" name="Content" class="form-control" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Gửi bình luận</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let currentCommentCount = 5;
+        const totalComments = @Model.Comments.Count();
+        document.getElementById("load-more").addEventListener("click", function () {
+            fetch(`/Comments/LoadMoreComments?postId=@Model.Post.PostId&offset=${currentCommentCount}&count=5`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.$values && Array.isArray(data.$values)) {
+                        data.$values.forEach(comment => {
+                            const commentDiv = document.createElement("div");
+                            commentDiv.className = "mb-3 p-3 border rounded";
+                            commentDiv.innerHTML = `<p><strong>${comment.authorName}</strong> <small>${comment.createdAt}</small></p><p>${comment.content}</p>`;
+                            document.getElementById("comments-container").appendChild(commentDiv);
+                        });
+
+                        currentCommentCount += data.$values.length;
+
+                        // Ẩn nút "Load More" nếu đã tải hết bình luận
+                        if (currentCommentCount >= totalComments) {
+                            document.getElementById("load-more").style.display = 'none';
+                        }
+                    } else {
+                        document.getElementById("load-more").style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Đã xảy ra lỗi khi tải thêm bình luận. Vui lòng thử lại.");
+                });
+        });
+    </script>
+}

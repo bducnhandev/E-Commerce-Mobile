@@ -1,11 +1,16 @@
 ﻿using Mailjet.Client.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebDoDienTu.Data;
+using WebDoDienTu.Extensions;
 using WebDoDienTu.Models;
+using WebDoDienTu.Models.ViewModels;
 
 namespace WebDoDienTu.Controllers
 {
+    [Authorize]
     public class WishlistController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,14 +25,17 @@ namespace WebDoDienTu.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
             var wishList = await _context.WishLists
                                             .Include(w => w.WishListItems)
                                             .FirstOrDefaultAsync(w => w.UserId == user.Id);
-            return View(wishList.WishListItems);
+            if (wishList == null) {
+                TempData["Message"] = "Danh mục yêu thích hiện trống";
+                return View("Index");
+            }
+            WishListViewModel wishListViewModel = new WishListViewModel();
+            wishListViewModel.WishListItems = wishList.WishListItems;
+            wishListViewModel.Products = await _context.Products.ToListAsync();
+            return View(wishListViewModel);
         }
 
         // Thêm sản phẩm vào wishlist
@@ -58,11 +66,38 @@ namespace WebDoDienTu.Controllers
                     WishListId = wishlist.Id,
                     AddedDate = DateTime.UtcNow
                 };
-                _context.WishListItem.Add(wishlistItem);
+                _context.WishListItems.Add(wishlistItem);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromWishList(int productId)
+        {
+            var item = await _context.WishListItems.FindAsync(productId);
+            if (item == null) { return RedirectToAction("Index"); }
+            _context.WishListItems.Remove(item);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> AddToCart(int productId, int quantity)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            var cartItem = new CartItem
+            {
+                ProductId = productId,
+                NameProduct = product.ProductName,
+                Image = product.ImageUrl ?? string.Empty,
+                Price = product.Price,
+                Quantity = quantity
+            };
+            var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart") ?? new ShoppingCart();
+            cart.AddItem(cartItem);
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+            return RedirectToAction("Index", "Cart");
         }
     }
 }

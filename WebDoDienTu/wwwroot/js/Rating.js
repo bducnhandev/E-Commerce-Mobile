@@ -1,5 +1,4 @@
-﻿// JavaScript to handle star selection
-const stars = document.querySelectorAll('.star-label i');
+﻿const stars = document.querySelectorAll('.star-label i');
 
 stars.forEach((star, index) => {
     star.addEventListener('click', () => {
@@ -14,8 +13,8 @@ stars.forEach((star, index) => {
     });
 });
 
-    document.getElementById("reviewForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+document.getElementById("reviewForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
     // Lấy dữ liệu từ form
     const formData = new FormData(this);
@@ -23,30 +22,50 @@ stars.forEach((star, index) => {
     // Gửi đánh giá qua AJAX
     fetch('/ProductReview/AddReview', {
         method: 'POST',
-    body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-        // Hiển thị thông báo thành công với SweetAlert2
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: data.message,
-            confirmButtonText: 'OK'
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Hiển thị thông báo thành công với SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: data.message,
+                confirmButtonText: 'OK'
         }).then(() => {
             // Tải lại trang hiện tại sau khi nhấn OK
             location.reload();
         });
-            } else {
-        // Hiển thị thông báo lỗi với SweetAlert2
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: data.message,
-            confirmButtonText: 'OK'
-        });
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
+        } else {
+            // Hiển thị thông báo lỗi với SweetAlert2
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message,
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+
+// Loading rating
+let visibleReviews = 5;
+
+function loadMoreReviews() {
+    const reviews = document.querySelectorAll('.review-item');
+const totalReviews = reviews.length;
+
+for (let i = visibleReviews; i < visibleReviews + 5 && i < totalReviews; i++) {
+    reviews[i].style.display = 'block';
+    }
+
+visibleReviews += 5;
+
+    // Ẩn nút "Load More" nếu đã hiển thị tất cả đánh giá
+    if (visibleReviews >= totalReviews) {
+    document.getElementById('loadMoreBtn').style.display = 'none';
+    }
+}

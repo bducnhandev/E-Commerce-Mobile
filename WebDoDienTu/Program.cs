@@ -3,8 +3,17 @@ using WebDoDienTu.Models.Repository;
 using WebDoDienTu.Models;
 using Microsoft.AspNetCore.Identity;
 using WebDoDienTu.Service;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using OfficeOpenXml;
+using WebDoDienTu.Hubs;
+using CloudinaryDotNet;
+using Microsoft.Extensions.Options;
+using WebDoDienTu.Service.MomoPayment;
+using WebDoDienTu.Service.VNPayPayment;
+using WebDoDienTu.Service.MailKit;
+using WebDoDienTu.Service.Cloudinary;
+using WebDoDienTu.Data;
+using Google.Api;
+using WebDoDienTu.Service.PayPal;
 
 internal class Program
 {
@@ -13,12 +22,20 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
         var config = builder.Configuration;
 
+        builder.Services.AddSignalR();
+
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddDefaultTokenProviders()
         .AddDefaultUI()
         .AddEntityFrameworkStores<ApplicationDbContext>();
+
+        builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        });
 
         builder.Services.ConfigureApplicationCookie(option =>
         {
@@ -32,9 +49,19 @@ internal class Program
         builder.Services.AddScoped<IOrderService, OrderService>();
         builder.Services.AddScoped<IProductRepository, EFProductRepository>();
         builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+        builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
+        builder.Services.AddScoped<IPostRepository, PostRepository>();
+        builder.Services.AddScoped<ICommentRepository, CommentRepository>();
         builder.Services.AddSingleton<IVnPayService, VnPayService>();
+        builder.Services.AddScoped<IMomoPaymentService, MomoPaymentService>();
+        builder.Services.AddScoped<ProductViewService>();
+        builder.Services.AddScoped<RecommendationService>();
+        builder.Services.AddScoped<IPayPalPaymentService, PayPalPaymentService>();
 
-        builder.Services.Configure<AuthMessageSenderOptions>(config.GetSection("MailjetSettings"));
+        //builder.Services.Configure<AuthMessageSenderOptions>(config.GetSection("MailjetSettings"));
+        //builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+        builder.Services.Configure<EmailSettings>(config.GetSection("EmailSettings"));
         builder.Services.AddTransient<IEmailSender, EmailSender>();
 
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -47,11 +74,10 @@ internal class Program
             options.Cookie.IsEssential = true;
         });
 
-        builder.Services.AddAuthentication().AddGoogle(options =>
+        builder.Services.AddAuthentication().AddGoogle(googleOptions =>
         {
-            IConfigurationSection googleAuthNSection = config.GetSection("Authentication:Google");
-            options.ClientId = googleAuthNSection["ClientId"];
-            options.ClientSecret = googleAuthNSection["ClientSecret"];
+            googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+            googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
         });
 
         builder.Services.AddAuthentication().AddFacebook(facebookOptions =>
@@ -59,6 +85,19 @@ internal class Program
             facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
             facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
             facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
+        });
+
+        builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
+
+        builder.Services.AddSingleton(sp =>
+        {
+            var config = sp.GetRequiredService<IOptions<CloudinarySettings>>().Value;
+            var account = new Account(
+                config.CloudName,
+                config.ApiKey,
+                config.ApiSecret
+            );
+            return new Cloudinary(account);
         });
 
         // Add services to the container.
@@ -96,7 +135,17 @@ internal class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
+        app.MapControllerRoute(
+            name: "adminChat",
+            pattern: "Admin/Chat/{action=AdminChat}/{id?}",
+            defaults: new { controller = "Chat", action = "AdminChat" });
 
+        app.MapControllerRoute(
+            name: "userChat",
+            pattern: "User/Chat/{action=UserChat}/{id?}",
+            defaults: new { controller = "Chat", action = "UserChat" });
+
+        app.MapHub<ChatHub>("/chathub");
 
         app.Run();
     }

@@ -1,36 +1,55 @@
-﻿@model IEnumerable<WebDoDienTu.Models.WishListItem>
+﻿@model WebDoDienTu.Models.ViewModels.WishListViewModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>My Wish List</h1>
-<table class="table">
-    <thead>
-        <tr>          
-            <th>
-                @Html.DisplayNameFor(model => model.ProductId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddedDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AddedDate)
-                </td>
-@*                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td> *@
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning">
+        @TempData["Message"]
+    </div>
+}
+else
+{
+    <h1>My WishList</h1>
+    <table class="table">
+        <thead>
+            <tr>          
+                <th> STT </th>
+                <th> Image </th>
+                <th> Product name </th>
+                <th> Price </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @{
+                int stt = 1;
+                foreach (var item in Model.WishListItems) {
+                    <tr>
+                        <td>@stt</td>
+                        <td>
+                            <img class="" src="@Html.DisplayFor(modelItem => item.Product.ImageUrl)" style="width: 70px"/>                    
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                        </td>                    
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.Price)
+                        </td>
+                        <td>
+                            <form asp-action="RemoveFromWishList" asp-route-productId="@item.ProductId">
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                            <form asp-controller="Wishlist" asp-action="AddToCart" asp-route-productId="@item.ProductId" asp-route-quantity="1">
+                                <input type="submit" value="Add to card" class="btn btn-primary" />
+                            </form>
+                        </td>
+                    </tr>
+                    stt++;
+                }
+            }
+        </tbody>
+    </table>
+}

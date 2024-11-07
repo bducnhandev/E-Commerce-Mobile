@@ -1,12 +1,11 @@
-﻿using Mailjet.Client.Resources;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebDoDienTu.Areas.Identity.Pages.Account;
+using WebDoDienTu.Data;
 using WebDoDienTu.Models;
+using WebDoDienTu.Models.ViewModels;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {
@@ -31,6 +30,11 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var users = _context.Users.ToList();
+            ViewBag.Roles = _roleManager.Roles.Select(r => new SelectListItem
+            {
+                Value = r.Name,
+                Text = r.Name
+            }).ToList();
             return View(users);
         }
 
@@ -59,7 +63,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
                 if (result.Succeeded)
                 {
-                    // Optionally assign roles or other actions
                     return RedirectToAction("Index");
                 }
 
@@ -280,6 +283,39 @@ namespace WebDoDienTu.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeRole(string userId, string role)
+        {
+            // Tìm user bằng UserManager
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Lấy danh sách các vai trò hiện tại của user
+            var currentRoles = await _userManager.GetRolesAsync(user);
+
+            // Xóa các vai trò hiện tại
+            var removeResult = await _userManager.RemoveFromRolesAsync(user, currentRoles);
+            if (!removeResult.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Lỗi khi xóa các vai trò hiện tại.");
+                return View();
+            }
+
+            // Thêm vai trò mới cho user
+            var addResult = await _userManager.AddToRoleAsync(user, role);
+            if (!addResult.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Lỗi khi thêm vai trò mới.");
+                return View();
+            }
+
+            TempData["Message"] = "Cập nhật vai trò thành công!";
+            return RedirectToAction("Index", "Users");
         }
     }
 }

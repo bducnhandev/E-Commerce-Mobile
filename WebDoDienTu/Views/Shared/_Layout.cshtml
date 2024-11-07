@@ -30,46 +30,8 @@
 
     <!-- Template Stylesheet -->
     <link href="~/css/style.css" rel="stylesheet">
-    <style>
-        .vesitable-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
+    <link href="~/css/chat-user.css" rel="stylesheet" />
 
-        .vesitable-img {
-            width: 100%;
-            height: 300px; /* Adjust based on your desired image size */
-            overflow: hidden;
-        }
-
-            .vesitable-img img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-        .p-4 {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-            .p-4 h4, .p-4 p {
-                width: 100%;
-                text-align: center;
-            }
-
-            .p-4 .mt-auto {
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-    </style>
 </head>
 
 <body>
@@ -101,20 +63,8 @@
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
                         <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Trang chủ</a>
-                        <a asp-area="" asp-controller="Blog" asp-action="Index" class="nav-item nav-link">Tin tức</a>
+                        <a asp-area="" asp-controller="Posts" asp-action="Index" class="nav-item nav-link">Tin tức</a>
                         <a asp-area="" asp-controller="Product" asp-action="Index" class="nav-item nav-link">Mua sắm</a>
-@*                         <div class="nav-item dropdown">
-                            <a href="#SanPham" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sản phẩm</a>
-                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                @{
-                                    foreach (var item in Model.Categories)
-                                    {
-                                        <a href="@Url.Action("ProductCategory", "Category", new { Id = item.CategoryId })" class="dropdown-item">@item.CategoryName</a>
-                                    }
-                                }
-                                <a href="@Url.Action("Index", "Product")" class="dropdown-item">Tất cả</a>
-                            </div>
-                        </div> *@
                         <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Liên hệ</a>
                         @if (User.IsInRole("Admin"))
                         {
@@ -123,13 +73,12 @@
                     </div>
                     <div class="d-flex m-3 me-0">
                         <partial name="_LoginPartial" />
-                        <a asp-area="" asp-controller="Cart" asp-action="Index" class="position-relative me-4 my-auto">
-                            <i class="fa fa-shopping-bag fa-2x"></i>
-                           
+                        <a asp-area="" asp-controller="Cart" asp-action="Index" class="position-relative me-4 my-auto fs-4">
+                            <i class="fa fa-shopping-bag"></i>
                         </a>
-@*                         <a href="@Url.Action("Index", "Account")" class="my-auto">
-                            <i class="fas fa-user fa-2x"></i>
-                        </a> *@
+                        <a asp-area="" asp-controller="Wishlist" asp-action="Index" class="my-auto fs-4">
+                            <i class=" fa fa-solid fa-heart"></i>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -248,6 +197,30 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
+    <!-- Chat Button -->
+    <a href="javascript:void(0);" onclick="toggleChat()" class="btn btn-primary border-3 border-primary rounded-circle chat">
+        <i class="fab fa-rocketchat"></i>
+    </a>
+
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <span>Chat with Admin</span>
+            <button onclick="toggleChat()" class="close-btn">×</button>
+        </div>
+        <div class="chat-body">
+            <ul id="messagesList"></ul>
+        </div>
+        <div class="chat-footer">
+            <input id="messageInput" type="text" placeholder="Enter your message" />
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- SignalR and Script for Chat -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
+    <script src="~/js/chat-realtime-user.js"></script>
+  
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -261,6 +234,9 @@
 
     <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
+
+
+    @await Html.PartialAsync("ChatBot")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

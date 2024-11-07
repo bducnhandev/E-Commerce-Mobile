@@ -25,7 +25,7 @@ namespace WebDoDienTu.Models
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Invalid email format.")]
-        public string YourEmail { get; set; }
+        public string YourEmail { get; set; } = string.Empty;
 
         [Required]
         [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5")]
@@ -35,5 +35,7 @@ namespace WebDoDienTu.Models
         public string Comment { get; set; }
 
         public DateTime ReviewDate { get; set; } = DateTime.UtcNow;
+
+        public bool IsHidden { get; set; } = false;
     }
 }

@@ -40,7 +40,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @{
                         foreach (var item in Model.Items)
                         {
@@ -54,7 +53,6 @@
                                     <p class="mb-0 mt-4">@item.NameProduct</p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">@item.Price.ToString("N0") VND</p>
                                     <p class="mb-0 mt-4">@item.Price.ToString("N0") VND</p>
                                 </td>
                                 <td>
@@ -73,8 +71,7 @@
                                 </td>
                             </tr>
                         }
-                    }
-                                      
+                    }                                      
                 </tbody>
             </table>
         </div>
@@ -123,14 +120,12 @@
                     }
 
                     const promotion = await response.json();
-                    const discountPrice = promotion.isPercentage ? originalTotalPrice * promotion.discountPercentage / 100 : promotion.discountAmount;
-                    console.log(discountPrice)
+                    const discountPrice = promotion.isPercentage ? originalTotalPrice * promotion.discountPercentage / 100 : promotion.discountAmount;                
                     const finalPrice = originalTotalPrice - discountPrice;
-
+                  
                     discountPriceElement.innerText = discountPrice.toLocaleString("vi-VN", { maximumFractionDigits: 0 }) + ' VND'
                     totalPriceElement.innerText = finalPrice.toLocaleString("vi-VN", { maximumFractionDigits: 0 }) + ' VND';
 
-                    // Cập nhật href của liên kết "Tiến hành thanh toán" để bao gồm voucherCode
                     const checkoutLink = document.getElementById('checkoutLink');
                     checkoutLink.href = `/Cart/Checkout?voucherCode=${couponCode}`;
 

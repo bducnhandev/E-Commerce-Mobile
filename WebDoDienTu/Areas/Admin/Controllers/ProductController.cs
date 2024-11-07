@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Models;
 using WebDoDienTu.Models.Repository;
+using WebDoDienTu.Data;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {
@@ -14,14 +17,16 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IWebHostEnvironment _environment;
+        private readonly Cloudinary _cloudinary;
         private readonly ApplicationDbContext _context;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IWebHostEnvironment environment, ApplicationDbContext context)
+        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository, IWebHostEnvironment environment, ApplicationDbContext context, Cloudinary cloudinary)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
             _environment = environment;
             _context = context;
+            _cloudinary = cloudinary;
         }
 
         // Hiển thị danh sách sản phẩm
@@ -42,14 +47,18 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
         // Xử lý thêm sản phẩm mới
         [HttpPost]
-        public async Task<IActionResult> Create(Product product, IFormFile imageUrl, List<IFormFile> images)
+        public async Task<IActionResult> Create(Product product, IFormFile imageUrl, IFormFile videoUrl, List<IFormFile> images)
         {
             if (ModelState.IsValid)
             {
                 if (imageUrl != null)
                 {
-                    // Lưu hình ảnh đại diện
                     product.ImageUrl = await SaveImage(imageUrl);
+                }
+
+                if (videoUrl != null)
+                {
+                    product.VideoUrl = await SaveVideo(videoUrl);
                 }
 
                 if (images != null)
@@ -57,7 +66,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
                     product.Images = new List<ProductImage>();
                     foreach (var img in images)
                     {
-                        // Lưu các hình ảnh khác
                         var url = await SaveImage(img);
                         product.Images.Add(new ProductImage { Url = url });
                     }
@@ -66,20 +74,46 @@ namespace WebDoDienTu.Areas.Admin.Controllers
                 await _productRepository.AddAsync(product);
                 return RedirectToAction(nameof(Index));
             }
-            // Nếu ModelState không hợp lệ, hiển thị form với dữ liệu đã nhập
+            
             var categories = await _categoryRepository.GetAllAsync();
             ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
             return View(product);
         }
 
+        private async Task<string?> SaveVideo(IFormFile video)
+        {
+            var uploadParams = new VideoUploadParams()
+            {
+                File = new FileDescription(video.FileName, video.OpenReadStream()),
+                PublicId = $"products/videos/{Guid.NewGuid()}"
+            };
+
+            var uploadResult = await _cloudinary.UploadLargeAsync<VideoUploadResult>(uploadParams, 5000000, 5);
+
+            if (uploadResult.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return uploadResult.SecureUrl.ToString(); 
+            }
+
+            return null;
+        }
+
         private async Task<string?> SaveImage(IFormFile image)
         {
-            var savePath = Path.Combine("wwwroot/image", image.FileName); // Thay đổi đường dẫn theo cấu hình của bạn
-            using (var fileStream = new FileStream(savePath, FileMode.Create))
+            var uploadParams = new ImageUploadParams()
             {
-                await image.CopyToAsync(fileStream);
+                File = new FileDescription(image.FileName, image.OpenReadStream()),
+                PublicId = $"products/{Guid.NewGuid()}"
+            };
+
+            var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+
+            if (uploadResult.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return uploadResult.SecureUrl.ToString();
             }
-            return "/image/" + image.FileName; // Trả về đường dẫn tương đối
+
+            return null;
         }
 
         // Hiển thị thông tin chi tiết sản phẩm
@@ -109,11 +143,10 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
         // Xử lý cập nhật sản phẩm
         [HttpPost]
-        public async Task<IActionResult> Edit(Product product, IFormFile imageUrl, List<IFormFile> images)
+        public async Task<IActionResult> Edit(Product product, IFormFile imageUrl, IFormFile videoUrl, List<IFormFile> images)
         {
             if (ModelState.IsValid)
             {
-                // Lấy thông tin sản phẩm hiện tại từ cơ sở dữ liệu
                 var existingProduct = await _context.Products
                     .Include(p => p.Images)
                     .FirstOrDefaultAsync(p => p.ProductId == product.ProductId);
@@ -139,16 +172,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
                 // Xóa các ảnh cũ nếu có ảnh mới được cung cấp
                 if (images != null && images.Count > 0)
                 {
-                    // Xóa các ảnh cũ khỏi hệ thống file (nếu cần)
-                    foreach (var oldImage in existingProduct.Images)
-                    {
-                        var oldImagePath = Path.Combine(_environment.WebRootPath, oldImage.Url.TrimStart('/'));
-                        if (System.IO.File.Exists(oldImagePath))
-                        {
-                            System.IO.File.Delete(oldImagePath);
-                        }
-                    }
-
                     // Xóa các ảnh cũ khỏi cơ sở dữ liệu
                     _context.ProductImages.RemoveRange(existingProduct.Images);
 
@@ -161,20 +184,21 @@ namespace WebDoDienTu.Areas.Admin.Controllers
                     }
                 }
 
-                // Lưu các thay đổi vào cơ sở dữ liệu
+                // Cập nhật video nếu có video mới
+                if (videoUrl != null)
+                {
+                    existingProduct.VideoUrl = await SaveVideo(videoUrl);
+                }
+
                 _context.Update(existingProduct);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
             }
 
-            // Nếu ModelState không hợp lệ, hiển thị form với dữ liệu đã nhập
             var categories = await _context.Categories.ToListAsync();
             ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
             return View(product);
         }
-
-
 
         // Hiển thị form xác nhận xóa sản phẩm
         public async Task<IActionResult> Delete(int id)

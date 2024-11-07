@@ -1,0 +1,172 @@
+﻿@model WebDoDienTu.Models.Order
+
+<h2 class="text-center my-5">Chi tiết đơn hàng</h2>
+
+<!-- Thanh tiến trình đơn hàng đầy đủ -->
+<div id="bar-progress" class="my-5 mt-lg-0">
+    <div class="step @(Model.Status == OrderStatus.Pending ? "step-active" : "")">
+        <span class="number-container">
+            <span class="number">1</span>
+        </span>
+        <h5>Pending</h5>
+    </div>
+    <div class="seperator"></div>
+
+    <div class="step @(Model.Status == OrderStatus.PreOrder ? "step-active" : "")">
+        <span class="number-container">
+            <span class="number">2</span>
+        </span>
+        <h5>PreOrder</h5>
+    </div>
+    <div class="seperator"></div>
+
+    <div class="step @(Model.Status == OrderStatus.Processing ? "step-active" : "")">
+        <span class="number-container">
+            <span class="number">3</span>
+        </span>
+        <h5>PROCESSING</h5>
+    </div>
+    <div class="seperator"></div>
+
+    <div class="step @(Model.Status == OrderStatus.Shipped ? "step-active" : "")">
+        <span class="number-container">
+            <span class="number">4</span>
+        </span>
+        <h5>Shipped</h5>
+    </div>
+    <div class="seperator"></div>
+
+    <div class="step @(Model.Status == OrderStatus.Completed ? "step-active" : "")">
+        <span class="number-container">
+            <span class="number">5</span>
+        </span>
+        <h5>COMPLETED</h5>
+    </div>
+    <div class="seperator"></div>
+
+    <div class="step @(Model.Status == OrderStatus.Cancelled ? "step-active cancelled" : "")">
+        <span class="number-container">
+            <span class="number">6</span>
+        </span>
+        <h5>CANCELLED</h5>
+    </div>
+</div>
+
+<!-- Bảng thông tin đơn hàng -->
+<table class="order-info-table">
+    <tr>
+        <th>Họ tên</th>
+        <td>@Model.FirstName @Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Trạng thái đơn hàng</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Ngày đặt</th>
+        <td>@Model.OrderDate.ToString("dd/MM/yyyy")</td>
+    </tr>
+    <tr>
+        <th>Tổng tiền</th>
+        <td>@Model.TotalPrice.ToString("N0") VND</td>
+    </tr>
+    <tr>
+        <th>Số điện thoại</th>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Địa chỉ</th>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <th>Ghi chú</th>
+        <td>@Model.Notes</td>
+    </tr>
+</table>
+
+<style>
+    /* Bảng thông tin đơn hàng */
+    .order-info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .order-info-table th, .order-info-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .order-info-table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+    #bar-progress {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+        #bar-progress .step {
+            display: inline-block;
+        }
+
+            #bar-progress .step .number-container {
+                display: inline-block;
+                border: solid 1px #000;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+            }
+
+            #bar-progress .step.step-active .number-container {
+                background-color: #000;
+            }
+
+            #bar-progress .step .number-container .number {
+                font-weight: 700;
+                font-size: .8em;
+                line-height: 1.75em;
+                display: block;
+                text-align: center;
+            }
+
+            #bar-progress .step.step-active .number-container .number {
+                color: white;
+            }
+
+            #bar-progress .step h5 {
+                display: inline;
+                font-weight: 100;
+                font-size: .8em;
+                margin-left: 10px;
+                text-transform: uppercase;
+            }
+
+        #bar-progress .seperator {
+            display: block;
+            width: 20px;
+            height: 1px;
+            background-color: rgba(0, 0, 0, .2);
+            margin: auto 20px;
+        }
+
+        #bar-progress .step-active h5 {
+            color: #4bb8a9;
+        }
+
+        #bar-progress .step-active .number-container {
+            background-color: #4bb8a9;
+        }
+
+        #bar-progress .cancelled .number-container {
+            background-color: red;
+        }
+</style>

@@ -46,9 +46,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.26.2, )"
+            },
             "EPPlus": {
               "target": "Package",
-              "version": "[7.4.0, )"
+              "version": "[7.4.2, )"
+            },
+            "Google.Cloud.Dialogflow.V2": {
+              "target": "Package",
+              "version": "[4.22.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.8.0, )"
             },
             "Mailjet.Api": {
               "target": "Package",
@@ -56,53 +68,81 @@
             },
             "Microsoft.AspNetCore.Authentication.Facebook": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.AspNetCore.Authentication.MicrosoftAccount": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.1.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Microsoft.ML.Recommender": {
+              "target": "Package",
+              "version": "[0.21.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.6, )"
             },
+            "PayPal": {
+              "target": "Package",
+              "version": "[1.9.1, )"
+            },
+            "PayPalCheckoutSdk": {
+              "target": "Package",
+              "version": "[1.0.4, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[112.1.0, )"
+            },
             "X.PagedList": {
               "target": "Package",
-              "version": "[10.2.1, )"
+              "version": "[10.5.7, )"
             },
             "X.PagedList.Mvc.Core": {
               "target": "Package",
-              "version": "[10.2.1, )"
+              "version": "[10.5.7, )"
+            },
+            "dotenv.net": {
+              "target": "Package",
+              "version": "[3.2.1, )"
             }
           },
           "imports": [

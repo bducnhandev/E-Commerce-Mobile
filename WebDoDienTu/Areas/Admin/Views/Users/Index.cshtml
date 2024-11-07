@@ -73,7 +73,7 @@
                                     @if (item.IsBlocked == false || item.IsBlocked == null)
                                     {
                                         <form method="post">
-                                            <button type="submit" asp-controller="Users" asp-action="BlockUser" asp-route-userId="@item.Id">Block</button>
+                                            <button type="submit" class="btn btn-danger" asp-controller="Users" asp-action="BlockUser" asp-route-userId="@item.Id">Block</button>
                                         </form>
                                     }
                                     else
@@ -85,7 +85,7 @@
                                     @if (item.IsBlocked == true)
                                     {
                                         <form method="post">
-                                            <button type="submit" asp-controller="Users" asp-action="UnBlockUser" asp-route-userId="@item.Id">UnBlock</button>
+                                            <button type="submit" class="btn btn-danger" asp-controller="Users" asp-action="UnBlockUser" asp-route-userId="@item.Id">UnBlock</button>
                                         </form>
                                     }
                                     else

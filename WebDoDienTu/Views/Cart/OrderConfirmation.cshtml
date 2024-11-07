@@ -1,0 +1,47 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Xác nhận đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Cảm ơn bạn đã đặt hàng!</h2>
+    <p class="text-center">Đơn hàng của bạn đã được ghi nhận.</p>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Thông tin đơn hàng</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Mã đơn hàng:</strong> @Model.Id</p>
+            <p><strong>Ngày đặt hàng:</strong> @Model.OrderDate.ToString("dd/MM/yyyy")</p>
+            <p><strong>Tổng tiền:</strong> @Model.TotalPrice.ToString("N0") VND</p>
+            <p><strong>Giá trị đặt cọc:</strong> @Model.DepositAmount.ToString("N0") VND</p>
+            <p><strong>Số tiền còn lại:</strong> @((Model.TotalPrice - Model.DepositAmount).ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))) VND</p>
+            <p><strong>Trạng thái:</strong> Đang xử lý</p>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Thông tin sản phẩm</h5>
+        </div>
+        <div class="card-body">
+            @foreach (var item in Model.OrderDetails)
+            {
+                <div class="border-bottom py-2">
+                    <p><strong>Tên sản phẩm:</strong> @item.Product.ProductName</p>
+                    <p><strong>Số lượng:</strong> @item.Quantity</p>
+                    <p><strong>Giá:</strong> @item.Price.ToString("N0") VND</p>
+                    <img src="@item.Product.ImageUrl" alt="@item.Product.ProductName" class="img-thumbnail" style="max-width: 100px;" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Tiếp tục mua sắm</a>
+    </div>
+</div>
+
+

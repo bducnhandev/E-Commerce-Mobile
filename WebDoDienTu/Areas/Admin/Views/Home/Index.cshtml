@@ -1,7 +1,15 @@
-﻿@model IEnumerable<WebDoDienTu.Models.Order>
+﻿@using System.Globalization
+@model IEnumerable<WebDoDienTu.Models.Order>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{
+    var revenueByMonth = ViewBag.RevenueByMonth as Dictionary<int, decimal>;
+    var tongDoanhSo = ViewBag.tongDoanhSo;
+    var tongSoLuongSP = ViewBag.tongSoLuongSP;
+    var tongDonHang = ViewBag.tongDonHang;
+    var soLuongUser = ViewBag.soLuongUser;
 }
 
 <main>
@@ -10,44 +18,48 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
-        @* <div class="row">
+        <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">Primary Card</div>
+                    <div class="card-body">Doanh số</div>
+                    <span class="card-body display-6 text-center">@tongDoanhSo.ToString("N0", new CultureInfo("vi-VN")) VND</span>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" asp-area="Admin" asp-controller="ThongKe" asp-action="Index">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">Warning Card</div>
+                    <div class="card-body">Đơn hàng</div>
+                    <span class="card-body display-6 text-center">@tongDonHang</span>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" asp-area="admin" asp-controller="Order" asp-action="Index">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Success Card</div>
+                    <div class="card-body">Khách hàng</div>
+                    <span class="card-body display-6 text-center">@soLuongUser</span>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" asp-area="admin" asp-controller="Users" asp-action="Index">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Danger Card</div>
+                    <div class="card-body">Sản phẩm</div>
+                    <span class="card-body display-6 text-center">@tongSoLuongSP</span>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" asp-area="admin" asp-controller="Product" asp-action="Index">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
-        </div> *@
+        </div>
         <div class="row">
             <div class="card mb-4">
                 <div class="card-header">
@@ -77,10 +89,6 @@
         </div>
     </div>
 </main>
-
-@{
-    var revenueByMonth = ViewBag.RevenueByMonth as Dictionary<int, decimal>;
-}
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

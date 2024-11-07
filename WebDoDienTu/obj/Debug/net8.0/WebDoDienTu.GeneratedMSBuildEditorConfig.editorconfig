@@ -46,8 +46,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Chat/AdminChat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2hhdFxBZG1pbkNoYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/InventoryTransaction/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW52ZW50b3J5VHJhbnNhY3Rpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/InventoryTransaction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW52ZW50b3J5VHJhbnNhY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/OrderComplaints/ComplaintList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJDb21wbGFpbnRzXENvbXBsYWludExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Order/Delete.cshtml]
@@ -64,6 +80,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/PostCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUG9zdENhdGVnb3JpZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Posts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUG9zdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Posts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUG9zdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Posts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUG9zdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Posts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUG9zdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Product/Create.cshtml]
@@ -92,6 +128,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Promotion/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvbW90aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Review/ManageReviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV2aWV3XE1hbmFnZVJldmlld3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Shared/_Layout.cshtml]
@@ -132,26 +172,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Voucher/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVm91Y2hlclxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Voucher/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVm91Y2hlclxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Voucher/Detele.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVm91Y2hlclxEZXRlbGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Voucher/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVm91Y2hlclxFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Voucher/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVm91Y2hlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/_ViewImports.cshtml]
@@ -246,10 +266,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Blog/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -262,8 +278,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPcmRlckNvbXBsZXRlZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/OrderConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPcmRlckNvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/OrderDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPcmRlckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/PaymentCancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQYXltZW50Q2FuY2VsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/PaymentFail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQYXltZW50RmFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/PaymentSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQYXltZW50U3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/PreOrderForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQcmVPcmRlckZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Contact/Index.cshtml]
@@ -274,12 +310,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/OrderComplaints/Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJDb21wbGFpbnRzXFJlcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Posts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Posts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Product/Compare.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDb21wYXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Product/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Product/GetRecommendations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRSZWNvbW1lbmRhdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/ChatBot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENoYXRCb3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/Error.cshtml]
@@ -288,6 +348,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_ProductRecommendationsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0UmVjb21tZW5kYXRpb25zUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_ValidationScriptsPartial.cshtml]

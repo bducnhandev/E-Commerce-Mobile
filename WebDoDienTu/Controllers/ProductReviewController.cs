@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using WebDoDienTu.Data;
 using WebDoDienTu.Models;
 
 namespace WebDoDienTu.Controllers
@@ -21,9 +22,9 @@ namespace WebDoDienTu.Controllers
         public async Task<IActionResult> AddReview(int productId,string name, string email, int rating, string comment)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
+            if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Login", "Account");
+                return Json(new { success = false, message = "Vui lòng đăng nhập để thực hiện đánh giá!" });
             }
 
             var review = new ProductReview

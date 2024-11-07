@@ -9,19 +9,23 @@
     <title>Trang Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="~/admin/css/styles.css" rel="stylesheet" />
+    <link href="~/admin/css/chat.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" asp-area="admin" asp-controller="Home" asp-action="Index">Admin</a>
+        <a class="navbar-brand ps-3" asp-area="admin" asp-controller="Home" asp-action="Index">Dashboard</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 @*             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                       aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
             </div> *@
         </form>
         <!-- Navbar-->
@@ -64,48 +68,22 @@
                                 <a class="nav-link" asp-area="admin" asp-controller="Order" asp-action="Index">Quản lý đơn hàng</a>
                                 <a class="nav-link" asp-area="admin" asp-controller="Users" asp-action="Index">Quản lý người dùng</a>
                                 <a class="nav-link" asp-area="admin" asp-controller="Promotion" asp-action="Index">Quản lý khuyến mãi</a>
+                                <a class="nav-link" asp-area="admin" asp-controller="InventoryTransaction" asp-action="Index">Quản lý kho</a>
+                                <a class="nav-link" asp-area="admin" asp-controller="OrderComplaints" asp-action="ComplaintList">Quản lý khiếu nại</a>
+                                <a class="nav-link" asp-area="admin" asp-controller="Review" asp-action="ManageReviews">Quản lý đánh giá</a>
+                                <a class="nav-link" asp-area="admin" asp-controller="PostCategories" asp-action="Index">Quản lý anh mục post</a>
+                                <a class="nav-link" asp-area="admin" asp-controller="Posts" asp-action="Index">Quản lý post</a>
                             </nav>
                         </div>
-@*                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Trang
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" asp-area="" asp-controller="Error" asp-action="Error404">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div> *@
                         <div class="sb-sidenav-menu-heading">Addons</div>
                         <a class="nav-link" asp-area="Admin" asp-controller="ThongKe" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Thống kê
+                        </a>                        
+                        <a class="nav-link" asp-area="admin" asp-controller="Chat" asp-action="AdminChat">
+                            <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
+                            Chat
                         </a>
-@*                         <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a> *@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -135,6 +113,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="~/admin/js/datatables-simple-demo.js"></script>
+
+    <!-- SignalR and Notification Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
+    <script src="~/admin/js/chat-realtime.js"></script>
 </body>
 </html>
-
+@RenderSection("Scripts", required: false)

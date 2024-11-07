@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebDoDienTu.Models;
+using WebDoDienTu.Data;
 
 #nullable disable
 
@@ -17,7 +17,7 @@ namespace WebDoDienTu.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -267,6 +267,92 @@ namespace WebDoDienTu.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WebDoDienTu.Models.ChatMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChatMessages");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"));
+
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.InventoryTransaction", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TransactionType")
+                        .HasColumnType("int");
+
+                    b.HasKey("TransactionId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("InventoryTransactions");
+                });
+
             modelBuilder.Entity("WebDoDienTu.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -278,6 +364,12 @@ namespace WebDoDienTu.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("DepositAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -297,30 +389,62 @@ namespace WebDoDienTu.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OrderPromotionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("PromotionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderPromotionId");
+                    b.HasIndex("PromotionId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.OrderComplaint", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ComplaintDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ComplaintDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrderComplaints");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.OrderDetail", b =>
@@ -330,6 +454,9 @@ namespace WebDoDienTu.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal?>("DiscountedPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -350,6 +477,66 @@ namespace WebDoDienTu.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.Post", b =>
+                {
+                    b.Property<int>("PostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PostId"));
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("PostId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.PostCategory", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("PostCategories");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Product", b =>
@@ -373,6 +560,9 @@ namespace WebDoDienTu.Migrations
                     b.Property<bool?>("IsHoted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsPreOrder")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -380,6 +570,15 @@ namespace WebDoDienTu.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("VideoUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductId");
 
@@ -394,9 +593,11 @@ namespace WebDoDienTu.Migrations
                             CategoryId = 1,
                             Description = "IPhone 13 Pro Max, 128GB, Màu Xám",
                             ImageUrl = "/image/products/phone/iPhone 13 Pro Max.png",
-                            IsHoted = false,
+                            IsHoted = true,
+                            IsPreOrder = false,
                             Price = 13999999,
-                            ProductName = "IPhone 13 Pro Max"
+                            ProductName = "IPhone 13 Pro Max",
+                            StockQuantity = 0
                         },
                         new
                         {
@@ -404,9 +605,11 @@ namespace WebDoDienTu.Migrations
                             CategoryId = 2,
                             Description = "Tai nghe Apple AirPods Pro, Chống ồn, Bluetooth",
                             ImageUrl = "/image/products/sound/Apple AirPods Pro.jpg",
-                            IsHoted = false,
+                            IsHoted = true,
+                            IsPreOrder = false,
                             Price = 6990000,
-                            ProductName = "Apple AirPods Pro"
+                            ProductName = "Apple AirPods Pro",
+                            StockQuantity = 0
                         },
                         new
                         {
@@ -414,9 +617,123 @@ namespace WebDoDienTu.Migrations
                             CategoryId = 1,
                             Description = "Samsung Galaxy S21 Ultra, 256GB, Màu Đen",
                             ImageUrl = "/image/products/phone/Samsung Galaxy S21 Ultra.jpg",
-                            IsHoted = false,
+                            IsHoted = true,
+                            IsPreOrder = false,
                             Price = 28990000,
-                            ProductName = "Samsung Galaxy S21 Ultra"
+                            ProductName = "Samsung Galaxy S21 Ultra",
+                            StockQuantity = 0
+                        });
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.ProductAttribute", b =>
+                {
+                    b.Property<int>("ProductAttributeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductAttributeId"));
+
+                    b.Property<string>("AttributeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AttributeValue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductAttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductAttributes");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductAttributeId = 1,
+                            AttributeName = "Màu sắc",
+                            AttributeValue = "Xám",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ProductAttributeId = 2,
+                            AttributeName = "Dung lượng",
+                            AttributeValue = "128GB",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ProductAttributeId = 3,
+                            AttributeName = "Kích thước màn hình",
+                            AttributeValue = "6.7 inch",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ProductAttributeId = 4,
+                            AttributeName = "Thời gian sử dụng pin",
+                            AttributeValue = "20 giờ",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ProductAttributeId = 5,
+                            AttributeName = "Màu sắc",
+                            AttributeValue = "Trắng",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ProductAttributeId = 6,
+                            AttributeName = "Thời gian sử dụng pin",
+                            AttributeValue = "4.5 giờ",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ProductAttributeId = 7,
+                            AttributeName = "Công nghệ chống ồn",
+                            AttributeValue = "Có",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ProductAttributeId = 8,
+                            AttributeName = "Trọng lượng",
+                            AttributeValue = "5.4 gram",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ProductAttributeId = 9,
+                            AttributeName = "Màu sắc",
+                            AttributeValue = "Đen",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            ProductAttributeId = 10,
+                            AttributeName = "Dung lượng",
+                            AttributeValue = "256GB",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            ProductAttributeId = 11,
+                            AttributeName = "Kích thước màn hình",
+                            AttributeValue = "6.8 inch",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            ProductAttributeId = 12,
+                            AttributeName = "Thời gian sử dụng pin",
+                            AttributeValue = "22 giờ",
+                            ProductId = 3
                         });
                 });
 
@@ -442,21 +759,6 @@ namespace WebDoDienTu.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("WebDoDienTu.Models.ProductPromotion", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PromotionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "PromotionId");
-
-                    b.HasIndex("PromotionId");
-
-                    b.ToTable("ProductPromotions");
-                });
-
             modelBuilder.Entity("WebDoDienTu.Models.ProductReview", b =>
                 {
                     b.Property<int>("Id")
@@ -469,6 +771,9 @@ namespace WebDoDienTu.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsHidden")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -498,6 +803,36 @@ namespace WebDoDienTu.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProductReviews");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.ProductView", b =>
+                {
+                    b.Property<int>("ProductViewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductViewId"));
+
+                    b.Property<DateTime>("LastViewedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductViewId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductViews");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Promotion", b =>
@@ -533,9 +868,6 @@ namespace WebDoDienTu.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Promotions");
@@ -547,12 +879,11 @@ namespace WebDoDienTu.Migrations
                             Code = "PROD10",
                             DiscountAmount = 10m,
                             DiscountPercentage = 0m,
-                            EndDate = new DateTime(2024, 10, 19, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6398),
+                            EndDate = new DateTime(2024, 11, 15, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(72),
                             IsActive = true,
                             IsPercentage = false,
                             MinimumOrderAmount = 0m,
-                            StartDate = new DateTime(2024, 9, 29, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6381),
-                            Type = 1
+                            StartDate = new DateTime(2024, 10, 26, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(53)
                         },
                         new
                         {
@@ -560,12 +891,11 @@ namespace WebDoDienTu.Migrations
                             Code = "ORDER15",
                             DiscountAmount = 0m,
                             DiscountPercentage = 15m,
-                            EndDate = new DateTime(2024, 10, 24, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6408),
+                            EndDate = new DateTime(2024, 11, 20, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(75),
                             IsActive = true,
                             IsPercentage = true,
                             MinimumOrderAmount = 100m,
-                            StartDate = new DateTime(2024, 10, 4, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6407),
-                            Type = 2
+                            StartDate = new DateTime(2024, 10, 31, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(74)
                         },
                         new
                         {
@@ -573,12 +903,11 @@ namespace WebDoDienTu.Migrations
                             Code = "ORDER50",
                             DiscountAmount = 50m,
                             DiscountPercentage = 0m,
-                            EndDate = new DateTime(2024, 10, 29, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6410),
+                            EndDate = new DateTime(2024, 11, 25, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(77),
                             IsActive = true,
                             IsPercentage = false,
                             MinimumOrderAmount = 200m,
-                            StartDate = new DateTime(2024, 10, 8, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6410),
-                            Type = 2
+                            StartDate = new DateTime(2024, 11, 4, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(77)
                         },
                         new
                         {
@@ -586,12 +915,11 @@ namespace WebDoDienTu.Migrations
                             Code = "PROD5",
                             DiscountAmount = 0m,
                             DiscountPercentage = 5m,
-                            EndDate = new DateTime(2024, 11, 8, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6413),
+                            EndDate = new DateTime(2024, 12, 5, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(80),
                             IsActive = true,
                             IsPercentage = true,
                             MinimumOrderAmount = 0m,
-                            StartDate = new DateTime(2024, 9, 9, 15, 20, 25, 762, DateTimeKind.Local).AddTicks(6412),
-                            Type = 1
+                            StartDate = new DateTime(2024, 10, 6, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(79)
                         });
                 });
 
@@ -637,7 +965,7 @@ namespace WebDoDienTu.Migrations
 
                     b.HasIndex("WishListId");
 
-                    b.ToTable("WishListItem");
+                    b.ToTable("WishListItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -691,21 +1019,66 @@ namespace WebDoDienTu.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebDoDienTu.Models.Order", b =>
+            modelBuilder.Entity("WebDoDienTu.Models.Comment", b =>
                 {
-                    b.HasOne("WebDoDienTu.Models.Promotion", "OrderPromotion")
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "Author")
                         .WithMany()
-                        .HasForeignKey("OrderPromotionId");
-
-                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WebDoDienTu.Models.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.InventoryTransaction", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Product", "Product")
+                        .WithMany("InventoryTransactions")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.Order", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Promotion", "Promotion")
+                        .WithMany("Orders")
+                        .HasForeignKey("PromotionId");
+
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("ApplicationUser");
 
-                    b.Navigation("OrderPromotion");
+                    b.Navigation("Promotion");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.OrderComplaint", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Order", "Order")
+                        .WithMany("Complaints")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.OrderDetail", b =>
@@ -727,6 +1100,23 @@ namespace WebDoDienTu.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("WebDoDienTu.Models.Post", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("WebDoDienTu.Models.PostCategory", "Category")
+                        .WithMany("Posts")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("WebDoDienTu.Models.Product", b =>
                 {
                     b.HasOne("WebDoDienTu.Models.Category", "Category")
@@ -736,6 +1126,17 @@ namespace WebDoDienTu.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.ProductAttribute", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Product", "Product")
+                        .WithMany("Attributes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.ProductImage", b =>
@@ -749,29 +1150,29 @@ namespace WebDoDienTu.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("WebDoDienTu.Models.ProductPromotion", b =>
+            modelBuilder.Entity("WebDoDienTu.Models.ProductReview", b =>
                 {
                     b.HasOne("WebDoDienTu.Models.Product", "Product")
-                        .WithMany("ProductPromotions")
+                        .WithMany("Reviews")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebDoDienTu.Models.Promotion", "Promotion")
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("PromotionId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
 
-                    b.Navigation("Promotion");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WebDoDienTu.Models.ProductReview", b =>
+            modelBuilder.Entity("WebDoDienTu.Models.ProductView", b =>
                 {
                     b.HasOne("WebDoDienTu.Models.Product", "Product")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -824,16 +1225,35 @@ namespace WebDoDienTu.Migrations
 
             modelBuilder.Entity("WebDoDienTu.Models.Order", b =>
                 {
+                    b.Navigation("Complaints");
+
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.Post", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.PostCategory", b =>
+                {
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Product", b =>
                 {
+                    b.Navigation("Attributes");
+
                     b.Navigation("Images");
 
-                    b.Navigation("ProductPromotions");
+                    b.Navigation("InventoryTransactions");
 
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.Promotion", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.WishList", b =>

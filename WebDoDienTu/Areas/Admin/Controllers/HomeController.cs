@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebDoDienTu.Data;
 using WebDoDienTu.Models;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
@@ -38,6 +39,25 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
             ViewBag.RevenueByMonth = revenueByMonth;
             var orders = _context.Orders.ToList();
+
+
+            var tongDoanhSo = _context.Orders.Sum(order => order.TotalPrice);
+            var tongSoLuongSP = _context.Products.Count();
+            var tongDonHang = _context.Orders.Count();
+            var adminRoleId = _context.Roles
+                                .Where(role => role.Name == SD.Role_Admin)
+                                .Select(role => role.Id)
+                                .FirstOrDefault();
+            var soLuongUser = _context.Users
+                                .Where(user => !_context.UserRoles
+                                .Where(role => role.RoleId == adminRoleId) 
+                                .Select(role => role.UserId)
+                                .Contains(user.Id))
+                                .Count();
+            ViewBag.tongDoanhSo = tongDoanhSo;
+            ViewBag.tongSoLuongSP = tongSoLuongSP;
+            ViewBag.tongDonHang = tongDonHang;
+            ViewBag.soLuongUser = soLuongUser;
             return View(orders);
         }
     }

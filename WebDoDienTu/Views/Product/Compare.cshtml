@@ -1,0 +1,90 @@
+﻿@model WebDoDienTu.Models.ViewModels.ProductComparisonViewModel
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<h2>So sánh sản phẩm</h2>
+
+@if (Model.ProductsToCompare.Count == 0)
+{
+    <p>Không có sản phẩm nào để so sánh.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var product in Model.ProductsToCompare)
+                {
+                    <th class="text-center">@product.ProductName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Giá</td>
+                @foreach (var product in Model.ProductsToCompare)
+                {
+                    <td>@product.Price.ToString("C")</td>
+                }
+            </tr>
+            <tr>
+                <td>Mô tả</td>
+                @foreach (var product in Model.ProductsToCompare)
+                {
+                    <td>@product.Description</td>
+                }
+            </tr>
+            <tr>
+                <td>Ảnh</td>
+                @foreach (var product in Model.ProductsToCompare)
+                {
+                    <td class="text-center">
+                        <img src="@product.ImageUrl" alt="@product.ProductName" width="150" />
+                    </td>
+                }
+            </tr>
+
+            <!-- Hiển thị thuộc tính sản phẩm mà không bị lặp lại -->
+            @if (Model.ProductsToCompare.Count > 0)
+            {
+                // Tạo một danh sách thuộc tính độc nhất
+                var attributeGroups = Model.ProductsToCompare
+                .SelectMany(p => p.Attributes)
+                .GroupBy(a => a.AttributeName)
+                .ToList();
+
+                foreach (var attributeGroup in attributeGroups)
+                {
+                    var attributeName = attributeGroup.Key;
+
+                    <tr>
+                        <td><strong>@attributeName:</strong></td>
+                        @foreach (var product in Model.ProductsToCompare)
+                        {
+                            var value = product.Attributes.FirstOrDefault(a => a.AttributeName == attributeName)?.AttributeValue;
+                            <td>@value</td> <!-- Hiển thị giá trị của thuộc tính -->
+                        }
+                    </tr>
+                }
+            }
+
+            <tr>
+                <td></td>
+                @foreach (var product in Model.ProductsToCompare)
+                {
+                    <td class="text-center">
+                        <a href="@Url.Action("RemoveFromComparison", "Product", new { productId = product.ProductId })" class="btn btn-danger btn-sm">
+                            Xóa khỏi so sánh
+                        </a>
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+}

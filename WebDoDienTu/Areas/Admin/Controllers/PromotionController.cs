@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Net.Sockets;
+using WebDoDienTu.Data;
 using WebDoDienTu.Models;
+using WebDoDienTu.Models.ViewModels;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {
@@ -22,16 +21,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         {
             PromotionViewModel promotionViewModel = new PromotionViewModel();
             promotionViewModel.Promotions = _context.Promotions.ToList();
-
-            var promotionTypes = Enum.GetValues(typeof(PromotionType))
-                                     .Cast<PromotionType>()
-                                     .Select(pt => new SelectListItem
-                                     {
-                                         Value = pt.ToString(),
-                                         Text = pt.ToString()
-                                     }).ToList();
-
-            ViewBag.PromotionTypes = promotionTypes;
             return View(promotionViewModel);
         }
 
@@ -46,15 +35,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var promotion = await _context.Promotions.FindAsync(id);
-            var promotionTypes = Enum.GetValues(typeof(PromotionType))
-                         .Cast<PromotionType>()
-                         .Select(pt => new SelectListItem
-                         {
-                             Value = pt.ToString(),
-                             Text = pt.ToString()
-                         }).ToList();
-
-            ViewBag.PromotionTypes = promotionTypes;
             return View(promotion);
         }
 

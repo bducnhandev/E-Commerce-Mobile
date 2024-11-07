@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebDoDienTu.Models;
+using WebDoDienTu.Data;
 
 namespace WebDoDienTu.Controllers
 {

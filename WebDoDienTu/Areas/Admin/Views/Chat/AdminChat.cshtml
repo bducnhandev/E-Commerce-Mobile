@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "AdminChat";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="admin-chat-container">
+    <!-- Chat List -->
+    <div class="chat-list">
+        <h2 class="py-3 text-center">Chat List</h2>
+        <ul id="userChatList">
+            <!-- Danh sách người dùng sẽ được tạo động ở đây -->
+        </ul>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window">
+        <div class="chat-header p-3">
+            <span class="p-3" id="chatWithUser"></span>
+        </div>
+        <div class="chat-body">
+            <ul id="messagesList"></ul>
+        </div>
+        <div class="chat-footer">
+            <input id="messageInput" type="text" placeholder="Enter your message" />
+            <button id="sendButton" onclick="sendMessageToUser()">Send to User</button>
+        </div>
+    </div>
+</div>

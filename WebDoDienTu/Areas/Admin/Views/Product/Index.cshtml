@@ -30,6 +30,7 @@
                             <th>@Html.DisplayNameFor(model => model.Description)</th>
                             <th>@Html.DisplayNameFor(model => model.ImageUrl)</th>
                             <th>@Html.DisplayNameFor(model => model.Category)</th>
+                            <th>Số lượng</th>
                             <th>Sửa</th>
                             <th>Xem</th>
                             <th>Xóa</th>
@@ -42,6 +43,7 @@
                             <th>@Html.DisplayNameFor(model => model.Description)</th>
                             <th>@Html.DisplayNameFor(model => model.ImageUrl)</th>
                             <th>@Html.DisplayNameFor(model => model.Category)</th>
+                            <th>Số lượng</th>
                             <th>Sửa</th>
                             <th>Xem</th>
                             <th>Xóa</th>
@@ -57,6 +59,7 @@
                                 <td>@Html.DisplayFor(modelItem => item.Description)</td>
                                 <td><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width:100px" /> <img /></td>
                                 <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.StockQuantity)</td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.ProductId"><i class="fa-regular fa-pen-to-square"></i></a>
                                 </td> 

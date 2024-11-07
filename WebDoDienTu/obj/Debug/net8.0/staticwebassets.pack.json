@@ -5,502 +5,6 @@
       "PackagePath": "staticwebassets\\WebDoDienTu.bundle.scp.css"
     },
     {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\css\\main.css",
-      "PackagePath": "staticwebassets\\Login_v5\\css\\main.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\css\\util.css",
-      "PackagePath": "staticwebassets\\Login_v5\\css\\util.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.eot",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.eot"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.svg",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.svg"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.woff",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.woff"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.woff2",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\WebFont\\Linearicons-Free.woff2"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\icon-font.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\Linearicons-Free-v1.0.0\\icon-font.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\HELP-US-OUT.txt",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\HELP-US-OUT.txt"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\css\\font-awesome.css",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\css\\font-awesome.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\css\\font-awesome.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\css\\font-awesome.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\FontAwesome.otf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\FontAwesome.otf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.eot",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.eot"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.svg",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.svg"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff2",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff2"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\animated.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\animated.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\bordered-pulled.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\bordered-pulled.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\core.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\core.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\fixed-width.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\fixed-width.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\font-awesome.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\font-awesome.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\icons.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\icons.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\larger.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\larger.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\list.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\list.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\mixins.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\mixins.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\path.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\path.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\rotated-flipped.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\rotated-flipped.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\screen-reader.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\screen-reader.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\stacked.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\stacked.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\variables.less",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\less\\variables.less"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_animated.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_animated.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_bordered-pulled.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_bordered-pulled.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_core.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_core.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_fixed-width.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_fixed-width.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_icons.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_icons.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_larger.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_larger.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_list.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_list.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_mixins.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_mixins.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_path.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_path.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_rotated-flipped.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_rotated-flipped.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_screen-reader.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_screen-reader.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_stacked.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_stacked.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_variables.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\_variables.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\font-awesome.scss",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\font-awesome-4.7.0\\scss\\font-awesome.scss"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Black.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Black.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-BlackItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-BlackItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Bold.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Bold.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-BoldItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-BoldItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraBold.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraBold.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraBoldItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraBoldItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraLight.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraLight.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraLightItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-ExtraLightItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Italic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Italic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Light.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Light.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-LightItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-LightItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Medium.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Medium.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-MediumItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-MediumItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Regular.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Regular.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-SemiBold.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-SemiBold.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-SemiBoldItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-SemiBoldItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-Thin.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-Thin.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\Montserrat-ThinItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\Montserrat-ThinItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\montserrat\\OFL.txt",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\montserrat\\OFL.txt"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Black.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Black.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-BlackItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-BlackItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Bold.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Bold.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-BoldItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-BoldItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-ExtraBold.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-ExtraBold.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-ExtraBoldItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-ExtraBoldItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-ExtraLight.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-ExtraLight.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-ExtraLightItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-ExtraLightItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Italic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Italic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Light.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Light.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-LightItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-LightItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Medium.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Medium.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-MediumItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-MediumItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Regular.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Regular.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-SemiBold.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-SemiBold.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-SemiBoldItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-SemiBoldItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-Thin.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-Thin.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\fonts\\poppins\\Poppins-ThinItalic.ttf",
-      "PackagePath": "staticwebassets\\Login_v5\\fonts\\poppins\\Poppins-ThinItalic.ttf"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\images\\bg-01.jpg",
-      "PackagePath": "staticwebassets\\Login_v5\\images\\bg-01.jpg"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\images\\icons\\favicon.ico",
-      "PackagePath": "staticwebassets\\Login_v5\\images\\icons\\favicon.ico"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\images\\icons\\icon-google.png",
-      "PackagePath": "staticwebassets\\Login_v5\\images\\icons\\icon-google.png"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\images\\icons\\map-marker.png",
-      "PackagePath": "staticwebassets\\Login_v5\\images\\icons\\map-marker.png"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\images\\icons\\symbol-01.png",
-      "PackagePath": "staticwebassets\\Login_v5\\images\\icons\\symbol-01.png"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\js\\main.js",
-      "PackagePath": "staticwebassets\\Login_v5\\js\\main.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\animate\\animate.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\animate\\animate.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\animsition\\css\\animsition.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\animsition\\css\\animsition.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\animsition\\css\\animsition.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\animsition\\css\\animsition.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\animsition\\js\\animsition.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\animsition\\js\\animsition.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\animsition\\js\\animsition.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\animsition\\js\\animsition.min.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.css.map"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-grid.min.css.map"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.css.map"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap-reboot.min.css.map"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.css.map",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.css.map"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\css\\bootstrap.min.css.map"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\js\\bootstrap.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\js\\bootstrap.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\js\\bootstrap.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\js\\bootstrap.min.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\js\\popper.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\js\\popper.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\js\\popper.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\js\\popper.min.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\bootstrap\\js\\tooltip.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\bootstrap\\js\\tooltip.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\countdowntime\\countdowntime.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\countdowntime\\countdowntime.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\css-hamburgers\\hamburgers.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\css-hamburgers\\hamburgers.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\css-hamburgers\\hamburgers.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\css-hamburgers\\hamburgers.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\daterangepicker\\daterangepicker.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\daterangepicker\\daterangepicker.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\daterangepicker\\daterangepicker.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\daterangepicker\\daterangepicker.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\daterangepicker\\moment.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\daterangepicker\\moment.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\daterangepicker\\moment.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\daterangepicker\\moment.min.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\jquery\\jquery-3.2.1.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\jquery\\jquery-3.2.1.min.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\perfect-scrollbar\\perfect-scrollbar.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\perfect-scrollbar\\perfect-scrollbar.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\perfect-scrollbar\\perfect-scrollbar.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\perfect-scrollbar\\perfect-scrollbar.min.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\select2\\select2.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\select2\\select2.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\select2\\select2.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\select2\\select2.js"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\select2\\select2.min.css",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\select2\\select2.min.css"
-    },
-    {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\Login_v5\\vendor\\select2\\select2.min.js",
-      "PackagePath": "staticwebassets\\Login_v5\\vendor\\select2\\select2.min.js"
-    },
-    {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\admin\\assets\\demo\\datatables.js",
       "PackagePath": "staticwebassets\\admin\\assets\\demo\\datatables.js"
     },
@@ -517,8 +21,16 @@
       "PackagePath": "staticwebassets\\admin\\assets\\img\\error-404-monochrome.svg"
     },
     {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\admin\\css\\chat.css",
+      "PackagePath": "staticwebassets\\admin\\css\\chat.css"
+    },
+    {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\admin\\css\\styles.css",
       "PackagePath": "staticwebassets\\admin\\css\\styles.css"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\admin\\js\\chat-realtime.js",
+      "PackagePath": "staticwebassets\\admin\\js\\chat-realtime.js"
     },
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\admin\\js\\datatables-simple-demo.js",
@@ -531,6 +43,14 @@
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\css\\chat-user.css",
+      "PackagePath": "staticwebassets\\css\\chat-user.css"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\css\\chatBot.css",
+      "PackagePath": "staticwebassets\\css\\chatBot.css"
     },
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\css\\style.css",
@@ -9453,12 +8973,20 @@
       "PackagePath": "staticwebassets\\image\\tintuc\\tintuc5.png"
     },
     {
-      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\Rating.js",
-      "PackagePath": "staticwebassets\\js\\Rating.js"
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\chat-realtime-user.js",
+      "PackagePath": "staticwebassets\\js\\chat-realtime-user.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\chatBot.js",
+      "PackagePath": "staticwebassets\\js\\chatBot.js"
     },
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\js\\rating.js",
+      "PackagePath": "staticwebassets\\js\\rating.js"
     },
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -9719,6 +9247,846 @@
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\lightbox\\js\\lightbox.min.js",
       "PackagePath": "staticwebassets\\lib\\lightbox\\js\\lightbox.min.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\abortcontroller.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\abortcontroller.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\abortcontroller.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\abortcontroller.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\accesstokenhttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\accesstokenhttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\accesstokenhttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\accesstokenhttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\browser-index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\browser-index.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\browser-index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\browser-index.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\defaulthttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\defaulthttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\defaulthttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\defaulthttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\defaultreconnectpolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\defaultreconnectpolicy.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\defaultreconnectpolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\defaultreconnectpolicy.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\errors.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\errors.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\errors.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\errors.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\fetchhttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\fetchhttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\fetchhttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\fetchhttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\handshakeprotocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\handshakeprotocol.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\handshakeprotocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\handshakeprotocol.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\headernames.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\headernames.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\headernames.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\headernames.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\httpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\httpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\httpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\httpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\httpconnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\httpconnection.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\httpconnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\httpconnection.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnection.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnection.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnectionbuilder.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnectionbuilder.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnectionbuilder.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\hubconnectionbuilder.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\iconnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\iconnection.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\iconnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\iconnection.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\ihttpconnectionoptions.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\ihttpconnectionoptions.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\ihttpconnectionoptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\ihttpconnectionoptions.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\ihubprotocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\ihubprotocol.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\ihubprotocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\ihubprotocol.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\ilogger.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\ilogger.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\ilogger.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\ilogger.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\index.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\index.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\iretrypolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\iretrypolicy.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\iretrypolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\iretrypolicy.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\istatefulreconnectoptions.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\istatefulreconnectoptions.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\istatefulreconnectoptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\istatefulreconnectoptions.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\itransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\itransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\itransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\itransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\jsonhubprotocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\jsonhubprotocol.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\jsonhubprotocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\jsonhubprotocol.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\loggers.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\loggers.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\loggers.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\loggers.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\longpollingtransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\longpollingtransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\longpollingtransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\longpollingtransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\messagebuffer.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\messagebuffer.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\messagebuffer.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\messagebuffer.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\polyfills.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\polyfills.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\polyfills.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\polyfills.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\serversenteventstransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\serversenteventstransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\serversenteventstransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\serversenteventstransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\stream.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\stream.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\stream.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\stream.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\subject.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\subject.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\subject.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\subject.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\textmessageformat.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\textmessageformat.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\textmessageformat.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\textmessageformat.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\utils.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\utils.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\utils.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\utils.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\websockettransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\websockettransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\websockettransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\websockettransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\xhrhttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\xhrhttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\cjs\\xhrhttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\cjs\\xhrhttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\abortcontroller.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\abortcontroller.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\abortcontroller.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\abortcontroller.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\abortcontroller.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\abortcontroller.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\accesstokenhttpclient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\accesstokenhttpclient.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\accesstokenhttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\accesstokenhttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\accesstokenhttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\accesstokenhttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\browser-index.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\browser-index.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\browser-index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\browser-index.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\browser-index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\browser-index.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\defaulthttpclient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\defaulthttpclient.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\defaulthttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\defaulthttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\defaulthttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\defaulthttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\defaultreconnectpolicy.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\defaultreconnectpolicy.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\defaultreconnectpolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\defaultreconnectpolicy.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\defaultreconnectpolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\defaultreconnectpolicy.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\errors.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\errors.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\errors.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\errors.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\errors.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\errors.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\fetchhttpclient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\fetchhttpclient.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\fetchhttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\fetchhttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\fetchhttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\fetchhttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\handshakeprotocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\handshakeprotocol.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\handshakeprotocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\handshakeprotocol.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\handshakeprotocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\handshakeprotocol.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\headernames.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\headernames.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\headernames.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\headernames.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\headernames.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\headernames.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\httpclient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\httpclient.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\httpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\httpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\httpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\httpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\httpconnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\httpconnection.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\httpconnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\httpconnection.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\httpconnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\httpconnection.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\hubconnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\hubconnection.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\hubconnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\hubconnection.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\hubconnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\hubconnection.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\hubconnectionbuilder.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\hubconnectionbuilder.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\hubconnectionbuilder.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\hubconnectionbuilder.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\hubconnectionbuilder.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\hubconnectionbuilder.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\iconnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\iconnection.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\iconnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\iconnection.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\iconnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\iconnection.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ihttpconnectionoptions.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ihttpconnectionoptions.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ihttpconnectionoptions.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ihttpconnectionoptions.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ihttpconnectionoptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ihttpconnectionoptions.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ihubprotocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ihubprotocol.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ihubprotocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ihubprotocol.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ihubprotocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ihubprotocol.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ilogger.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ilogger.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ilogger.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ilogger.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\ilogger.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\ilogger.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\index.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\index.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\index.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\index.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\iretrypolicy.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\iretrypolicy.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\iretrypolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\iretrypolicy.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\iretrypolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\iretrypolicy.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\istatefulreconnectoptions.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\istatefulreconnectoptions.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\istatefulreconnectoptions.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\istatefulreconnectoptions.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\istatefulreconnectoptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\istatefulreconnectoptions.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\itransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\itransport.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\itransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\itransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\itransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\itransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\jsonhubprotocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\jsonhubprotocol.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\jsonhubprotocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\jsonhubprotocol.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\jsonhubprotocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\jsonhubprotocol.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\loggers.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\loggers.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\loggers.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\loggers.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\loggers.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\loggers.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\longpollingtransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\longpollingtransport.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\longpollingtransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\longpollingtransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\longpollingtransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\longpollingtransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\messagebuffer.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\messagebuffer.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\messagebuffer.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\messagebuffer.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\messagebuffer.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\messagebuffer.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\polyfills.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\polyfills.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\polyfills.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\polyfills.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\polyfills.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\polyfills.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\serversenteventstransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\serversenteventstransport.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\serversenteventstransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\serversenteventstransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\serversenteventstransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\serversenteventstransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\stream.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\stream.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\stream.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\stream.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\stream.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\stream.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\subject.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\subject.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\subject.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\subject.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\subject.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\subject.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\textmessageformat.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\textmessageformat.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\textmessageformat.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\textmessageformat.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\textmessageformat.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\textmessageformat.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\utils.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\utils.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\utils.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\utils.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\utils.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\utils.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\websockettransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\websockettransport.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\websockettransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\websockettransport.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\websockettransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\websockettransport.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\xhrhttpclient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\xhrhttpclient.d.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\xhrhttpclient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\xhrhttpclient.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\esm\\xhrhttpclient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\esm\\xhrhttpclient.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.min.js"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\webworker\\signalr.min.js.map"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\package-lock.json",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\package-lock.json"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\package.json",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\package.json"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\readme.md",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\readme.md"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\abortcontroller.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\abortcontroller.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\accesstokenhttpclient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\accesstokenhttpclient.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\browser-index.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\browser-index.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\defaulthttpclient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\defaulthttpclient.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\defaultreconnectpolicy.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\defaultreconnectpolicy.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\errors.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\errors.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\fetchhttpclient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\fetchhttpclient.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\handshakeprotocol.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\handshakeprotocol.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\headernames.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\headernames.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\httpclient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\httpclient.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\httpconnection.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\httpconnection.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\hubconnection.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\hubconnection.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\hubconnectionbuilder.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\hubconnectionbuilder.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\iconnection.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\iconnection.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\ihttpconnectionoptions.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\ihttpconnectionoptions.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\ihubprotocol.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\ihubprotocol.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\ilogger.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\ilogger.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\index.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\index.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\iretrypolicy.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\iretrypolicy.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\istatefulreconnectoptions.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\istatefulreconnectoptions.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\itransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\itransport.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\jsonhubprotocol.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\jsonhubprotocol.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\loggers.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\loggers.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\longpollingtransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\longpollingtransport.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\messagebuffer.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\messagebuffer.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\polyfills.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\polyfills.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\serversenteventstransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\serversenteventstransport.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\stream.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\stream.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\subject.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\subject.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\textmessageformat.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\textmessageformat.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\third-party-notices.txt",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\third-party-notices.txt"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\utils.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\utils.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\websockettransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\websockettransport.ts"
+    },
+    {
+      "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\microsoft\\signalr\\src\\xhrhttpclient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\src\\xhrhttpclient.ts"
     },
     {
       "Id": "E:\\DO AN CO SO\\WebDoDienTu\\WebDoDienTu\\wwwroot\\lib\\owlcarousel\\LICENSE",

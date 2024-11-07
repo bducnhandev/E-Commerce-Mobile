@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebDoDienTu.Models;
-using WebDoDienTu.Models.Repository;
+using WebDoDienTu.Data;
 
 namespace WebDoDienTu.Controllers
 {
@@ -16,13 +14,9 @@ namespace WebDoDienTu.Controllers
 
         public IActionResult Index()
         {
-            // Lấy dữ liệu từ database và gán cho MyModel
-            MyModel model = new MyModel();
-            // Gán dữ liệu vào MyModel
-            model.Products = _context.Products.ToList();
-            model.Categories = _context.Categories.ToList();
-
-            return View(model);
+            var product = _context.Products.ToList();
+            ViewData["Categories"] = _context.Categories.ToList();
+            return View(product);
         }
     }
 }

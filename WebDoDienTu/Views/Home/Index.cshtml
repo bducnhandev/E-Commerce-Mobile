@@ -1,11 +1,13 @@
-﻿@model WebDoDienTu.Models.MyModel
+﻿@model IEnumerable<WebDoDienTu.Models.Product>
+@{
+    var categories = ViewData["Categories"] as List<WebDoDienTu.Models.Category>;
+}
 @{
     ViewData["Title"] = "Home Page";
-    Layout = null;
-    int quality = 1;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+@* <!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -33,53 +35,12 @@
         <link href="~/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="~/css/style.css" rel="stylesheet">
-        <style>
-            .vesitable-item {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: 100%;
-            }
-
-            .vesitable-img {
-                width: 100%;
-                height: 300px;
-                overflow: hidden;
-            }
-
-                .vesitable-img img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-
-            .p-4 {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-                .p-4 h4, .p-4 p {
-                    width: 100%;
-                    text-align: center;
-                }
-
-                .p-4 .mt-auto {
-                    text-align: center;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-        </style>
-
+        <link href="~/css/style.css" rel="stylesheet">      
     </head>
 
-    <body>
+    <body> *@
 
-        <!-- Spinner Start -->
+@*         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
@@ -116,14 +77,18 @@
                         </div>
                         <div class="d-flex m-3 me-0">
                             <partial name="_LoginPartial" />
-                            <a asp-area="" asp-controller="Cart" asp-action="Index" class="position-relative me-4 my-auto">
-                            <i class="fa fa-shopping-bag fa-2x"></i></a>
+                            <a asp-area="" asp-controller="Cart" asp-action="Index" class="position-relative me-4 my-auto fs-4">
+                                <i class="fa fa-shopping-bag"></i>
+                            </a>
+                            <a asp-area="" asp-controller="Wishlist" asp-action="Index" class="my-auto fs-4">
+                                <i class=" fa fa-solid fa-heart"></i>
+                            </a>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
-        <!-- Navbar End -->
+        <!-- Navbar End --> *@
 
         <!-- Hero Start -->
         <div class="container-fluid py-5 mb-5 hero-header">
@@ -187,7 +152,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                        <span class="text-dark" style="width: 130px;">Laptop</span>
+                                <span class="text-dark" style="width: 130px;">Máy tính bảng</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -204,66 +169,59 @@
                         </div>
                     </div>
                     <div class="tab-content">
+
                         <div id="tab-2" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
                                 <div class="col-lg-12">
                                     <div class="row g-4">
-
                                         @{
-                                            int countphone = 0;
-                                        }
-                                        @foreach (var product in Model.Products)
-                                        {
-                                            if (countphone < 8)
+                                            int countphone = 0;                                      
+                                            foreach (var product in Model)
                                             {
-@*                                                 <div class="border border-primary rounded position-relative vesitable-item">
-                                                    <div class="vesitable-img">
-                                                        <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
-                                                    </div>
-                                                    <div class="p-4 rounded-bottom">
-                                                    <h4><a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">@Html.DisplayFor(modelItem => product.ProductName)</a></h4>
-                                                        <p>@Html.DisplayFor(modelItem => product.Description)</p>
-                                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng</a>
+                                                if (countphone < 8)
+                                                {
+                                                    <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 300px; margin: 7px">
+                                                        <div class="vesitable-img">
+                                                            <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
                                                         </div>
-                                                    </div>
-                                                </div> *@
-
-
-                                                <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px; margin: 10px">
-                                                    <div class="vesitable-img">
-                                                        <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
-                                                    </div>
-                                                    <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
-                                                        <h4 class="text-center">
-                                                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
-                                                                @Html.DisplayFor(modelItem => product.ProductName)
-                                                            </a>
-                                                        </h4>
-                                                        <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
-                                                        <div class="mt-auto text-center">
-                                                            <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                                            <div class="row">
-                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
-                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                        <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                                            <h4 class="text-center">
+                                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                                    @Html.DisplayFor(modelItem => product.ProductName)
                                                                 </a>
-                                                                <form asp-action="AddToWishlist" asp-controller="Wishlist" method="post">
-                                                                    <input type="hidden" name="productId" value="@product.ProductId" />
-                                                                    <button class="btn border border-secondary rounded-pill px-3 text-primary mt-2" type="submit"><i class="fa fa-heart me-2 text-primary"></i>Add to Wishlist</button>
-                                                                </form>
+                                                            </h4>
+                                                            <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                                            <div class="mt-auto text-center">
+                                                                <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                                <div class="row">
+                                                                    @if (product.IsPreOrder)
+                                                                    {
+                                                                        <a asp-action="PreOrder" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Đặt trước
+                                                                            </a>
+                                                                        }
+                                                                        else
+                                                                    {
+                                                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                                        </a>
+                                                                    }
+                                                                    <form asp-action="AddToWishlist" asp-controller="Wishlist" method="post">
+                                                                        <input type="hidden" name="productId" value="@product.ProductId" />
+                                                                        <button class="btn border border-secondary rounded-pill px-3 text-primary mt-2" type="submit"><i class="fa fa-heart me-2 text-primary"></i>Add to Wishlist</button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                countphone++;
-                                            }
-                                            else
-                                            {
-                                                break; // Dừng vòng lặp sau khi đã hiển thị 10 sản phẩm
+                                                    countphone++;
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
                                             }
                                         }
-
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +234,7 @@
                                         @{
                                             int countlaptop = 0;
                                         }
-                                        @foreach (var product in Model.Products)
+                                        @foreach (var product in Model)
                                         {
                                             if (product.CategoryId == 2)
                                             {
@@ -295,7 +253,7 @@
                                                             <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
                                                             <div class="mt-auto text-center">
                                                                 <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
                                                                     <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
                                                                 </a>
                                                             </div>
@@ -303,7 +261,6 @@
                                                     </div>
                                                     countlaptop++;
                                                 }
-
                                                 else
                                                 {
                                                     break;
@@ -323,7 +280,7 @@
                                         @{
                                             int countsound = 0;
                                         }
-                                        @foreach (var product in Model.Products)
+                                        @foreach (var product in Model)
                                         {
                                             if (product.CategoryId == 3)
                                             {
@@ -342,7 +299,7 @@
                                                             <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
                                                             <div class="mt-auto text-center">
                                                                 <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
                                                                     <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
                                                                 </a>
                                                             </div>
@@ -368,7 +325,7 @@
                                         @{
                                             int countaccessory = 0;
                                         }
-                                        @foreach (var product in Model.Products)
+                                        @foreach (var product in Model)
                                         {
                                             if (product.CategoryId == 4)
                                             {
@@ -387,7 +344,7 @@
                                                             <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
                                                             <div class="mt-auto text-center">
                                                                 <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
                                                                     <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
                                                                 </a>
                                                             </div>
@@ -413,7 +370,7 @@
         <!-- Products Shop End-->
 
         <!-- Banner Section Start-->
-        <div class="container-fluid banner bg-secondary my-5">
+       @*  <div class="container-fluid banner bg-secondary my-5">
             <div class="container py-5">
                 <div class="row g-4 align-items-center">
                     <div class="col-lg-6">
@@ -431,7 +388,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
         <!-- Banner Section End -->
 
         <!-- Sản phẩm nổi bậc-->
@@ -439,61 +396,43 @@
             <div class="container py-5">
                 <h1 class="mb-0">Sản phẩm nổi bậc</h1>
                 <div class="owl-carousel vegetable-carousel justify-content-center">
-
                     @{
-                        int count = 0;
-                    }
-                    @foreach (var product in Model.Products)
-                    {
-                        if (product.IsHoted == true)
+                        int count = 0;                   
+                        foreach (var product in Model)
                         {
-                            if (count < 8)
+                            if (product.IsHoted == true)
                             {
-
-@*                                 <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px">
-                                    <div class="vesitable-img">
-                                    <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
-                                    </div>
-                                    <div class="p-4 rounded-bottom">
-                                    <h4><a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">@Html.DisplayFor(modelItem => product.ProductName)</a></h4>
-                                        <p>@Html.DisplayFor(modelItem => product.Description)</p>
-                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                            <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng</a>
+                                if (count < 8)
+                                {
+                                    <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px">
+                                        <div class="vesitable-img">
+                                            <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
+                                            <h4 class="text-center">
+                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
+                                                    @Html.DisplayFor(modelItem => product.ProductName)
+                                                </a>
+                                            </h4>
+                                            <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
+                                            <div class="mt-auto text-center">
+                                                <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
+                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="1" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div> *@
 
-                                <div class="border border-primary rounded position-relative vesitable-item" style="height:550px; width: 306px">
-                                    <div class="vesitable-img">
-                                        <img src="@Html.DisplayFor(modelItem => product.ImageUrl)" class="img-fluid w-100 rounded-top" alt="">
-                                    </div>
-                                    <div class="p-4 rounded-bottom d-flex flex-column align-items-center">
-                                        <h4 class="text-center">
-                                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId">
-                                                @Html.DisplayFor(modelItem => product.ProductName)
-                                            </a>
-                                        </h4>
-                                        <p class="text-center">@Html.DisplayFor(modelItem => product.Description)</p>
-                                        <div class="mt-auto text-center">
-                                            <p class="text-dark fs-5 fw-bold mb-0">@product.Price.ToString("N0") VND</p>
-                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.ProductId" asp-route-quantity="@quality" class="btn border border-secondary rounded-pill px-3 text-primary mt-2">
-                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                count++;
-                            }
-                            else
-                            {
-                                break; 
+                                    count++;
+                                }
+                                else
+                                {
+                                    break; 
+                                }
                             }
                         }
                     }
-                    
-                    
                 </div>
             </div>
         </div>
@@ -552,7 +491,7 @@
         </div>
         <!-- Featurs Section End -->
 
-        <!-- Footer Start -->
+@*         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
             <div class="container py-5">
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
@@ -636,9 +575,188 @@
         <!-- Copyright End -->
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-        
+        <!-- Chat Button -->
+        <a href="javascript:void(0);" onclick="toggleChat()" class="btn btn-primary border-3 border-primary rounded-circle chat">
+            <i class="fab fa-rocketchat"></i>
+        </a>
+
+        <!-- Chat Window -->
+        <div id="chatWindow" class="chat-window">
+            <div class="chat-header">
+                <span>Chat with Admin</span>
+                <button onclick="toggleChat()" class="close-btn">×</button>
+            </div>
+            <div class="chat-body">
+                <ul id="messagesList"></ul>
+            </div>
+            <div class="chat-footer">
+                <input id="messageInput" type="text" placeholder="Enter your message" />
+                <button id="sendButton" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <!-- SignalR and Script for Chat -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
+        <script>
+            const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+            connection.start().then(() => {
+                console.log("Connected to SignalR.");
+                loadChatHistory();
+            }).catch(err => console.error(err.toString()));
+
+            connection.on("ReceiveMessageFromAdmin", (user, message) => {
+                console.log("Message received from admin:", message);
+                const li = document.createElement("li");
+                li.textContent = `${message}`;
+                li.classList.add("received");
+                document.getElementById("messagesList").appendChild(li);
+            });
+
+            function sendMessage() {
+                const messageInput = document.getElementById("messageInput");
+                const message = messageInput.value;
+                if (message.trim()) {
+                    connection.invoke("SendMessageToAdmin", message).catch(err => console.error(err.toString()));
+                    const li = document.createElement("li");
+                    li.textContent = `${message}`;
+                    li.classList.add("sent");
+                    document.getElementById("messagesList").appendChild(li);
+                    messageInput.value = "";
+                }
+            }
+
+            function loadChatHistory() {
+            // Gọi phương thức để lấy lịch sử chat với admin
+            connection.invoke("GetChatHistory", "")
+                .then(messages => {
+                    console.log(messages)
+                    messages.forEach(msg => {
+                        const li = document.createElement("li");
+                        li.textContent = msg.message; // Hoặc điều chỉnh nếu bạn có cấu trúc dữ liệu khác
+                        li.classList.add(msg.senderId === "Admin" ? "received" : "sent");
+                        document.getElementById("messagesList").appendChild(li);
+                    });
+                })
+                .catch(err => console.error("Error loading chat history: " + err.toString()));
+        }
+
+            function toggleChat() {
+                const chatWindow = document.getElementById("chatWindow");
+                chatWindow.style.display = chatWindow.style.display === "none" || chatWindow.style.display === "" ? "flex" : "none";
+            }
+        </script>
+
+        <style>
+            .chat {
+                position: fixed;
+                right: 30px;
+                bottom: 100px;
+                display: flex;
+                width: 45px;
+                height: 45px;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s;
+                z-index: 99;
+                cursor: pointer;
+            }
+
+            .chat-window {
+                position: fixed;
+                right: 30px;
+                bottom: 160px;
+                width: 300px;
+                max-height: 400px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                display: none;
+                flex-direction: column;
+                z-index: 100;
+            }
+
+            .chat-header {
+                background: #007bff;
+                color: #fff;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+
+        .chat-body {
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1;
+            display: flex; /* Set the chat body to display flex */
+            flex-direction: column; /* Align children in a column */
+        }
+
+            .chat-body ul {
+                list-style: none; /* Bỏ dấu chấm đầu dòng */
+                padding: 0; /* Bỏ khoảng cách padding */
+                margin: 0; /* Bỏ khoảng cách margin */
+                display: flex; /* Set ul to display flex */
+                flex-direction: column; /* Align items in a column */
+            }
+
+            .chat-body li {
+                margin: 5px 0; /* Thêm khoảng cách giữa các tin nhắn */
+                padding: 8px 12px; /* Thêm khoảng cách cho tin nhắn */
+                border-radius: 8px; /* Bo góc cho tin nhắn */
+                max-width: 80%; /* Giới hạn chiều rộng của tin nhắn */
+            }
+
+                .chat-body li.sent {
+                    background-color: #007bff; /* Màu nền cho tin nhắn gửi đi */
+                    color: white; /* Màu chữ cho tin nhắn gửi đi */
+                    align-self: flex-end; /* Đẩy tin nhắn gửi đi sang bên phải */
+                }
+
+                .chat-body li.received {
+                    background-color: #f1f1f1; /* Màu nền cho tin nhắn nhận được */
+                    color: black; /* Màu chữ cho tin nhắn nhận được */
+                    align-self: flex-start; /* Đẩy tin nhắn nhận được sang bên trái */
+                }
+
+
+            .close-btn {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .chat-footer {
+                display: flex;
+                padding: 10px;
+                border-top: 1px solid #ddd;
+            }
+
+                .chat-footer input[type="text"] {
+                    flex-grow: 1;
+                    padding: 5px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    margin-right: 5px;
+                }
+
+                .chat-footer button {
+                    padding: 5px 10px;
+                    border: none;
+                    background-color: #007bff;
+                    color: white;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+        </style>
+
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -651,4 +769,4 @@
         <script src="~/js/main.js"></script>
     </body>
 
-</html>
+</html> *@

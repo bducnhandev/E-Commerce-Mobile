@@ -1,0 +1,31 @@
+﻿@model WebDoDienTu.Models.OrderComplaint
+
+@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<h2 class="pb-4">Report an Order Issue</h2>
+
+<form asp-action="SubmitComplaint" method="post">
+    <input type="hidden" asp-for="OrderId" />
+
+@*     <div class="form-group">
+        <label for="OrderDetails">Order Details</label>
+        <input type="text" class="form-control" id="OrderDetails" value="Order ID: @Model.Order.Id" readonly />
+    </div> *@
+
+    <div class="form-group">
+        <label class="pb-1" for="ComplaintDescription">Describe the Issue</label>
+        <textarea class="form-control" id="ComplaintDescription" asp-for="ComplaintDescription" rows="4" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4 align-item-end">Submit Complaint</button>
+</form>
+

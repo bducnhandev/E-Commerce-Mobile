@@ -27,7 +27,6 @@
                             <th>STT</th>
                             <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
                             <th>Sửa</th>
-                            <th>Xem</th>
                             <th>Xóa</th>
                         </tr>
                     </thead>
@@ -36,7 +35,6 @@
                             <th>STT</th>
                             <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
                             <th>Sửa</th>
-                            <th>Xem</th>
                             <th>Xóa</th>
                         </tr>
                     </tfoot>
@@ -53,9 +51,6 @@
                                 <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>                             
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.CategoryId"><i class="fa-regular fa-pen-to-square"></i></a>
-                                </td>
-                                <td>
-                                    <a asp-action="Details" asp-route-id="@item.CategoryId"><i class="fa-solid fa-eye"></i></a>
                                 </td>
                                 <td>
                                     <a asp-action="Delete" asp-route-id="@item.CategoryId"><i class="fa-solid fa-trash"></i></a>
