@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.Repository;
+using WebDoDienTu.Repository;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {

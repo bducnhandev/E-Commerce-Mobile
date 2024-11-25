@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Data;
+using WebDoDienTu.Models;
 
-namespace WebDoDienTu.Models.Repository
+namespace WebDoDienTu.Repository
 {
     public class CommentRepository : ICommentRepository
     {
@@ -17,7 +18,7 @@ namespace WebDoDienTu.Models.Repository
         {
             return await _context.Comments
                 .Where(c => c.PostId == postId)
-                .Include(c => c.Author) 
+                .Include(c => c.Author)
                 .OrderByDescending(c => c.CreatedAt)
                 .ToListAsync();
         }

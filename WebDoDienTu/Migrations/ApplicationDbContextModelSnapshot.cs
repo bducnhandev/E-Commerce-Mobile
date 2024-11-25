@@ -155,6 +155,36 @@ namespace WebDoDienTu.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("WebDoDienTu.Models.ActionPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Dislike")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Like")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ActionPosts");
+                });
+
             modelBuilder.Entity("WebDoDienTu.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -759,6 +789,35 @@ namespace WebDoDienTu.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("WebDoDienTu.Models.ProductRecommendation", b =>
+                {
+                    b.Property<int>("ProductRecommendationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductRecommendationId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PurchaseCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductRecommendationId");
+
+                    b.ToTable("ProductRecommendations");
+                });
+
             modelBuilder.Entity("WebDoDienTu.Models.ProductReview", b =>
                 {
                     b.Property<int>("Id")
@@ -879,11 +938,11 @@ namespace WebDoDienTu.Migrations
                             Code = "PROD10",
                             DiscountAmount = 10m,
                             DiscountPercentage = 0m,
-                            EndDate = new DateTime(2024, 11, 15, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(72),
+                            EndDate = new DateTime(2024, 11, 27, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7505),
                             IsActive = true,
                             IsPercentage = false,
                             MinimumOrderAmount = 0m,
-                            StartDate = new DateTime(2024, 10, 26, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(53)
+                            StartDate = new DateTime(2024, 11, 7, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7487)
                         },
                         new
                         {
@@ -891,11 +950,11 @@ namespace WebDoDienTu.Migrations
                             Code = "ORDER15",
                             DiscountAmount = 0m,
                             DiscountPercentage = 15m,
-                            EndDate = new DateTime(2024, 11, 20, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(75),
+                            EndDate = new DateTime(2024, 12, 2, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7509),
                             IsActive = true,
                             IsPercentage = true,
                             MinimumOrderAmount = 100m,
-                            StartDate = new DateTime(2024, 10, 31, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(74)
+                            StartDate = new DateTime(2024, 11, 12, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7508)
                         },
                         new
                         {
@@ -903,11 +962,11 @@ namespace WebDoDienTu.Migrations
                             Code = "ORDER50",
                             DiscountAmount = 50m,
                             DiscountPercentage = 0m,
-                            EndDate = new DateTime(2024, 11, 25, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(77),
+                            EndDate = new DateTime(2024, 12, 7, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7511),
                             IsActive = true,
                             IsPercentage = false,
                             MinimumOrderAmount = 200m,
-                            StartDate = new DateTime(2024, 11, 4, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(77)
+                            StartDate = new DateTime(2024, 11, 16, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7511)
                         },
                         new
                         {
@@ -915,11 +974,11 @@ namespace WebDoDienTu.Migrations
                             Code = "PROD5",
                             DiscountAmount = 0m,
                             DiscountPercentage = 5m,
-                            EndDate = new DateTime(2024, 12, 5, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(80),
+                            EndDate = new DateTime(2024, 12, 17, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7514),
                             IsActive = true,
                             IsPercentage = true,
                             MinimumOrderAmount = 0m,
-                            StartDate = new DateTime(2024, 10, 6, 14, 59, 59, 921, DateTimeKind.Local).AddTicks(79)
+                            StartDate = new DateTime(2024, 10, 18, 16, 26, 29, 582, DateTimeKind.Local).AddTicks(7513)
                         });
                 });
 
@@ -1017,6 +1076,25 @@ namespace WebDoDienTu.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebDoDienTu.Models.ActionPost", b =>
+                {
+                    b.HasOne("WebDoDienTu.Models.Post", "Post")
+                        .WithMany("ActionPosts")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebDoDienTu.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebDoDienTu.Models.Comment", b =>
@@ -1232,6 +1310,8 @@ namespace WebDoDienTu.Migrations
 
             modelBuilder.Entity("WebDoDienTu.Models.Post", b =>
                 {
+                    b.Navigation("ActionPosts");
+
                     b.Navigation("Comments");
                 });
 

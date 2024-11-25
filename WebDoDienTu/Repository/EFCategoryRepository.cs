@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Data;
+using WebDoDienTu.Models;
 
-namespace WebDoDienTu.Models.Repository
+namespace WebDoDienTu.Repository
 {
     public class EFCategoryRepository : ICategoryRepository
     {

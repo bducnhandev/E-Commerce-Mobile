@@ -1,12 +1,13 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using Markdig;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.Repository;
+using WebDoDienTu.Repository;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {
@@ -54,6 +55,7 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                post.Content = ConvertMarkdownToHtml(post.Content);
                 if (imageFile != null)
                 {
                     post.ImageUrl = await SaveImageToCloudinary(imageFile);
@@ -93,7 +95,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            // Lấy bài viết hiện có từ database
             var existingPost = await _postRepository.GetPostByIdAsync(id);
             if (existingPost == null)
             {
@@ -102,25 +103,22 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                // Cập nhật các thuộc tính cần thiết
                 existingPost.Title = post.Title;
+                existingPost.Content = ConvertMarkdownToHtml(post.Content);
                 existingPost.Content = post.Content;
                 existingPost.CategoryId = post.CategoryId;
                 existingPost.IsPublished = post.IsPublished;
                 existingPost.UpdatedAt = DateTime.UtcNow;
 
-                // Kiểm tra nếu có ảnh mới được tải lên
                 if (imageFile != null)
                 {
                     existingPost.ImageUrl = await SaveImageToCloudinary(imageFile);
                 }
 
-                // Lưu các thay đổi
                 await _postRepository.UpdatePostAsync(existingPost);
                 return RedirectToAction(nameof(Index));
             }
 
-            // Nếu ModelState không hợp lệ, tải lại danh mục và trả lại View
             var categories = await _postCategoryRepository.GetAllCategoriesAsync();
             ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
             return View(post);
@@ -156,6 +154,18 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
             var uploadResult = await _cloudinary.UploadAsync(uploadParams);
             return uploadResult.StatusCode == System.Net.HttpStatusCode.OK ? uploadResult.SecureUrl.ToString() : null;
+        }
+
+        private string ConvertMarkdownToHtml(string markdown)
+        {
+            if (string.IsNullOrEmpty(markdown))
+            {
+                return string.Empty;
+            }
+
+            var pipeline = new MarkdownPipelineBuilder().Build();
+            var htmlContent = Markdown.ToHtml(markdown, pipeline);
+            return htmlContent;
         }
     }
 }

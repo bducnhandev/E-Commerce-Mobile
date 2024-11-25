@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Data;
+using WebDoDienTu.Models;
 
-namespace WebDoDienTu.Models.Repository
+namespace WebDoDienTu.Repository
 {
     public class EFProductRepository : IProductRepository
     {
@@ -49,7 +50,7 @@ namespace WebDoDienTu.Models.Repository
 
         public async Task<IEnumerable<Product>> GetByNameAsync(string StringName)
         {
-            return await _context.Products.Include(s => s.Category).Where(x => x.ProductName.Contains(StringName)).ToListAsync();           
+            return await _context.Products.Include(s => s.Category).Where(x => x.ProductName.Contains(StringName)).ToListAsync();
         }
     }
 }

@@ -7,6 +7,24 @@
     var successMessage = TempData["SuccessMessage"] as string;
     var displayRating = Math.Round((double)ViewBag.AverageRating, 1);
 }
+<style>
+    .watermark-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+</style>
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
@@ -50,10 +68,16 @@
 
                 <div class="row g-4">
                     <div class="col-lg-6">
-                        <div class="border rounded">
+                        <div class="border rounded position-relative">
                             <a href="#">
                                 <img src="@Model.ImageUrl" class="img-fluid rounded" alt="Image">
                             </a>
+                            @if (Model.StockQuantity <= 0)
+                            {
+                                <div class="watermark-overlay">
+                                    Hết hàng
+                                </div>
+                            }
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -87,18 +111,18 @@
                         <form class="my-4" asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@Model.ProductId">
                             <div class="input-group quantity mb-5" style="width: 100px;">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                    <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border" disabled="@(Model.StockQuantity <= 0)">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control form-control-sm text-center border-0" value="1" name="quantity">
+                                <input type="text" class="form-control form-control-sm text-center border-0" value="1" name="quantity" disabled="@(Model.StockQuantity <= 0)">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                    <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border" disabled="@(Model.StockQuantity <= 0)">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
-                            <button class="btn border border-secondary rounded-pill px-3 text-primary">
+                            <button class="btn border border-secondary rounded-pill px-3 text-primary" disabled="@(Model.StockQuantity <= 0)">
                                 <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
                             </button>
                         </form>
@@ -222,5 +246,15 @@
 </div>
 <!-- Single Product End -->
 
-@await Html.PartialAsync("_ProductRecommendationsPartial", ViewBag.Recommendations as IEnumerable<ProductRecommendationModel>)
+@await Html.PartialAsync("_RelatedProductsPartial", ViewBag.RecommendedProducts as List<WebDoDienTu.Models.Product>)
+@* @await Html.PartialAsync("_ProductRecommendationsPartial", ViewBag.Recommendations as IEnumerable<ProductRecommendationModel>) *@
 <script src="~/js/rating.js"></script>
+
+<script>
+    // @using Newtonsoft.Json
+    var err = @Html.Raw(JsonConvert.SerializeObject(TempData["Error"]));
+    console.log(err);
+    if (err != null) {
+        alert(err);
+    }
+</script>

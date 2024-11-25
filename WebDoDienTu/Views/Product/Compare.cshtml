@@ -88,3 +88,5 @@ else
         </tbody>
     </table>
 }
+
+@await Html.PartialAsync("_ProductRecommendationsPartial", ViewBag.Recommendations as IEnumerable<ProductRecommendationModel>)

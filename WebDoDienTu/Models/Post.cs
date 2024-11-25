@@ -27,6 +27,7 @@ namespace WebDoDienTu.Models
         public virtual PostCategory? Category { get; set; }
 
         public virtual ICollection<Comment>? Comments { get; set; }
+        public virtual ICollection<ActionPost>? ActionPosts {  get; set; }    
     }
 
 }

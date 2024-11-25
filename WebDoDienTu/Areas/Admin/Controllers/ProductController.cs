@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.Repository;
 using WebDoDienTu.Data;
+using WebDoDienTu.Repository;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {

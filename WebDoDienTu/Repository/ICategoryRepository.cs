@@ -1,4 +1,6 @@
-﻿namespace WebDoDienTu.Models.Repository
+﻿using WebDoDienTu.Models;
+
+namespace WebDoDienTu.Repository
 {
     public interface ICategoryRepository
     {

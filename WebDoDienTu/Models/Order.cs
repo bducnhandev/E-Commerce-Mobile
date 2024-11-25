@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Newtonsoft.Json;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -45,6 +46,8 @@ namespace WebDoDienTu.Models
         [ValidateNever]
 
         public ApplicationUser? ApplicationUser { get; set; }
+
+        [JsonIgnore]
         public List<OrderDetail>? OrderDetails { get; set; }     
         public Promotion? Promotion { get; set; }
         public ICollection<OrderComplaint>? Complaints { get; set; }

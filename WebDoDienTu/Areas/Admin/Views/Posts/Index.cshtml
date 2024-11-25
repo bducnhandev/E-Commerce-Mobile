@@ -44,6 +44,7 @@
                                 @Html.DisplayNameFor(model => model.Category)
                             </th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -66,6 +67,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Category)
                             </th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </tfoot>
@@ -92,8 +94,12 @@
                                     @Html.DisplayFor(modelItem => item.Category.Name)
                                 </td>
                                 <td>
-                                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PostId">Edit</a> |
-                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+                                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PostId">Edit</a>
+                                </td>
+                                <td>
+                                    <form asp-action="Delete" asp-route-id="@item.PostId">
+                                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                                    </form>
                                 </td>
                             </tr>
                         }

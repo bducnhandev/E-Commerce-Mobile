@@ -27,6 +27,7 @@ namespace WebDoDienTu.Data
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<ProductView> ProductViews { get; set; }
         public DbSet<ProductRecommendation> ProductRecommendations { get; set; }
+        public DbSet<ActionPost> ActionPosts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

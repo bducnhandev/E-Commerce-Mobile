@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WebDoDienTu.Models.Repository;
 using WebDoDienTu.Models;
 using Microsoft.AspNetCore.Authorization;
+using WebDoDienTu.Repository;
 
 namespace WebDoDienTu.Controllers
 {
@@ -54,6 +54,5 @@ namespace WebDoDienTu.Controllers
 
             return Json(result);
         }
-
     }
 }

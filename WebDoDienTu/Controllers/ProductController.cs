@@ -9,6 +9,7 @@ using WebDoDienTu.Extensions;
 using WebDoDienTu.Models;
 using WebDoDienTu.Models.ViewModels;
 using WebDoDienTu.Service;
+using WebDoDienTu.Service.ProductRecommendationService;
 using X.PagedList;
 using X.PagedList.Extensions;
 
@@ -20,13 +21,15 @@ namespace WebDoDienTu.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ProductViewService _productViewService;
         private readonly RecommendationService _recommendationService;
+        private readonly ProductRecommendationService _productRecommendationService;
 
-        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ProductViewService productViewService, RecommendationService recommendationService)
+        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ProductViewService productViewService, RecommendationService recommendationService, ProductRecommendationService productRecommendationService)
         {
             _context = context;
             _userManager = userManager;
             _productViewService = productViewService;
             _recommendationService = recommendationService;
+            _productRecommendationService = productRecommendationService;
         }
 
         [HttpGet]
@@ -105,10 +108,14 @@ namespace WebDoDienTu.Controllers
                 return NotFound();
             }
 
-            
+            // Lấy danh sách sản phẩm gợi ý
+            var recommendedProducts = _productRecommendationService.GetRecommendedProducts(id);
+            ViewBag.RecommendedProducts = recommendedProducts;
+
             var recommendations = await _recommendationService.GetProductRecommendations(user.Id);
             ViewBag.Recommendations = recommendations;
-            ViewBag.AverageRating = product?.Reviews?.Average(x => x.Rating);
+            ViewBag.AverageRating = (product?.Reviews != null && product.Reviews.Any())  ? product.Reviews.Average(x => x.Rating) : 0; 
+
             return View(product);
         }
 
@@ -139,7 +146,7 @@ namespace WebDoDienTu.Controllers
         }
 
         // Action để hiển thị trang so sánh sản phẩm
-        public IActionResult Compare()
+        public async Task <IActionResult> Compare()
         {
             var comparisonList = HttpContext.Session.GetObjectFromJson<List<Product>>("ComparisonList") ?? new List<Product>();
 
@@ -158,6 +165,10 @@ namespace WebDoDienTu.Controllers
             {
                 ViewBag.ErrorMessage = TempData["ErrorMessage"];
             }
+
+            var user = await _userManager.GetUserAsync(User);
+            var recommendations = await _recommendationService.GetProductRecommendations(user.Id);
+            ViewBag.Recommendations = recommendations;
 
             return View(viewModel);
         }

@@ -134,6 +134,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmV2aWV3XE1hbmFnZVJldmlld3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Shared/_Chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9DaGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -298,6 +302,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQYXltZW50U3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/PayRemainingBalance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQYXlSZW1haW5pbmdCYWxhbmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Cart/PreOrderForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQcmVPcmRlckZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -346,12 +354,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_ChatRealTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGF0UmVhbFRpbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_ProductRecommendationsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0UmVjb21tZW5kYXRpb25zUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_RelatedProductsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SZWxhdGVkUHJvZHVjdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DO AN CO SO/WebDoDienTu/WebDoDienTu/Views/Shared/_ValidationScriptsPartial.cshtml]

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebDoDienTu.Models.Repository;
 using WebDoDienTu.Models;
 using Microsoft.AspNetCore.Identity;
 using WebDoDienTu.Service;
@@ -12,8 +11,11 @@ using WebDoDienTu.Service.VNPayPayment;
 using WebDoDienTu.Service.MailKit;
 using WebDoDienTu.Service.Cloudinary;
 using WebDoDienTu.Data;
-using Google.Api;
 using WebDoDienTu.Service.PayPal;
+using Hangfire;
+using Hangfire.SqlServer;
+using WebDoDienTu.Service.ProductRecommendationService;
+using WebDoDienTu.Repository;
 
 internal class Program
 {
@@ -24,6 +26,22 @@ internal class Program
 
         builder.Services.AddSignalR();
 
+        // Configuring Hangfire with SQL Server storage
+        builder.Services.AddHangfire(configuration => configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                         .UseSimpleAssemblyNameTypeSerializer()
+                         .UseDefaultTypeSerializer()
+                         .UseSqlServerStorage(config.GetConnectionString("DefaultConnection"), new SqlServerStorageOptions
+                         {
+                             CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                             SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                             QueuePollInterval = TimeSpan.Zero,
+                             UseRecommendedIsolationLevel = true,
+                             DisableGlobalLocks = true
+                         }));
+
+        // Add the processing server as IHostedService
+        builder.Services.AddHangfireServer();
+
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -31,8 +49,7 @@ internal class Program
         .AddDefaultUI()
         .AddEntityFrameworkStores<ApplicationDbContext>();
 
-        builder.Services.AddControllers()
-        .AddJsonOptions(options =>
+        builder.Services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
         });
@@ -56,6 +73,7 @@ internal class Program
         builder.Services.AddScoped<IMomoPaymentService, MomoPaymentService>();
         builder.Services.AddScoped<ProductViewService>();
         builder.Services.AddScoped<RecommendationService>();
+        builder.Services.AddScoped<ProductRecommendationService>();
         builder.Services.AddScoped<IPayPalPaymentService, PayPalPaymentService>();
 
         //builder.Services.Configure<AuthMessageSenderOptions>(config.GetSection("MailjetSettings"));
@@ -100,6 +118,9 @@ internal class Program
             return new Cloudinary(account);
         });
 
+        // Cấu hình Localization
+        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
@@ -112,6 +133,15 @@ internal class Program
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
+
+        // Cấu hình localization cho ứng dụng
+        var supportedCultures = new[] { "en-US", "vi-VN" };
+
+        var localizationOptions = new RequestLocalizationOptions()
+            .SetDefaultCulture("en-US")
+            .AddSupportedCultures(supportedCultures)
+            .AddSupportedUICultures(supportedCultures);
+        app.UseRequestLocalization(localizationOptions);
 
         app.UseHttpsRedirection();
 
@@ -146,6 +176,9 @@ internal class Program
             defaults: new { controller = "Chat", action = "UserChat" });
 
         app.MapHub<ChatHub>("/chathub");
+        app.MapHub<PostHub>("/posthub");
+
+        app.UseHangfireDashboard("/hangfire");
 
         app.Run();
     }
