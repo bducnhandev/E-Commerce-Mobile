@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using System.Security.Claims;
 using WebDoDienTu.Hubs;
-using WebDoDienTu.Models.ViewModels;
 using WebDoDienTu.Repository;
+using WebDoDienTu.ViewModels;
 
 namespace WebDoDienTu.Controllers
 {

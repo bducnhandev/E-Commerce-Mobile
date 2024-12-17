@@ -8,12 +8,12 @@ using System.Security.Claims;
 using WebDoDienTu.Data;
 using WebDoDienTu.Extensions;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.ViewModels;
 using WebDoDienTu.Repository;
 using WebDoDienTu.Service.MailKit;
 using WebDoDienTu.Service.MomoPayment;
 using WebDoDienTu.Service.PayPal;
 using WebDoDienTu.Service.VNPayPayment;
+using WebDoDienTu.ViewModels;
 
 namespace WebDoDienTu.Controllers
 {
@@ -46,6 +46,8 @@ namespace WebDoDienTu.Controllers
 
         public IActionResult Index()
         {
+            var promotions = _context.Promotions.ToList();
+            ViewBag.Promotions = promotions.Select(p => new { p.Code }).ToList();
             var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart") ?? new ShoppingCart();
             return View(cart);
         }
@@ -141,189 +143,49 @@ namespace WebDoDienTu.Controllers
             return View(new Order());
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Checkout(Order order, string payment)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart");
+        [HttpPost]
+        public async Task<IActionResult> Checkout(Order order, string payment)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["ModelState"] = "Vui lòng điền đầy đủ thông tin.";
+                return View(order);
+            }
 
-        //        if (cart == null || !cart.Items.Any())
-        //        {
-        //            TempData["EmptyCartMessage"] = "Giỏ hàng của bạn hiện đang trống.";
-        //            return RedirectToAction("Index");
-        //        }
+            var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart");
 
-        //        if (payment == "Thanh toán MoMo")
-        //        {
-        //            var user = await _userManager.GetUserAsync(User);
-        //            order.UserId = user.Id;
-        //            order.OrderDate = DateTime.UtcNow;
+            if (cart == null || !cart.Items.Any())
+            {
+                TempData["EmptyCartMessage"] = "Giỏ hàng của bạn hiện đang trống.";
+                return RedirectToAction("Index");
+            }
 
-        //            // Tính toán giá trị đơn hàng
-        //            var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-        //            var discount = promotion != null && promotion.IsPercentage
-        //                            ? originPrice * promotion.DiscountPercentage / 100
-        //                            : promotion?.DiscountAmount ?? 0;
+            var user = await _userManager.GetUserAsync(User);
+            order.UserId = user.Id;
+            order.OrderDate = DateTime.UtcNow;
 
-        //            order.TotalPrice = originPrice - discount;
-        //            order.OrderDetails = cart.Items.Select(i => new OrderDetail
-        //            {
-        //                ProductId = i.ProductId,
-        //                Quantity = i.Quantity,
-        //                Price = i.Price
-        //            }).ToList();
+            // Tính toán giá trị đơn hàng
+            var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
+            var discount = CalculateDiscount(originPrice);
+            order.OrderDetails = CreateOrderDetails(cart);
+            orderTemp = order;
 
-        //            // Tạo yêu cầu thanh toán cho MoMo
-        //            var momoModel = new MomoPaymentRequestModel
-        //            {
-        //                OrderId = DateTime.UtcNow.Ticks.ToString(),
-        //                OrderInfo = $"{order.FirstName} {order.LastName} {order.Phone}",
-        //                Amount = (double)(originPrice - discount),
-        //                Signature = ""
-        //            };
+            // Xử lý thanh toán
+            switch (payment)
+            {
+                case "Thanh toán MoMo":
+                    return await ProcessMomoPayment(order, originPrice, discount);
 
-        //            var paymentUrl = await _momoPaymentService.CreatePaymentUrl(momoModel);
+                case "Thanh toán PayPal":
+                    return await ProcessPayPalPayment(originPrice, discount);
 
-        //            // Chuyển hướng đến URL thanh toán MoMo
-        //            return Redirect(paymentUrl);
-        //        }
-        //        else if (payment == "Thanh toán PayPal")
-        //        {
-        //            // Calculate the total price for the order
-        //            var totalAmount = cart.Items.Sum(i => i.Price * i.Quantity);
+                case "Thanh toán VNPay":
+                    return await ProcessVnPayPayment(order, originPrice, discount);
 
-        //            // Create PayPal payment
-        //            var returnUrl = Url.Action("PaymentSuccess", "Cart", null, Request.Scheme);
-        //            var cancelUrl = Url.Action("PaymentCancel", "Cart", null, Request.Scheme);
-        //            var paymentResponse = _payPalPaymentService.CreatePayment(totalAmount, returnUrl, cancelUrl);
-
-        //            // Redirect the user to PayPal for approval
-        //            var approvalUrl = paymentResponse.links.FirstOrDefault(link => link.rel == "approval_url")?.href;
-        //            return Redirect(approvalUrl);
-        //        }
-
-        //        else if (payment == "Thanh toán VNPay")
-        //        {
-        //            orderTemp = order;
-        //            if(promotion != null)
-        //            {
-        //                var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-        //                var discount = promotion.IsPercentage ?
-        //                                originPrice * promotion.DiscountPercentage / 100 :
-        //                                promotion.DiscountAmount;
-        //                var vnPayModel = new VnPaymentRequestModel
-        //                {
-        //                    Amount = (double)originPrice - (double)discount,
-        //                    CreatedDate = DateTime.Now,
-        //                    Description = $"{order.FirstName} {order.LastName} {order.Phone}",
-        //                    FullName = $"{order.FirstName} {order.LastName}",
-        //                    OrderId = new Random().Next(1000, 100000)
-        //                };
-        //                return Redirect(_vnPayService.CreatePaymentUrl(HttpContext, vnPayModel));
-        //            }
-        //            else
-        //            {
-        //                var vnPayModel = new VnPaymentRequestModel
-        //                {
-        //                    Amount = (double)cart.Items.Sum(i => i.Price * i.Quantity),
-        //                    CreatedDate = DateTime.Now,
-        //                    Description = $"{order.FirstName} {order.LastName} {order.Phone}",
-        //                    FullName = $"{order.FirstName} {order.LastName}",
-        //                    OrderId = new Random().Next(1000, 100000)
-        //                };
-        //                return Redirect(_vnPayService.CreatePaymentUrl(HttpContext, vnPayModel));
-        //            }
-        //        }
-        //        else
-        //        {
-        //            var user = await _userManager.GetUserAsync(User);
-        //            if (promotion != null)
-        //            {                       
-        //                order.UserId = user.Id;
-        //                order.OrderDate = DateTime.UtcNow;
-        //                var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-        //                var discount = promotion.IsPercentage ?
-        //                                originPrice * promotion.DiscountPercentage / 100 :
-        //                                promotion.DiscountAmount;
-        //                order.TotalPrice = originPrice - discount;
-        //                order.OrderDetails = cart.Items.Select(i => new OrderDetail
-        //                {
-        //                    ProductId = i.ProductId,
-        //                    Quantity = i.Quantity,
-        //                    Price = i.Price
-        //                }).ToList();
-        //            }
-        //            else
-        //            {
-        //                order.UserId = user.Id;
-        //                order.OrderDate = DateTime.UtcNow;
-        //                order.TotalPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-        //                order.OrderDetails = cart.Items.Select(i => new OrderDetail
-        //                {
-        //                    ProductId = i.ProductId,
-        //                    Quantity = i.Quantity,
-        //                    Price = i.Price
-        //                }).ToList();
-        //            }           
-        //        }
-
-        //        _context.Orders.Add(order);
-        //        await _context.SaveChangesAsync();
-        //        HttpContext.Session.Remove("Cart");
-        //        TempData["Message"] = $"Thanh toán thành công";
-        //        return View("OrderCompleted", order.Id);             
-
-        //    }
-        //    TempData["ModelState"] = "Vui lòng điền đầy đủ thông tin.";
-        //    return View(order);
-        //}
-
-        //public async Task<IActionResult> PaymentCallBack()
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var response = _vnPayService.PaymentExecute(Request.Query);
-        //        var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart");
-
-        //        if (response == null || response.VnPayResponseCode != "00")
-        //        {
-        //            TempData["Message"] = $"Lỗi thanh toán VN Pay: {response.VnPayResponseCode}";
-        //            return RedirectToAction("PaymentFail");
-        //        }
-        //        Order ordervnPay = new Order();
-        //        var user = await _userManager.GetUserAsync(User);
-        //        ordervnPay.UserId = user.Id;
-        //        ordervnPay.OrderDate = DateTime.UtcNow;
-        //        var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-        //        decimal discount = 0;
-        //        if (promotion != null)
-        //        {
-        //            discount = promotion.IsPercentage ? originPrice * promotion.DiscountPercentage / 100 : promotion.DiscountAmount;
-        //        }
-        //        ordervnPay.TotalPrice = originPrice - discount;
-        //        ordervnPay.FirstName = orderTemp.FirstName;
-        //        ordervnPay.LastName = orderTemp.LastName;
-        //        ordervnPay.Phone = orderTemp.Phone;
-        //        ordervnPay.Email = orderTemp.Email;
-        //        ordervnPay.Address = orderTemp.Address;
-        //        ordervnPay.OrderDetails = cart.Items.Select(i => new OrderDetail
-        //        {
-        //            ProductId = i.ProductId,
-        //            Quantity = i.Quantity,
-        //            Price = i.Price
-        //        }).ToList();
-
-        //        _context.Orders.Add(ordervnPay);
-        //        await _context.SaveChangesAsync();
-        //        HttpContext.Session.Remove("Cart");
-
-        //        TempData["Message"] = $"Thanh toán VNPay thành công";
-        //        return View("OrderCompleted");
-        //    }
-        //    TempData["Message"] = "Lỗi thanh toán VN Pay";
-        //    return RedirectToAction("PaymentFail");
-        //}
+                default:
+                    return await ProcessCashOnDelivery(order, originPrice, discount);
+            }
+        }
 
         private async Task<IActionResult> ProcessPaymentResult(object response, string paymentType)
         {
@@ -451,12 +313,6 @@ namespace WebDoDienTu.Controllers
         public async Task<IActionResult> PreOrder(int productId, int quantity)
         {
             var product = await _context.Products.FindAsync(productId);
-
-            if (product == null || !product.IsPreOrder || (product.ReleaseDate.HasValue && product.ReleaseDate.Value <= DateTime.UtcNow))
-            {
-                TempData["Message"] = "Sản phẩm không khả dụng để đặt trước.";
-                return RedirectToAction("Index");
-            }
 
             var viewModel = new PreOrderViewModel
             {
@@ -719,17 +575,6 @@ namespace WebDoDienTu.Controllers
         public async Task<IActionResult> PaymentSuccess(string paymentId, string PayerID)
         {
             var payment = _payPalPaymentService.ExecutePayment(paymentId, PayerID);
-
-            //if (payment.state.ToLower() == "approved")
-            //{
-            //    TempData["Message"] = "Thanh toán PayPal thành công!";
-            //    return View("OrderCompleted");
-            //}
-
-            //TempData["Message"] = "Lỗi thanh toán PayPal";
-            //return RedirectToAction("PaymentFail");
-
-
             return await ProcessPaymentResult(payment, "paypal");
         }
 
@@ -743,50 +588,6 @@ namespace WebDoDienTu.Controllers
         {
             TempData["Message"] = "Thanh toán bị hủy.";
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Checkout(Order order, string payment)
-        {
-            if (!ModelState.IsValid)
-            {
-                TempData["ModelState"] = "Vui lòng điền đầy đủ thông tin.";
-                return View(order);
-            }
-
-            var cart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("Cart");
-
-            if (cart == null || !cart.Items.Any())
-            {
-                TempData["EmptyCartMessage"] = "Giỏ hàng của bạn hiện đang trống.";
-                return RedirectToAction("Index");
-            }
-
-            var user = await _userManager.GetUserAsync(User);
-            order.UserId = user.Id;
-            order.OrderDate = DateTime.UtcNow;
-
-            // Tính toán giá trị đơn hàng
-            var originPrice = cart.Items.Sum(i => i.Price * i.Quantity);
-            var discount = CalculateDiscount(originPrice);          
-            order.OrderDetails = CreateOrderDetails(cart);
-            orderTemp = order;
-
-            // Xử lý thanh toán
-            switch (payment)
-            {
-                case "Thanh toán MoMo":
-                    return await ProcessMomoPayment(order, originPrice, discount);
-
-                case "Thanh toán PayPal":
-                    return await ProcessPayPalPayment(originPrice, discount);
-
-                case "Thanh toán VNPay":
-                    return await ProcessVnPayPayment(order, originPrice, discount);
-
-                default:
-                    return await ProcessCashOnDelivery(order, originPrice, discount);
-            }
         }
 
         public async Task<IActionResult> PaymentCallBack()

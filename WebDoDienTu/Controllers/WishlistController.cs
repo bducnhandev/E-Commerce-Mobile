@@ -1,12 +1,12 @@
-﻿using Mailjet.Client.Resources;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using WebDoDienTu.Data;
 using WebDoDienTu.Extensions;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.ViewModels;
+using WebDoDienTu.ViewModels;
 
 namespace WebDoDienTu.Controllers
 {
@@ -15,11 +15,13 @@ namespace WebDoDienTu.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IStringLocalizer<WishlistController> _localizer;
 
-        public WishlistController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public WishlistController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IStringLocalizer<WishlistController> localizer)
         {
             _context = context;
             _userManager = userManager;
+            _localizer = localizer;
         }
 
         public async Task<IActionResult> Index()
@@ -28,8 +30,8 @@ namespace WebDoDienTu.Controllers
             var wishList = await _context.WishLists
                                             .Include(w => w.WishListItems)
                                             .FirstOrDefaultAsync(w => w.UserId == user.Id);
-            if (wishList == null) {
-                TempData["Message"] = "Danh mục yêu thích hiện trống";
+            if (wishList.WishListItems.Count == 0) {
+                TempData["Message"] = _localizer["WishlistEmptyMessage"];
                 return View("Index");
             }
             WishListViewModel wishListViewModel = new WishListViewModel();
@@ -38,7 +40,6 @@ namespace WebDoDienTu.Controllers
             return View(wishListViewModel);
         }
 
-        // Thêm sản phẩm vào wishlist
         [HttpPost]
         public async Task<IActionResult> AddToWishlist(int productId)
         {
@@ -76,7 +77,7 @@ namespace WebDoDienTu.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveFromWishList(int productId)
         {
-            var item = await _context.WishListItems.FindAsync(productId);
+            var item = await _context.WishListItems.FirstOrDefaultAsync(p => p.ProductId == productId);
             if (item == null) { return RedirectToAction("Index"); }
             _context.WishListItems.Remove(item);
             await _context.SaveChangesAsync();

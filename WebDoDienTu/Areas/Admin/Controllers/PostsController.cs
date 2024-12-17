@@ -17,10 +17,10 @@ namespace WebDoDienTu.Areas.Admin.Controllers
     {
         private readonly IPostRepository _postRepository;
         private readonly IPostCategoryRepository _postCategoryRepository;
-        private readonly Cloudinary _cloudinary;
+        private readonly ICloudinary _cloudinary;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public PostsController(IPostRepository postRepository, IPostCategoryRepository postCategoryRepository, Cloudinary cloudinary, UserManager<ApplicationUser> userManager)
+        public PostsController(IPostRepository postRepository, IPostCategoryRepository postCategoryRepository, ICloudinary cloudinary, UserManager<ApplicationUser> userManager)
         {
             _postRepository = postRepository;
             _postCategoryRepository = postCategoryRepository;
@@ -49,7 +49,6 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             post.AuthorId = currentUserId;
-
             post.CreatedAt = DateTime.UtcNow;
             post.UpdatedAt = DateTime.UtcNow;
 
@@ -146,14 +145,28 @@ namespace WebDoDienTu.Areas.Admin.Controllers
 
         private async Task<string> SaveImageToCloudinary(IFormFile imageFile)
         {
-            var uploadParams = new ImageUploadParams
+            try
             {
-                File = new FileDescription(imageFile.FileName, imageFile.OpenReadStream()),
-                PublicId = $"posts/{Guid.NewGuid()}"
-            };
+                var uploadParams = new ImageUploadParams
+                {
+                    File = new FileDescription(imageFile.FileName, imageFile.OpenReadStream()),
+                    PublicId = $"posts/{Guid.NewGuid()}"
+                };
 
-            var uploadResult = await _cloudinary.UploadAsync(uploadParams);
-            return uploadResult.StatusCode == System.Net.HttpStatusCode.OK ? uploadResult.SecureUrl.ToString() : null;
+                var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                if (uploadResult.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return uploadResult.SecureUrl.ToString();
+                }
+                else
+                {
+                    throw new Exception("Image upload failed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to upload image to Cloudinary.", ex);
+            }
         }
 
         private string ConvertMarkdownToHtml(string markdown)
@@ -163,9 +176,11 @@ namespace WebDoDienTu.Areas.Admin.Controllers
                 return string.Empty;
             }
 
-            var pipeline = new MarkdownPipelineBuilder().Build();
-            var htmlContent = Markdown.ToHtml(markdown, pipeline);
-            return htmlContent;
+            var pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .Build();
+
+            return Markdown.ToHtml(markdown, pipeline);
         }
     }
 }

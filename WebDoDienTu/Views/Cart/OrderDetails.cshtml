@@ -1,6 +1,7 @@
-﻿@model WebDoDienTu.Models.Order
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model WebDoDienTu.Models.Order
 
-<h2 class="text-center my-5">Chi tiết đơn hàng</h2>
+<h2 class="text-center my-5">@Localizer["OrderDetails"]</h2>
 
 <!-- Thanh tiến trình đơn hàng đầy đủ -->
 <div id="bar-progress" class="my-5 mt-lg-0">
@@ -8,7 +9,7 @@
         <span class="number-container">
             <span class="number">1</span>
         </span>
-        <h5>Pending</h5>
+        <h5>@Localizer["Pending"]</h5>
     </div>
     <div class="seperator"></div>
 
@@ -16,7 +17,7 @@
         <span class="number-container">
             <span class="number">2</span>
         </span>
-        <h5>PreOrder</h5>
+        <h5>@Localizer["PreOrder"]</h5>
     </div>
     <div class="seperator"></div>
 
@@ -24,7 +25,7 @@
         <span class="number-container">
             <span class="number">3</span>
         </span>
-        <h5>PROCESSING</h5>
+        <h5>@Localizer["Processing"]</h5>
     </div>
     <div class="seperator"></div>
 
@@ -32,7 +33,7 @@
         <span class="number-container">
             <span class="number">4</span>
         </span>
-        <h5>Shipped</h5>
+        <h5>@Localizer["Shipped"]</h5>
     </div>
     <div class="seperator"></div>
 
@@ -40,7 +41,7 @@
         <span class="number-container">
             <span class="number">5</span>
         </span>
-        <h5>COMPLETED</h5>
+        <h5>@Localizer["Completed"]</h5>
     </div>
     <div class="seperator"></div>
 
@@ -48,71 +49,69 @@
         <span class="number-container">
             <span class="number">6</span>
         </span>
-        <h5>CANCELLED</h5>
+        <h5>@Localizer["Cancelled"]</h5>
     </div>
 </div>
 
 <!-- Bảng thông tin đơn hàng -->
-<h2>Thông tin đơn hàng</h2>
+<h2>@Localizer["OrderInformation"]</h2>
 <table class="order-info-table">
     <tr>
-        <th>Họ tên</th>
+        <th>@Localizer["FullName"]</th>
         <td>@Model.FirstName @Model.LastName</td>
     </tr>
     <tr>
-        <th>Trạng thái đơn hàng</th>
+        <th>@Localizer["OrderStatus"]</th>
         <td>@Model.Status</td>
     </tr>
     <tr>
-        <th>Ngày đặt</th>
+        <th>@Localizer["OrderDate"]</th>
         <td>@Model.OrderDate.ToString("dd/MM/yyyy")</td>
     </tr>
     <tr>
-        <th>Tổng tiền</th>
+        <th>@Localizer["TotalPrice"]</th>
         <td>@Model.TotalPrice.ToString("N0") VND</td>
     </tr>
-    @{
-        if (Model.DepositAmount != 0)
-        {
-            var price = Model.TotalPrice - Model.DepositAmount;
-            <tr>
-                <th>Số tiền đã cọc</th>
-                <td>@Model.DepositAmount.ToString("N0") VND</td>
-            </tr>
-            <tr>
-                <th>Số tiền phải trả</th>
-                <td>@price.ToString("N0") VND</td>
-            </tr>
-        }
+    @if (Model.DepositAmount != 0)
+    {
+        var price = Model.TotalPrice - Model.DepositAmount;
+        <tr>
+            <th>@Localizer["DepositAmount"]</th>
+            <td>@Model.DepositAmount.ToString("N0") VND</td>
+        </tr>
+        <tr>
+            <th>@Localizer["AmountRemaining"]</th>
+            <td>@price.ToString("N0") VND</td>
+        </tr>
     }
     <tr>
-        <th>Số điện thoại</th>
+        <th>@Localizer["PhoneNumber"]</th>
         <td>@Model.Phone</td>
     </tr>
     <tr>
-        <th>Email</th>
+        <th>@Localizer["Email"]</th>
         <td>@Model.Email</td>
     </tr>
     <tr>
-        <th>Địa chỉ</th>
+        <th>@Localizer["Address"]</th>
         <td>@Model.Address</td>
     </tr>
     <tr>
-        <th>Ghi chú</th>
+        <th>@Localizer["Notes"]</th>
         <td>@Model.Notes</td>
     </tr>
 </table>
 
 <!-- Bảng thông tin sản phẩm -->
-<h2>Thông tin sản phẩm</h2>
+<h2>@Localizer["ProductInformation"]</h2>
 <table class="order-info-table">
     <thead>
         <tr>
-            <th>Hình ảnh</th>
-            <th>Sản phẩm</th>
-            <th>Giá</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
+            <th>@Localizer["Image"]</th>
+            <th>@Localizer["Product"]</th>
+            <th>@Localizer["Price"]</th>
+            <th>@Localizer["Quantity"]</th>
+            <th>@Localizer["Total"]</th>
         </tr>
     </thead>
     <tbody>
@@ -120,10 +119,10 @@
         {
             var totalPrice = orderDetail.Price * orderDetail.Quantity;
             <tr>
-                <td><img src="@orderDetail.Product.ImageUrl" style="width:35px; height:35px"/></td> 
+                <td><img src="@orderDetail.Product.ImageUrl" style="width:35px; height:35px" /></td>
                 <td>@orderDetail.Product.ProductName</td>
-                <td>@orderDetail.Product.Price.ToString("N0") VND</td> 
-                <td>@orderDetail.Quantity</td>              
+                <td>@orderDetail.Product.Price.ToString("N0") VND</td>
+                <td>@orderDetail.Quantity</td>
                 <td>@totalPrice.ToString("N0") VND</td>
             </tr>
         }

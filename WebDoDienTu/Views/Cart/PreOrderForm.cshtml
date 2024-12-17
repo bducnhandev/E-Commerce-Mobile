@@ -1,4 +1,5 @@
-﻿@model WebDoDienTu.Models.ViewModels.PreOrderViewModel
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model WebDoDienTu.ViewModels.PreOrderViewModel
 
 @{
     ViewData["Title"] = "OrderCompleted";
@@ -8,38 +9,39 @@
 @{
     var productImg = ViewBag.Product?.ImageUrl;
 }
-<h2>Điền Thông Tin Đặt Hàng</h2>
+
+<h2>@Localizer["OrderFormTitle"]</h2>
 
 <div class="row my-5">
     <div class="col-6 d-flex">
-        <img class="justify-content-center w-75 m-auto" src="@productImg" alt="Alternate Text"/>
+        <img class="justify-content-center w-75 m-auto" src="@productImg" alt="Alternate Text" />
     </div>
     <div class="col-6">
         <form asp-action="SubmitPreOrder" method="post">
             <input type="hidden" asp-for="ProductId" />
 
             <div class="form-group">
-                <label asp-for="FirstName"></label>
+                <label asp-for="FirstName">@Localizer["FirstNameLabel"]</label>
                 <input asp-for="FirstName" class="form-control" required />
             </div>
             <div class="form-group">
-                <label asp-for="LastName"></label>
+                <label asp-for="LastName">@Localizer["LastNameLabel"]</label>
                 <input asp-for="LastName" class="form-control" required />
             </div>
             <div class="form-group">
-                <label asp-for="Phone"></label>
+                <label asp-for="Phone">@Localizer["PhoneLabel"]</label>
                 <input asp-for="Phone" class="form-control" required />
             </div>
             <div class="form-group">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">@Localizer["EmailLabel"]</label>
                 <input asp-for="Email" type="email" class="form-control" required />
             </div>
             <div class="form-group">
-                <label asp-for="Address"></label>
+                <label asp-for="Address">@Localizer["AddressLabel"]</label>
                 <input asp-for="Address" class="form-control" required />
             </div>
             <div class="form-group">
-                <label for="DepositAmount">Chọn giá trị cọc:</label>
+                <label for="DepositAmount">@Localizer["SelectDepositAmount"]</label>
                 <select id="DepositAmount" name="DepositAmount" class="form-control">
                     <!-- Tùy chọn giá trị cọc sẽ được thêm qua JavaScript -->
                 </select>
@@ -47,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <label for="Quantity">Số lượng:</label>
+                <label for="Quantity">@Localizer["Quantity"]</label>
                 <div class="input-group">
                     <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity()">-</button>
                     <input type="number" id="Quantity" name="Quantity" value="@Model.Quantity" min="1" class="form-control" required onchange="updateDepositOptions()" />
@@ -55,7 +57,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">Xác Nhận Đặt Hàng</button>
+            <button type="submit" class="btn btn-primary mt-3">@Localizer["ConfirmOrder"]</button>
         </form>
     </div>
 </div>

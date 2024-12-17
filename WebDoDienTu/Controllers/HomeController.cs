@@ -1,27 +1,33 @@
-﻿using Mailjet.Client.Resources;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using WebDoDienTu.Data;
-using WebDoDienTu.Models;
-using WebDoDienTu.Service;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebDoDienTu.Repository;
 
 namespace WebDoDienTu.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly IProductRepository _productRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
+            _categoryRepository = categoryRepository;   
         }
 
         public async Task<IActionResult> Index()
         {
-            var product = _context.Products.ToList();
+            var products = await _productRepository.GetAllAsync();
 
-            ViewData["Categories"] = _context.Categories.ToList();        
-            return View(product);
+            foreach(var pro in products)
+            {
+                if (pro.ReleaseDate > DateTime.UtcNow)
+                {
+                    ViewData["ProductRelease"] = pro;
+                }
+            }
+
+            ViewData["Categories"] = await _categoryRepository.GetAllAsync();        
+            return View(products);
         } 
     }
 }

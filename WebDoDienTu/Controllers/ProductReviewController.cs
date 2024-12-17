@@ -17,7 +17,6 @@ namespace WebDoDienTu.Controllers
             _userManager = userManager;
         }
 
-        // Thêm đánh giá cho sản phẩm
         [HttpPost]
         public async Task<IActionResult> AddReview(int productId,string name, string email, int rating, string comment)
         {

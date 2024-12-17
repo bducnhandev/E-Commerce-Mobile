@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace WebDoDienTu.Models
+﻿namespace WebDoDienTu.Models
 {
     public class ChatMessage
     {

@@ -5,7 +5,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>MiniShop</title>
+        <title>@Localizer["Title"]</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -19,16 +19,17 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        <!-- Libraries Stylesheet -->
-        <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <!-- SweetAlert2 CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet" />
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="~/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- SweetAlert2 CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <!-- Libraries Stylesheet -->
+        <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
         <link href="~/css/style.css" rel="stylesheet">
@@ -44,14 +45,22 @@
         <!-- Spinner End -->
 
         <!-- Navbar start -->
-        <div class="container-fluid fixed-top">
+        @* <div class="container-fluid fixed-top">
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Phân khu đào tạo E1, Khu Công Nghệ cao TP.HCM, Phường Hiệp Phú, TP. Thủ Đức, TP.HCM</a></small>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">@Localizer["Address"]</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">ducnhanbui25032003@gmail.com</a></small>
+                        <!-- Language Switcher -->
+                        <div class="d-flex align-items-center">
+                            <a href="?culture=vi-VN" class="btn btn-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 72 72"><path fill="#d22f27" d="M5 17h62v38H5z" /><path fill="#f1b31c" stroke="#f1b31c" stroke-linecap="round" stroke-linejoin="round" d="m28.89 47l7.303-22l6.295 21.663L25 33.61l22-.543z" /><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h62v38H5z" /></svg>
+                            </a>
+                            <a href="?culture=en-US" class="btn btn-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 72 72"><path fill="#fff" d="M5 17h62v38H5z" /><path fill="#d22f27" d="M5 17h62v5H5zm0 9h62v4H5zm0 8h62v4H5z" /><path fill="#1e50a0" d="M5 17h32v21H5z" /><path fill="#d22f27" d="M5 42h62v4H5z" /><circle cx="9" cy="22" r="1.75" fill="#fff" /><circle cx="17" cy="22" r="1.75" fill="#fff" /><circle cx="25" cy="22" r="1.75" fill="#fff" /><circle cx="33" cy="22" r="1.75" fill="#fff" /><circle cx="29" cy="26" r="1.75" fill="#fff" /><circle cx="21" cy="26" r="1.75" fill="#fff" /><circle cx="13" cy="26" r="1.75" fill="#fff" /><circle cx="9" cy="30" r="1.75" fill="#fff" /><circle cx="17" cy="30" r="1.75" fill="#fff" /><circle cx="25" cy="30" r="1.75" fill="#fff" /><circle cx="33" cy="30" r="1.75" fill="#fff" /><circle cx="29" cy="34" r="1.75" fill="#fff" /><circle cx="21" cy="34" r="1.75" fill="#fff" /><circle cx="13" cy="34" r="1.75" fill="#fff" /><path fill="#d22f27" d="M5 50h62v5H5z" /><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h62v38H5z" /></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,13 +72,13 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Trang chủ</a>
-                            <a asp-area="" asp-controller="Posts" asp-action="Index" class="nav-item nav-link">Tin tức</a>
-                            <a asp-area="" asp-controller="Product" asp-action="Index" class="nav-item nav-link">Mua sắm</a>
-                            <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Liên hệ</a>
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-item nav-link">@Localizer["Home"]</a>
+                            <a asp-area="" asp-controller="Posts" asp-action="Index" class="nav-item nav-link">@Localizer["News"]</a>
+                            <a asp-area="" asp-controller="Product" asp-action="Index" class="nav-item nav-link">@Localizer["Shop"]</a>
+                            <a asp-area="" asp-controller="Contact" asp-action="Index" class="nav-item nav-link">@Localizer["Contact"]</a>
                             @if (User.IsInRole("Admin"))
                             {
-                                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Trang quản trị</a>
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-item nav-link">@Localizer["AdminPage"]</a>
                             }
                         </div>
                         <div class="d-flex m-3 me-0">
@@ -84,7 +93,8 @@
                     </div>
                 </nav>
             </div>
-        </div>
+        </div> *@
+        @await Html.PartialAsync("_Navbar");
         <!-- Navbar End -->
 
         <!-- Modal Search Start -->
@@ -92,7 +102,7 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tìm kiếm</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">@Localizer["SearchPlaceholder"]</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center">
@@ -113,7 +123,7 @@
         <!-- End Container -->
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        @* <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
             <div class="container py-5">
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
                     <div class="row g-4">
@@ -178,7 +188,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
+        @await Html.PartialAsync("_Footer")
         <!-- Footer End -->
 
         <!-- Copyright Start -->
@@ -199,10 +210,12 @@
         <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
         <!-- Chat Button -->
-        <a href="javascript:void(0);" onclick="toggleChat()" class="btn btn-primary border-3 border-primary rounded-circle chat">
-            <i class="fab fa-rocketchat"></i>
-        </a>
-  
+        <a href="javascript:void(0);" onclick="toggleChat()" class="btn btn-primary border-3 border-primary rounded-circle chat"><i class="fab fa-rocketchat"></i></a>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

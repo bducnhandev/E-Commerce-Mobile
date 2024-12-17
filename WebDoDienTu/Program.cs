@@ -14,8 +14,12 @@ using WebDoDienTu.Data;
 using WebDoDienTu.Service.PayPal;
 using Hangfire;
 using Hangfire.SqlServer;
-using WebDoDienTu.Service.ProductRecommendationService;
 using WebDoDienTu.Repository;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using WebDoDienTu.Mappings;
+using WebDoDienTu.Service.ProductRecommendation;
 
 internal class Program
 {
@@ -24,65 +28,47 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
         var config = builder.Configuration;
 
-        builder.Services.AddSignalR();
-
-        // Configuring Hangfire with SQL Server storage
-        builder.Services.AddHangfire(configuration => configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                         .UseSimpleAssemblyNameTypeSerializer()
-                         .UseDefaultTypeSerializer()
-                         .UseSqlServerStorage(config.GetConnectionString("DefaultConnection"), new SqlServerStorageOptions
-                         {
-                             CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                             SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                             QueuePollInterval = TimeSpan.Zero,
-                             UseRecommendedIsolationLevel = true,
-                             DisableGlobalLocks = true
-                         }));
-
-        // Add the processing server as IHostedService
-        builder.Services.AddHangfireServer();
-
+        // Configure database
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+        // Configure Identity
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddDefaultTokenProviders()
-        .AddDefaultUI()
-        .AddEntityFrameworkStores<ApplicationDbContext>();
+                        .AddEntityFrameworkStores<ApplicationDbContext>()
+                        .AddDefaultTokenProviders()
+                        .AddDefaultUI();
 
+        // Configure localization
+        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+        builder.Services.AddControllersWithViews()
+                        .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                        .AddDataAnnotationsLocalization();
+
+        // Configure JSON options
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
         });
 
+
+        // Configure file upload limits
+        builder.WebHost.ConfigureKestrel(options =>
+        {
+            options.ListenAnyIP(5122);
+            options.ListenAnyIP(7209, listenOptions =>
+            {
+                listenOptions.UseHttps();
+            });
+            options.Limits.MaxRequestBodySize = 100 * 1024 * 1024;
+        });
+
+
+        // Configure cookies and sessions
         builder.Services.ConfigureApplicationCookie(option =>
         {
             option.LoginPath = $"/Identity/Account/Login";
             option.LogoutPath = $"/Identity/Account/Logout";
             option.LogoutPath = $"/Identity/Account/AccesDenied";
         });
-
-        builder.Services.AddRazorPages();
-
-        builder.Services.AddScoped<IOrderService, OrderService>();
-        builder.Services.AddScoped<IProductRepository, EFProductRepository>();
-        builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
-        builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
-        builder.Services.AddScoped<IPostRepository, PostRepository>();
-        builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-        builder.Services.AddSingleton<IVnPayService, VnPayService>();
-        builder.Services.AddScoped<IMomoPaymentService, MomoPaymentService>();
-        builder.Services.AddScoped<ProductViewService>();
-        builder.Services.AddScoped<RecommendationService>();
-        builder.Services.AddScoped<ProductRecommendationService>();
-        builder.Services.AddScoped<IPayPalPaymentService, PayPalPaymentService>();
-
-        //builder.Services.Configure<AuthMessageSenderOptions>(config.GetSection("MailjetSettings"));
-        //builder.Services.AddTransient<IEmailSender, EmailSender>();
-
-        builder.Services.Configure<EmailSettings>(config.GetSection("EmailSettings"));
-        builder.Services.AddTransient<IEmailSender, EmailSender>();
-
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSession(options =>
@@ -92,37 +78,83 @@ internal class Program
             options.Cookie.IsEssential = true;
         });
 
-        builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-        {
-            googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-            googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
-        });
+        // Configure third-party authentication
+        builder.Services.AddAuthentication()
+            .AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+            });
 
-        builder.Services.AddAuthentication().AddFacebook(facebookOptions =>
-        {
-            facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
-            facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
-            facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
-        });
+        builder.Services.AddAuthentication()
+            .AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+                facebookOptions.AccessDeniedPath = "/AccessDeniedPathInfo";
+            });
 
+        // Configure email services
+        builder.Services.Configure<EmailSettings>(config.GetSection("EmailSettings"));
+        builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+        // Configure Cloudinary
         builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
-
-        builder.Services.AddSingleton(sp =>
+        builder.Services.AddSingleton<ICloudinary>(provider =>
         {
-            var config = sp.GetRequiredService<IOptions<CloudinarySettings>>().Value;
+            var settings = provider.GetRequiredService<IOptions<CloudinarySettings>>().Value;
+
             var account = new Account(
-                config.CloudName,
-                config.ApiKey,
-                config.ApiSecret
+                settings.CloudName,
+                settings.ApiKey,
+                settings.ApiSecret
             );
+
             return new Cloudinary(account);
         });
 
-        // Cấu hình Localization
-        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+        // Configure Hangfire
+        builder.Services.AddHangfire(configuration => configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseDefaultTypeSerializer()
+            .UseSqlServerStorage(config.GetConnectionString("DefaultConnection"), new SqlServerStorageOptions
+            {
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                QueuePollInterval = TimeSpan.Zero,
+                UseRecommendedIsolationLevel = true,
+                DisableGlobalLocks = true
+            }));
+        builder.Services.AddHangfireServer();
 
-        // Add services to the container.
-        builder.Services.AddControllersWithViews();
+        // Configure services
+        builder.Services.AddScoped<IProductRepository, ProductRepository>();
+        builder.Services.AddScoped<IProductService, ProductService>();
+        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
+        builder.Services.AddScoped<IOrderService, OrderService>();
+        builder.Services.AddScoped<IPostCategoryRepository, PostCategoryRepository>();
+        builder.Services.AddScoped<IPostRepository, PostRepository>();
+        builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+        builder.Services.AddSingleton<IVnPayService, VnPayService>();
+        builder.Services.AddScoped<IMomoPaymentService, MomoPaymentService>();
+        builder.Services.AddScoped<IProductViewRepository, ProductViewRepository>();
+        builder.Services.AddScoped<IProductViewService, ProductViewService>();
+        builder.Services.AddScoped<IPayPalPaymentService, PayPalPaymentService>();
+        builder.Services.AddScoped<RecommendationService>();
+        builder.Services.AddScoped<ProductRecommendationService>();
+
+        // Configure Excel license
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+        // AutoMapper
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+        // Configure SignalR
+        builder.Services.AddSignalR();
+
+        // Add the processing server as IHostedService
+        builder.Services.AddRazorPages();
 
         var app = builder.Build();
 
@@ -134,33 +166,55 @@ internal class Program
             app.UseHsts();
         }
 
-        // Cấu hình localization cho ứng dụng
-        var supportedCultures = new[] { "en-US", "vi-VN" };
-
-        var localizationOptions = new RequestLocalizationOptions()
-            .SetDefaultCulture("en-US")
-            .AddSupportedCultures(supportedCultures)
-            .AddSupportedUICultures(supportedCultures);
-        app.UseRequestLocalization(localizationOptions);
-
         app.UseHttpsRedirection();
-
         app.UseStaticFiles();
 
-        app.UseSession();
+        // Configure localization
+        var supportedCultures = new[] { "en-US", "vi-VN" };
+        var localizationOptions = new RequestLocalizationOptions
+        {
+            DefaultRequestCulture = new RequestCulture("vi-VN"),
+            SupportedCultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
+            SupportedUICultures = supportedCultures.Select(c => new CultureInfo(c)).ToList(),
+            RequestCultureProviders = new List<IRequestCultureProvider>
+            {
+                new QueryStringRequestCultureProvider { QueryStringKey = "culture", UIQueryStringKey = "ui-culture" },
+                new CookieRequestCultureProvider(),
+                new AcceptLanguageHeaderRequestCultureProvider()
+            }
+        };
+        app.UseRequestLocalization(localizationOptions);
 
+        // Middleware for storing selected culture in cookies
+        app.Use(async (context, next) =>
+        {
+            if (context.Request.Query.ContainsKey("culture"))
+            {
+                var culture = context.Request.Query["culture"];
+                context.Response.Cookies.Append(
+                    CookieRequestCultureProvider.DefaultCookieName,
+                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                    new CookieOptions
+                    {
+                        Expires = DateTimeOffset.UtcNow.AddYears(1),
+                        HttpOnly = true,
+                        SameSite = SameSiteMode.Lax,
+                        Secure = context.Request.IsHttps
+                    });
+            }
+            await next.Invoke();
+        });
         app.UseRouting();
-
+        app.UseSession();
         app.UseAuthorization();
 
+        // Create default admin user
         CreateDefaultAdminUser(app).GetAwaiter().GetResult();
 
         app.MapRazorPages();
-
         app.MapControllerRoute(
             name: "Admin",
             pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,12 +1,16 @@
-﻿@model WebDoDienTu.Models.Product
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model WebDoDienTu.Models.Product
+
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @{
     var successMessage = TempData["SuccessMessage"] as string;
     var displayRating = Math.Round((double)ViewBag.AverageRating, 1);
 }
+
 <style>
     .watermark-overlay {
         position: absolute;
@@ -28,10 +32,10 @@
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6">Thông tin sản phẩm</h1>
+    <h1 class="text-center text-white display-6">@Localizer["PageHeader"]</h1>
     <ol class="breadcrumb justify-content-center mb-0">
-        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
-        <li class="breadcrumb-item active text-white">Product Detail</li>
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["BreadcrumbHome"]</a></li>
+        <li class="breadcrumb-item active text-white">@Localizer["BreadcrumbDetail"]</li>
     </ol>
 </div>
 <!-- Single Page Header End -->
@@ -69,13 +73,34 @@
                 <div class="row g-4">
                     <div class="col-lg-6">
                         <div class="border rounded position-relative">
-                            <a href="#">
-                                <img src="@Model.ImageUrl" class="img-fluid rounded" alt="Image">
-                            </a>
+                            <div id="gallery-container" class="d-flex justify-content-center">
+                                <!-- Hiển thị ảnh chính -->
+                                <a href="@Model.ImageUrl" data-fancybox="gallery">
+                                    <img src="@Model.ImageUrl" class="img-fluid rounded" alt="Main Product Image">
+                                </a>
+                                <!-- Hiển thị các ảnh bổ sung -->
+                                @if (Model.Images != null && Model.Images.Any())
+                                {
+                                    foreach (var image in Model.Images)
+                                    {
+                                        <a href="@image.Url" hidden data-fancybox="gallery">
+                                            <img src="@image.Url" class="img-fluid rounded mt-2" alt="Additional Product Image">
+                                        </a>
+                                    }
+                                }
+                                <!-- Hiển thị video -->
+                                @if (Model.VideoUrl != null )
+                                {
+                                    <a href="@Model.VideoUrl" hidden data-fancybox="gallery" data-type="iframe">
+                                        <img src="@Model.ImageUrl" class="img-fluid rounded mt-2" alt="Additional Product Image">
+                                    </a>
+                                }
+                            </div>
+
                             @if (Model.StockQuantity <= 0)
                             {
                                 <div class="watermark-overlay">
-                                    Hết hàng
+                                    @Localizer["OutOfStock"]
                                 </div>
                             }
                         </div>
@@ -84,62 +109,66 @@
                         <h5 class="fw-bold mb-3">@Model.Price.ToString("N0") VND</h5>
                         <p class="mb-4">@Model.Description</p>      
 
-                        <!-- Product Attributes Table Start -->
-                        <div class="product-attributes mb-4">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">
-                                            Thông số kỹ thuật
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var productattribute in Model.Attributes)
-                                    {
-                                        <tr>
-                                            <td>@productattribute.AttributeName</td>
-                                            <td>@productattribute.AttributeValue</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Product Attributes Table End -->
-
                         <!-- Quantity and Add to Cart Section -->
                         <form class="my-4" asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@Model.ProductId">
                             <div class="input-group quantity mb-5" style="width: 100px;">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border" disabled="@(Model.StockQuantity <= 0)">
+                                    <button type="button" class="btn btn-sm btn-minus bg-light border" disabled="@(Model.StockQuantity <= 0)">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
                                 <input type="text" class="form-control form-control-sm text-center border-0" value="1" name="quantity" disabled="@(Model.StockQuantity <= 0)">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border" disabled="@(Model.StockQuantity <= 0)">
+                                    <button type="button" class="btn btn-sm btn-plus bg-light border" disabled="@(Model.StockQuantity <= 0)">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
-                            <button class="btn border border-secondary rounded-pill px-3 text-primary" disabled="@(Model.StockQuantity <= 0)">
-                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng
-                            </button>
+                            <div class="d-flex justify-content-center border border-3">
+                                <button class="btn px-3 text-primary" disabled="@(Model.StockQuantity <= 0)">
+                                    <i class="fa fa-shopping-bag me-2 text-primary"> @Localizer["AddToCart"]</i>
+                                </button>
+                            </div>
                         </form>
 
                         <!-- Wishlist and Comparison Buttons -->
                         <div class="d-flex flex-row justify-content-between">
                             <form asp-action="AddToWishlist" asp-controller="Wishlist" method="post">
                                 <input type="hidden" name="productId" value="@Model.ProductId" />
-                                <button class="btn border border-secondary rounded-pill px-3 text-primary" type="submit">
-                                    <i class="fa fa-heart me-2 text-primary"></i>Add to Wishlist
+                                <button class="btn border border border-3 px-3 text-primary" type="submit">
+                                    <i class="fa fa-heart me-2 text-primary"></i>@Localizer["AddToWishlist"]
                                 </button>
                             </form>
-                            <a asp-controller="Product" asp-action="AddToComparison" asp-route-productId="@Model.ProductId" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào so sánh
+                            <a asp-controller="Product" asp-action="AddToComparison" asp-route-productId="@Model.ProductId" class="btn border border border-3 px-3 text-primary">
+                                <i class="fa fa-shopping-bag me-2 text-primary"></i>@Localizer["AddToComparison"]
                             </a>
                         </div>
+
                     </div>
+
+                    <!-- Product Attributes Table Start -->
+                    <div class="product-attributes mb-4">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        @Localizer["TechnicalDetails"]
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var productattribute in Model.Attributes)
+                                {
+                                    <tr>
+                                        <td>@productattribute.AttributeName</td>
+                                        <td>@productattribute.AttributeValue</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Product Attributes Table End -->
+
                 </div>
             </div>
         </div>
@@ -147,22 +176,22 @@
         <!-- Review Section and Other Content as Before... -->
         <div class="border border-light-subtle p-3 mb-5">
             <form id="reviewForm" asp-action="AddReview" asp-controller="ProductReview" method="post">
-                <h4 class="mb-5 fw-bold">Leave a Review</h4>
+                <h4 class="mb-5 fw-bold">@Localizer["LeaveReview"]</h4>
                 <input type="hidden" name="productId" value="@Model.ProductId" />
                 <div class="row g-4">
                     <div class="col-lg-6">
                         <div class="border-bottom rounded">
-                            <input type="text" name="name" id="name" class="form-control border-0" placeholder="Your Name" required />
+                            <input type="text" name="name" id="name" class="form-control border-0" placeholder="@Localizer["YourName"]" required  />
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="border-bottom rounded">
-                            <input type="email" name="email" id="email" class="form-control border-0" placeholder="Your Email" required />
+                            <input type="email" name="email" id="email" class="form-control border-0" placeholder="@Localizer["YourEmail"]" required />
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="border-bottom rounded my-4">
-                            <textarea name="comment" id="comment" class="form-control border-0" cols="30" rows="8" placeholder="Your Review" required spellcheck="false"></textarea>
+                            <textarea name="comment" id="comment" class="form-control border-0" cols="30" rows="8" placeholder="@Localizer["YourReview"]" required spellcheck="false"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -194,7 +223,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary border border-secondary text-white rounded-pill px-4 py-3">
-                                Post Review
+                                @Localizer["SubmitReview"]
                             </button>
                         </div>
                     </div>
@@ -202,7 +231,7 @@
             </form>
         </div>
         <div class="border border-light-subtle p-2 mb-5">
-            <h2>Reviews</h2>
+            <h2>@Localizer["Reviews"]</h2>
             <div id="reviews">
                 @if (Model.Reviews.Any())
                 {
@@ -234,11 +263,11 @@
                 }
                 else
                 {
-                    <p>No reviews yet.</p>
+                    <p>@Localizer["NoReviewsYet"]</p>                  
                 }
             </div>
             <div class="text-center mt-3">
-                <button id="loadMoreBtn" class="btn btn-primary" onclick="loadMoreReviews()">Load More</button>
+                <button id="loadMoreBtn" class="btn btn-primary" onclick="loadMoreReviews()">@Localizer["LoadMore"]</button>
             </div>
 
         </div>
@@ -246,15 +275,35 @@
 </div>
 <!-- Single Product End -->
 
-@await Html.PartialAsync("_RelatedProductsPartial", ViewBag.RecommendedProducts as List<WebDoDienTu.Models.Product>)
-@* @await Html.PartialAsync("_ProductRecommendationsPartial", ViewBag.Recommendations as IEnumerable<ProductRecommendationModel>) *@
-<script src="~/js/rating.js"></script>
 
 <script>
-    // @using Newtonsoft.Json
+    @using Newtonsoft.Json
     var err = @Html.Raw(JsonConvert.SerializeObject(TempData["Error"]));
-    console.log(err);
     if (err != null) {
         alert(err);
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var galleryItems = document.querySelectorAll('[data-fancybox="gallery"]');
+
+        galleryItems.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                // Chạy hàm Fancybox với các tùy chọn
+                Fancybox.open(galleryItems, {
+                    buttons: [
+                        'zoom',
+                        'slideShow',
+                        'thumbs',
+                        'close'
+                    ],
+                    loop: true,
+                    protect: true
+                });
+            });
+        });
+    });
 </script>
+
+<script src="~/js/rating.js"></script>
+
+@await Html.PartialAsync("_RelatedProductsPartial", ViewBag.RecommendedProducts as List<WebDoDienTu.Models.Product>)

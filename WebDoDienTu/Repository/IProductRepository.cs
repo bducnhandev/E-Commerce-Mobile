@@ -10,5 +10,7 @@ namespace WebDoDienTu.Repository
         Task UpdateAsync(Product product);
         Task DeleteAsync(int id);
         Task<IEnumerable<Product>> GetByNameAsync(string name);
+        Task RemoveImagesAsync(List<ProductImage> images);
+        Task RemoveAttributesAsync(List<ProductAttribute> attributes);
     }
 }

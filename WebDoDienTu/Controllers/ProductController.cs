@@ -1,5 +1,4 @@
-﻿using Mailjet.Client.Resources;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +6,9 @@ using System.Security.Claims;
 using WebDoDienTu.Data;
 using WebDoDienTu.Extensions;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.ViewModels;
 using WebDoDienTu.Service;
-using WebDoDienTu.Service.ProductRecommendationService;
+using WebDoDienTu.Service.ProductRecommendation;
+using WebDoDienTu.ViewModels;
 using X.PagedList;
 using X.PagedList.Extensions;
 
@@ -19,11 +18,12 @@ namespace WebDoDienTu.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ProductViewService _productViewService;
+        private readonly IProductViewService _productViewService;
         private readonly RecommendationService _recommendationService;
         private readonly ProductRecommendationService _productRecommendationService;
 
-        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ProductViewService productViewService, RecommendationService recommendationService, ProductRecommendationService productRecommendationService)
+        public ProductController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IProductViewService productViewService, 
+            RecommendationService recommendationService, ProductRecommendationService productRecommendationService)
         {
             _context = context;
             _userManager = userManager;
@@ -33,7 +33,7 @@ namespace WebDoDienTu.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string? category, string? keywords, string? priceRange, int? page)
+        public async Task<IActionResult> Index(string? category, string? keywords, string? priceRange, int? page)
         {
             int pageSize = 9;
             int pageNumber = (page ?? 1);
@@ -101,7 +101,7 @@ namespace WebDoDienTu.Controllers
                 await _productViewService.RecordProductViewAsync(user.Id, id);
             }
 
-            var product = _context.Products.Include(p => p.Reviews).Include(at => at.Attributes).FirstOrDefault(x => x.ProductId == id);
+            var product = _context.Products.Include(p => p.Reviews).Include(x => x.Category).Include(x => x.Images).Include(p => p.Attributes).FirstOrDefault(x => x.ProductId == id);
             
             if (product == null)
             {
@@ -119,7 +119,6 @@ namespace WebDoDienTu.Controllers
             return View(product);
         }
 
-        // Action để thêm sản phẩm vào danh sách so sánh
         public IActionResult AddToComparison(int productId)
         {
             var product = _context.Products.Include(p => p.Attributes).FirstOrDefault(item => item.ProductId == productId);
@@ -145,7 +144,6 @@ namespace WebDoDienTu.Controllers
             return RedirectToAction("Compare");
         }
 
-        // Action để hiển thị trang so sánh sản phẩm
         public async Task <IActionResult> Compare()
         {
             var comparisonList = HttpContext.Session.GetObjectFromJson<List<Product>>("ComparisonList") ?? new List<Product>();
@@ -173,7 +171,6 @@ namespace WebDoDienTu.Controllers
             return View(viewModel);
         }
 
-        // Action để xóa sản phẩm khỏi danh sách so sánh
         public IActionResult RemoveFromComparison(int productId)
         {
             var comparisonList = HttpContext.Session.GetObjectFromJson<List<Product>>("ComparisonList") ?? new List<Product>();

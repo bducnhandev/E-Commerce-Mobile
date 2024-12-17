@@ -19,17 +19,20 @@
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
         <div class="row">
-            <div class="col-xl-3 col-md-6">
+            <!-- Doanh số Card -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Doanh số</div>
-                    <span class="card-body display-6 text-center">@tongDoanhSo.ToString("N0", new CultureInfo("vi-VN")) VND</span>
+                    <span class="card-body display-6 text-center">@tongDoanhSo.ToString("N0", new CultureInfo("vi-VN"))</span>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" asp-area="Admin" asp-controller="ThongKe" asp-action="Index">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+
+            <!-- Đơn hàng Card -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">Đơn hàng</div>
                     <span class="card-body display-6 text-center">@tongDonHang</span>
@@ -39,7 +42,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+
+            <!-- Khách hàng Card -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="card bg-success text-white mb-4">
                     <div class="card-body">Khách hàng</div>
                     <span class="card-body display-6 text-center">@soLuongUser</span>
@@ -49,7 +54,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+
+            <!-- Sản phẩm Card -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="card bg-danger text-white mb-4">
                     <div class="card-body">Sản phẩm</div>
                     <span class="card-body display-6 text-center">@tongSoLuongSP</span>
@@ -60,35 +67,21 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-area me-1"></i>
                     Doanh thu tháng
                 </div>
-                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                <div class="card-body">
+                    <canvas id="myAreaChart" width="100%" height="40"></canvas>
+                </div>
             </div>
-@*             <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-area me-1"></i>
-                        Area Chart Example
-                    </div>
-                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div> *@
-@*             <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar me-1"></i>
-                        Bar Chart Example
-                    </div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                </div>
-            </div> *@
         </div>
     </div>
 </main>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -99,7 +92,7 @@
             @revenueByMonth[7], @revenueByMonth[8], @revenueByMonth[9],
             @revenueByMonth[10], @revenueByMonth[11], @revenueByMonth[12]
         ]);
-        var stepSize = Math.ceil(maxRevenue / 5 / 5000000) * 5000000; // Số mức = 5, mỗi mức cách nhau 5 triệu đồng
+        var stepSize = Math.ceil(maxRevenue / 5 / 5000000) * 5000000;
 
         var myLineChart = new Chart(ctx, {
             type: 'line',
@@ -149,10 +142,10 @@
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: Math.ceil(maxRevenue / stepSize) * stepSize, // Tối đa là bội số của 5 triệu đồng lớn hơn maxRevenue
+                            max: Math.ceil(maxRevenue / stepSize) * stepSize,
                             stepSize: stepSize,
                             callback: function (value) {
-                                return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }); // Định dạng tiền tệ
+                                return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
                             }
                         },
                         gridLines: {

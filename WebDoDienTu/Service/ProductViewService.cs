@@ -1,27 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebDoDienTu.Data;
-using WebDoDienTu.Models;
+﻿using WebDoDienTu.Models;
+using WebDoDienTu.Repository;
 
 namespace WebDoDienTu.Service
 {
-    public class ProductViewService
+    public class ProductViewService : IProductViewService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProductViewRepository _productViewRepository;
 
-        public ProductViewService(ApplicationDbContext context)
+        public ProductViewService(IProductViewRepository productViewRepository)
         {
-            _context = context;
+            _productViewRepository = productViewRepository;
         }
 
         public async Task RecordProductViewAsync(string userId, int productId)
         {
-            var productView = await _context.ProductViews
-                .FirstOrDefaultAsync(pv => pv.UserId == userId && pv.ProductId == productId);
+            var productView = await _productViewRepository.GetProductViewAsync(userId, productId);
 
             if (productView != null)
             {
                 productView.ViewCount++;
                 productView.LastViewedDate = DateTime.Now;
+                await _productViewRepository.UpdateProductViewAsync(productView);
             }
             else
             {
@@ -32,10 +31,10 @@ namespace WebDoDienTu.Service
                     ViewCount = 1,
                     LastViewedDate = DateTime.Now
                 };
-                _context.ProductViews.Add(productView);
+                await _productViewRepository.AddProductViewAsync(productView);
             }
 
-            await _context.SaveChangesAsync();
+            await _productViewRepository.SaveChangesAsync();
         }
     }
 }

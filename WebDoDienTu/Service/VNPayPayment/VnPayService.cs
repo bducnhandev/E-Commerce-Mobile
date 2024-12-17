@@ -1,4 +1,4 @@
-﻿using WebDoDienTu.Models.ViewModels;
+﻿using WebDoDienTu.ViewModels;
 
 namespace WebDoDienTu.Service.VNPayPayment
 {

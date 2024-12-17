@@ -142,14 +142,14 @@ namespace WebDoDienTu.Service
 
 
         // Phương thức lưu trữ các gợi ý sản phẩm vào database
-        public async Task SaveRecommendations(List<ProductRecommendation> recommendations)
-        {
-            foreach (var recommendation in recommendations)
-            {
-                _context.ProductRecommendations.Add(recommendation);
-            }
+        //public async Task SaveRecommendations(List<ProductRecommendation> recommendations)
+        //{
+        //    foreach (var recommendation in recommendations)
+        //    {
+        //        _context.ProductRecommendations.Add(recommendation);
+        //    }
 
-            await _context.SaveChangesAsync();
-        }
+        //    await _context.SaveChangesAsync();
+        //}
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebDoDienTu.Models;
-using WebDoDienTu.Repository;
+using WebDoDienTu.Service;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {
@@ -9,19 +9,16 @@ namespace WebDoDienTu.Areas.Admin.Controllers
     [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
-        private readonly IProductRepository _productRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
 
-        public CategoryController(IProductRepository productRepository, ICategoryRepository categoryRepository)
+        public CategoryController(ICategoryService categoryService)
         {
-            _productRepository = productRepository;
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
 
-        // Hiển thị danh sách sản phẩm
         public async Task<IActionResult> Index()
         {
-            var categories = await _categoryRepository.GetAllAsync();
+            var categories = await _categoryService.GetCategoriesAsync();
             return View(categories);
         }
 
@@ -33,14 +30,18 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Category category)
         {
-            await _categoryRepository.AddAsync(category);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                await _categoryService.CreateCategoryAsync(category);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
         }
 
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var category = await _categoryRepository.GetByIdAsync(id);
+            var category = await _categoryService.GetCategoryByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -51,7 +52,7 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var item = await _categoryRepository.GetByIdAsync(id);
+            var item = await _categoryService.GetCategoryByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -66,14 +67,14 @@ namespace WebDoDienTu.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            await _categoryRepository.UpdateAsync(category);
+            await _categoryService.UpdateCategoryAsync(category);
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var item = await _categoryRepository.GetByIdAsync(id);
+            var item = await _categoryService.GetCategoryByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -84,7 +85,7 @@ namespace WebDoDienTu.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            await _categoryRepository.DeleteAsync(id);
+            await _categoryService.DeleteCategoryAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }

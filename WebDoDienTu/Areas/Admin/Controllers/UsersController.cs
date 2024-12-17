@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebDoDienTu.Data;
 using WebDoDienTu.Models;
-using WebDoDienTu.Models.ViewModels;
+using WebDoDienTu.ViewModels;
 
 namespace WebDoDienTu.Areas.Admin.Controllers
 {

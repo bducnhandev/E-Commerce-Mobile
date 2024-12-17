@@ -48,22 +48,6 @@
                         <dd class="col-sm-10">
                             @Html.DisplayFor(model => model.Category.CategoryName)
                         </dd>
-                        <dt class="col-sm-2">
-                            Hình ảnh bổ sung
-                        </dt>
-                        <dd class="col-sm-10">
-                            @if (Model.Images != null && Model.Images.Count > 0)
-                            {
-                                foreach (var image in Model.Images)
-                                {
-                                    <img src="@image.Url" style="width:100px; margin-right:10px;" />
-                                }
-                            }
-                            else
-                            {
-                                <span>Không có hình ảnh bổ sung</span>
-                            }
-                        </dd>
                     </dl>
 
                     <form asp-action="Delete">

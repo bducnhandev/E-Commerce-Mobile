@@ -8,9 +8,11 @@ namespace WebDoDienTu.Models
         [Key]
         public int CategoryId { get; set; }
 
-        [Required, StringLength(50)]
+        [Required(ErrorMessage = "Tên danh mục là bắt buộc.")]
+        [StringLength(50, ErrorMessage = "Tên danh mục không được vượt quá 50 ký tự.")]
         [DisplayName("Tên danh mục")]
         public string CategoryName { get; set; }
-        public List<Product> Products { get; set; }
+
+        public List<Product>? Products { get; set; }
     }
 }
