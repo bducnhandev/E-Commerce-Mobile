@@ -14,7 +14,6 @@ namespace WebDoDienTu.Models
         [DisplayName("Mã đơn hàng")]
         public int OrderId { get; set; }
 
-        [Required]
         [StringLength(450)]
         [DisplayName("Mã người dùng")]
         public string? UserId { get; set; }

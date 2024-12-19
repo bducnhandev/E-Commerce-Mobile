@@ -1,4 +1,5 @@
 ﻿using PayPal.Api;
+using System.Globalization;
 
 namespace WebDoDienTu.Service.PayPal
 {
@@ -31,19 +32,19 @@ namespace WebDoDienTu.Service.PayPal
             {
                 name = "Order",
                 currency = "USD",
-                price = totalAmount.ToString(),
+                price = totalAmount.ToString("F2", CultureInfo.InvariantCulture),
                 quantity = "1"
             });
 
             var details = new Details()
             {
-                subtotal = totalAmount.ToString()
+                subtotal = totalAmount.ToString("F2", CultureInfo.InvariantCulture)
             };
 
             var amount = new Amount()
             {
                 currency = "USD",
-                total = totalAmount.ToString(),
+                total = totalAmount.ToString("F2", CultureInfo.InvariantCulture),
                 details = details
             };
 

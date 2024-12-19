@@ -27,7 +27,7 @@ namespace WebDoDienTu.Hubs
                 SenderId = user.Id,
                 ReceiverId = "Admin",
                 Message = message,
-                Timestamp = DateTime.UtcNow
+                Timestamp = DateTime.Now
             };
             _context.ChatMessages.Add(chatMessage);
             await _context.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace WebDoDienTu.Hubs
                 SenderId = "Admin",
                 ReceiverId = user.Id,
                 Message = message,
-                Timestamp = DateTime.UtcNow
+                Timestamp = DateTime.Now
             };
 
             _context.ChatMessages.Add(chatMessage);
